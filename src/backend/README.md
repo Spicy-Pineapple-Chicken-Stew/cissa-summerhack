@@ -22,6 +22,16 @@ Params (URL query):
 Response:
 - summary: The summary of the text.
 
+`GET /api/website_summary`
+
+Gets a summary of the website provided.
+
+Params (URL query):
+- url: The url of the website to summarize.
+
+Response:
+- summary: The summary of the website.
+
 ##### Auth
 
 `POST /auth/login`
