@@ -4,7 +4,7 @@ from random import choice
 from string import ascii_letters, digits
 import subprocess
 
-from flask import request, jsonify, Blueprint
+from flask import request, jsonify
 import requests
 from bs4 import BeautifulSoup
 from bs4.element import Comment
@@ -13,9 +13,7 @@ import os
 from google.cloud import storage, speech
 
 from app import GPT2_model
-
-api = Blueprint('api', __name__, url_prefix='/api')
-
+from app.apis import api
 
 PUNCTUATIONS = ".?!,;:()'\"/+-*&^%$#@ "
 
@@ -138,4 +136,4 @@ def youtube_summary():
     return jsonify({"summary": ''.join(GPT2_model(punctuated))})
 
 
-print("API endpoints loaded")
+print("summarize endpoints loaded")
