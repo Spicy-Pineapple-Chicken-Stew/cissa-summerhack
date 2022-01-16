@@ -42,6 +42,16 @@ Params (URL query):
 Response:
 - summary: The summary of the youtube video.
 
+`GET /api/generate_questions`
+
+Generate questions for the given text.
+
+Params (URL query):
+- text: The text to generate questions for.
+
+Response:
+- result: A list of questions in {question: xxx, answer: xxx} format.
+
 ##### Auth
 
 `POST /auth/login`
