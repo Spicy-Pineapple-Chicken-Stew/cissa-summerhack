@@ -1,7 +1,16 @@
+import json
+import time
+from random import choice
+from string import ascii_letters, digits
+import subprocess
+
 from flask import request, jsonify, Blueprint
 import requests
 from bs4 import BeautifulSoup
 from bs4.element import Comment
+from pytube import YouTube
+import os
+from google.cloud import storage, speech
 
 from app import GPT2_model
 
@@ -74,6 +83,59 @@ def website_summary():
     cleaned_texts = ''.join(list(map(clean_text, texts)))
 
     return jsonify({"summary": ''.join(GPT2_model(cleaned_texts))})
+
+
+@api.route('/youtube_summary')
+def youtube_summary():
+    url = request.args.get('url')
+    if url is None or len(url) == 0:
+        raise Exception("InvalidArgument", "url is required")
+
+    video = YouTube(url)
+    if len(video.streams.filter(only_audio=True)) == 0:
+        raise Exception("YoutubeError", "Unable to fetch audio")
+
+    if not os.path.exists("temp_downloads"):
+        os.mkdir("temp_downloads")
+
+    stream = video.streams.filter(only_audio=True)[-1]
+    task_id = ''.join(choice(ascii_letters + digits) for _ in range(10)) + str(int(time.time()))
+    filename = f"{task_id}.{stream.subtype}"
+    stream.download(output_path="temp_downloads", filename=filename)
+
+    command = f"ffmpeg -i temp_downloads/{filename} -f wav -ac 1 -ar 16000 temp_downloads/{task_id}.wav"
+    subprocess.call(command, shell=True)
+
+    # Upload audio to Google Cloud Storage
+    storage_client = storage.Client.from_service_account_json('credentials.json')
+    bucket = storage_client.get_bucket("summerhackspeech")
+    blob = bucket.blob(f"{task_id}.wav")
+    blob.upload_from_filename(filename="temp_downloads/" + task_id + ".wav")
+
+    # Perform speech recognition
+    speech_client = speech.SpeechClient.from_service_account_json('credentials.json')
+    audio = speech.RecognitionAudio({"uri": f"gs://summerhackspeech/{task_id}.wav"})
+    config = speech.RecognitionConfig(
+        {"encoding": speech.RecognitionConfig.AudioEncoding.LINEAR16,
+         "sample_rate_hertz": 16000,
+         "language_code": "en-US"
+         }
+    )
+    operation = speech_client.long_running_recognize({'config': config, 'audio': audio})
+    response = operation.result()
+    transcription = ' '.join([result.alternatives[0].transcript for result in response.results])
+
+    # Delete audio from Google Cloud Storage
+    blob.delete()
+
+    # Delete audio from local storage
+    os.remove("temp_downloads/" + task_id + ".wav")
+    os.remove("temp_downloads/" + filename)
+
+    punctuated = requests.post("http://bark.phon.ioc.ee/punctuator", data={"text": transcription}).text
+    print(punctuated)
+
+    return jsonify({"summary": ''.join(GPT2_model(punctuated))})
 
 
 print("API endpoints loaded")
