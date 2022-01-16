@@ -32,6 +32,16 @@ Params (URL query):
 Response:
 - summary: The summary of the website.
 
+`GET /api/youtube_summary`
+
+Gets a summary of the youtube video provided.
+
+Params (URL query):
+- url: The url of the youtube video to summarize.
+
+Response:
+- summary: The summary of the youtube video.
+
 ##### Auth
 
 `POST /auth/login`
