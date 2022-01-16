@@ -11,8 +11,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { createTheme } from '@mui/system';
-import { ThemeProvider } from '@emotion/react';
 
 
 const pages = ['Home', 'Upload'];
@@ -56,14 +54,15 @@ const Global_MenuBar = () => {
                     
                     <Typography
                         variant="h6"
+                        align="left"
                         noWrap
                         component="div"
-                        sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                        sx={{ mx: "auto", display: { xs: 'flex', xl: 'flex' } }}
                     >
-                        WEBSITE
+                        BRIDGE
                     </Typography>
             
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', xl: 'none' } }}>
                         <IconButton
                         size="large"
                         aria-label="account of current user"
@@ -89,7 +88,7 @@ const Global_MenuBar = () => {
                         open={Boolean(anchorElNav)}
                         onClose={handleCloseNavMenu}
                         sx={{
-                            display: { xs: 'block', md: 'none' },
+                            display: { xs: 'flex', xl: 'flex' },
                         }}
                         >
                         {pages.map((page) => (
@@ -99,15 +98,8 @@ const Global_MenuBar = () => {
                         ))}
                         </Menu>
                     </Box>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-                    >
-                        WEBSITE
-                    </Typography>
-                    <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+                    
+                    <Box sx={{ flexGrow: 0, display: { xs: 'flex', xl: 'flex' } }}>
                         {pages.map((page) => (
                         <Button
                             key={page}
