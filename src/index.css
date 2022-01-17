@@ -2,7 +2,7 @@
   font-family: 'Oxygen';
   font-style: normal;
   font-weight: 400;
-  src: url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');;
+  src: url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
 }
 
 body {
@@ -10,7 +10,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #ede7e3;
-  margin: 3vw;
 }
 
 .main_heading{
@@ -21,6 +20,7 @@ body {
   font-size: 15vh;
   height: 15vh;
   border: 5px solid #1d04ff;
+  margin: 3vw;
 }
 
 .main_text{
@@ -33,7 +33,6 @@ body {
   padding-top: 1vh;
   padding-bottom: 1vh;
   border: 5px solid #ff6804;
-
 }
 
 
