@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './App.css';
+import Home from './Pages/Home';
 import Global_MenuBar from './Components/global_menubar';
 import Upload_desktop from './Pages/Upload_desktop_ver';
 
