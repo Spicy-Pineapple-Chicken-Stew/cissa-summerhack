@@ -1,14 +1,32 @@
 import * as React from 'react';
-import ButtonBases from '../Components/Imagebutton.js'
+import ColorButton from '../Components/ButtonDef';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import ButtonBases from '../Components/ImageButton'
 
-function Home(props){
+import DeleteIcon from '@mui/icons-material/Delete';
+function Upload_Phone(props){
 
     return(
         <div className = 'wrapper'>
-            <ButtonBases></ButtonBases>
+            <div className ='home_title'>
+                <h1>Uploads</h1>
+            </div>
+            <div>
+            <ColorButton variant="outlined" startIcon={<Avatar
+                src={
+                "http://www.wpsimplesponsorships.com/wp-content/uploads/2019/05/cropped-icon-256x256.png"
+                }
+            />}> Delete </ColorButton>
+            </div>
+
+
+            <div>
+                <ButtonBases/>
+            </div>
         </div>
     )
 
 }
 
-export default Home;
+export default Upload_Phone;
