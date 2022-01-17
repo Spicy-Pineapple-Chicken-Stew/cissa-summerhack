@@ -1,14 +1,20 @@
+import * as React from 'react';
+import ColorButton from '../Components/ButtonDef'
 function Home(props){
 
     return(
-        <div>
-            <div className="main_heading">
-                Website name
-                <div className="main_text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tellus leo, feugiat in tortor sollicitudin, rhoncus lobortis orci. Integer eu enim lectus. Nunc porta lectus sed velit ullamcorper auctor. Donec fermentum facilisis mattis.
-                </div>
+        <div className = 'wrapper'>
+            <div className ='home_title'>
+                <h1>Bridge</h1>
+            </div>
+            <div className ='home_desc'>
+                <p>Add description   </p>
             </div>
             
+            <div>
+                <ColorButton>Begin</ColorButton>
+            </div>
+
         </div>
     )
 
