@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import ColorButton from '../Components/ButtonDef'
 
+
 function Upload_desktop()
 {
     return (
@@ -19,28 +20,27 @@ function Upload_desktop()
         </Box>
         <Box className='upload_desktop_buttons'>
             <Box 
-            sx={{width: 1/4}}
+            sx={{width: 1/6}}
             >
                 <ColorButton fullWidth = 'true'>Pure text</ColorButton>
             </Box>
             <Box 
-            sx={{width: 1/4}}
+            sx={{width: 1/6}}
             >
                 <ColorButton fullWidth = 'true'>Link</ColorButton>
             </Box>
             <Box 
-            sx={{width: 1/4}}
+            sx={{width: 1/6}}
             >
                 <ColorButton fullWidth = 'true'>Your video</ColorButton>
             </Box>
         </Box>
 
         <Box>
-            
+            a box
         </Box>    
     </Typography>
 
     );
 }
-
 export default Upload_desktop;
