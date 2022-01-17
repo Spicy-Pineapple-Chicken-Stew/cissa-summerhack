@@ -6,25 +6,28 @@ import Typography from '@mui/material/Typography';
 
 const images = [
   {
-    url: './images/test1.jpg',
-    title: 'Breakfast',
+    url: 'https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9jdXN8ZW58MHx8MHx8&w=1000&q=80',
+    title: 'Text',
     width: '40%',
   },
   {
-    url: './images/test2.jpg',
-    title: 'Burgers',
+    url: 'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg',
+    title: 'Link',
     width: '30%',
   },
   {
-    url: '/./images/test3.jpg',
-    title: 'Camera',
+    url: 'https://images.unsplash.com/photo-1471879832106-c7ab9e0cee23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
+    title: 'Video',
     width: '30%',
   },
 ];
 
+// creates light gradient when focused
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
   height: 200,
+  marginRight: 10,
+  marginBottom: 10,
   [theme.breakpoints.down('sm')]: {
     width: '100% !important', // Overrides inline-style
     height: 100,
@@ -37,22 +40,23 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
     '& .MuiImageMarked-root': {
       opacity: 0,
     },
-    '& .MuiTypography-root': {
-      border: '4px solid currentColor',
-    },
   },
 }));
 
+// changes image position
 const ImageSrc = styled('span')({
   position: 'absolute',
-  left: 0,
+  left: 32,
   right: 0,
-  top: 0,
+  top: 50,
   bottom: 0,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center 40%',
+  width: '60%',
+  minheight: '10%',
+  marginBottom: 40,
+  backgroundPosition: 'center',
 });
 
+// aligns text
 const Image = styled('span')(({ theme }) => ({
   position: 'absolute',
   left: 0,
@@ -60,41 +64,34 @@ const Image = styled('span')(({ theme }) => ({
   top: 0,
   bottom: 0,
   display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  alignItems: 'left',
+  justifyContent: 'left',
   color: theme.palette.common.white,
 }));
 
+// creates styles position and colour of shadow boxes
 const ImageBackdrop = styled('span')(({ theme }) => ({
   position: 'absolute',
   left: 0,
   right: 0,
   top: 0,
   bottom: 0,
-  backgroundColor: theme.palette.common.black,
+  backgroundColor:'#82C0CC',
   opacity: 0.4,
   transition: theme.transitions.create('opacity'),
 }));
 
-const ImageMarked = styled('span')(({ theme }) => ({
-  height: 3,
-  width: 18,
-  backgroundColor: theme.palette.common.white,
-  position: 'absolute',
-  bottom: -2,
-  left: 'calc(50% - 9px)',
-  transition: theme.transitions.create('opacity'),
-}));
+
 
 export default function ButtonBases() {
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%'}}>
       {images.map((image) => (
         <ImageButton
           focusRipple
           key={image.title}
           style={{
-            width: image.width,
+            width: 'calc((100% - 12vw)/3)',
           }}
         >
           <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
@@ -112,7 +109,7 @@ export default function ButtonBases() {
               }}
             >
               {image.title}
-              <ImageMarked className="MuiImageMarked-root" />
+              
             </Typography>
           </Image>
         </ImageButton>
