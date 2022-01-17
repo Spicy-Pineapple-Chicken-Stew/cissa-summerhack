@@ -1,23 +1,17 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
 import './App.css';
-<<<<<<< HEAD
+import Global_MenuBar from './Components/global_menubar';
 import Home from './Pages/Home';
 
 function App() {
   return (
+    <div>
+      <Global_MenuBar />
+    </div>
     <div className="App">
       <Home/>
     </div>
-
-=======
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Global_MenuBar from './Components/global_menubar';
-
-function App() {
-  return (
-    <Global_MenuBar />
->>>>>>> master
-  );
-}
+    )
 
 export default App;
