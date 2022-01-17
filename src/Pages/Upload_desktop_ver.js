@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import ColorButton from '../Components/ButtonDef'
 
 function Upload_desktop()
 {
@@ -11,12 +12,34 @@ function Upload_desktop()
         fontSize: 52,
         fontWeight: 900,
         fontFamily: 'Oxygen',
-        lineHeight: 3,
+        lineHeight: 4,
         m: 1
         }}>
             Choose what to upload:
         </Box>
+        <Box className='upload_desktop_buttons'>
+            <Box 
+            sx={{width: 1/4}}
+            >
+                <ColorButton fullWidth = 'true'>Pure text</ColorButton>
+            </Box>
+            <Box 
+            sx={{width: 1/4}}
+            >
+                <ColorButton fullWidth = 'true'>Link</ColorButton>
+            </Box>
+            <Box 
+            sx={{width: 1/4}}
+            >
+                <ColorButton fullWidth = 'true'>Your video</ColorButton>
+            </Box>
+        </Box>
+
+        <Box>
+            
+        </Box>    
     </Typography>
+
     );
 }
 
