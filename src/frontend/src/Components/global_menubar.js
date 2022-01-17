@@ -51,18 +51,19 @@ const Global_MenuBar = () => {
             >
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                    
-                    <Typography
-                        variant="h6"
-                        align="left"
-                        noWrap
-                        component="div"
-                        sx={{ mx: "auto", display: { xs: 'flex', xl: 'flex' } }}
-                    >
-                        BRIDGE
-                    </Typography>
+                    <Box sx={{width: 1/16, display: { xs: 'flex', xl: 'flex' }}} >
+                        <Typography
+                            variant="h6"
+                            align="left"
+                            noWrap
+                            component="div"
+                            sx={{ mr: "auto", display: { xs: 'flex', xl: 'flex' } }}
+                        >
+                            BRIDGE
+                        </Typography>
+                    </Box>
             
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', xl: 'none' } }}>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', xl: 'none' } }} >
                         <IconButton
                         size="large"
                         aria-label="account of current user"
@@ -79,6 +80,7 @@ const Global_MenuBar = () => {
                         anchorOrigin={{
                             vertical: 'bottom',
                             horizontal: 'left',
+                            
                         }}
                         keepMounted
                         transformOrigin={{
