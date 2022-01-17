@@ -22,6 +22,36 @@ Params (URL query):
 Response:
 - summary: The summary of the text.
 
+`GET /api/website_summary`
+
+Gets a summary of the website provided.
+
+Params (URL query):
+- url: The url of the website to summarize.
+
+Response:
+- summary: The summary of the website.
+
+`GET /api/youtube_summary`
+
+Gets a summary of the youtube video provided.
+
+Params (URL query):
+- url: The url of the youtube video to summarize.
+
+Response:
+- summary: The summary of the youtube video.
+
+`GET /api/generate_questions`
+
+Generate questions for the given text.
+
+Params (URL query):
+- text: The text to generate questions for.
+
+Response:
+- result: A list of questions in {question: xxx, answer: xxx} format.
+
 ##### Auth
 
 `POST /auth/login`
