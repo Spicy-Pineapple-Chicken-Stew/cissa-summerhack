@@ -7,11 +7,13 @@ import Home from './Pages/Home';
 function App() {
   return (
     <div>
-      <Global_MenuBar />
-    </div>
-    <div className="App">
-      <Home/>
+      <div>
+        <Global_MenuBar/>
+      </div>
+      <div className="App">
+        <Home/>
+      </div>
     </div>
     )
-
+}
 export default App;

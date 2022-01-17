@@ -12,27 +12,25 @@ body {
   background-color: #ede7e3;
 }
 
-.main_heading{
-  font-family: 'Oxygen', sans-serif;
-  position: relative;
+
+.wrapper{
+  display: flex;  
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
   text-align: left;
-  top: 30vh;
-  font-size: 15vh;
-  height: 15vh;
-  border: 5px solid #1d04ff;
-  margin: 3vw;
+  margin-left: 3vw;
 }
 
-.main_text{
-  font-family: 'Oxygen', sans-serif;
-  position: absolute;
-  top: 17.5vh;
+.home_title{
   text-align: left;
-  font-size: 3vh;
-  width: 75vw;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-  border: 5px solid #ff6804;
+  margin-top: 15vh;
+  font-size: 300%;
+}
+
+.home_desc{
+  margin-top: -7.5vh;
+  margin-left: 1vw;
 }
 
 
