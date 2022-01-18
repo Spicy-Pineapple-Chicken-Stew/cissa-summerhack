@@ -63,41 +63,16 @@ const UploadP_Button = styled(Button)(({ theme }) => ({
 }));
 
 
-export default function PhoneButton(){
+export default function PhoneButton(props){
   return(
     <div>
-    <div>
     <UploadP_Button
           variant= 'outlined' 
           endIcon={<LibraryBooksIcon style={{ color: '#ede7e3'}}/>}
-          style={{
-            width: 'calc((100% - 5vw))',
-          }}>
-    Link
+          style={{ width: 'calc((100% - 5vw))' }}
+    >
+    {props.text}
     </UploadP_Button>
-    
-    </div>
-    <div>
-    <UploadP_Button
-          variant= 'outlined' 
-          endIcon={<LibraryBooksIcon style={{ color: '#ede7e3'}}/>}
-          style={{
-            width: 'calc((100% - 5vw))',
-          }}>
-    Link
-    </UploadP_Button>
-    </div>
-    <div>
-    <UploadP_Button
-          variant= 'outlined' 
-          endIcon={<LibraryBooksIcon style={{ color: '#ede7e3'}}/>}
-          style={{
-            width: 'calc((100% - 5vw))',
-          }}>
-    Link
-    </UploadP_Button>
-    </div>
-
     </div>
 
   );
