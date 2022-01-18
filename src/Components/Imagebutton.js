@@ -25,13 +25,14 @@ const images = [
 // creates light gradient when focused
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
-  height: 200,
+  height: 500,
   marginRight: 10,
   marginBottom: 10,
   [theme.breakpoints.down('sm')]: {
     width: '100% !important', // Overrides inline-style
     height: 100,
   },
+  colour: '#16697A',
   '&:hover, &.Mui-focusVisible': {
     zIndex: 1,
     '& .MuiImageBackdrop-root': {
@@ -51,8 +52,9 @@ const ImageSrc = styled('span')({
   top: 50,
   bottom: 0,
   width: '60%',
-  minheight: '10%',
-  marginBottom: 40,
+  // maxheight: '10%',
+  // margin: 40,
+  height: window.innerWidth/10,// ??? how to reference height of something else
   backgroundPosition: 'center',
 });
 
@@ -81,7 +83,14 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
   transition: theme.transitions.create('opacity'),
 }));
 
-
+const ImageBack = styled('span')(({ theme }) => ({
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    backgroundColor:'#82C0CC',
+}));
 
 export default function ButtonBases() {
   return (
@@ -96,6 +105,7 @@ export default function ButtonBases() {
         >
           <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
           <ImageBackdrop className="MuiImageBackdrop-root" />
+          
           <Image>
             <Typography
               component="span"

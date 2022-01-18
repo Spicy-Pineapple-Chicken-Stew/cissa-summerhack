@@ -33,6 +33,19 @@ body {
   margin-left: 1vw;
 }
 
+.upload_title{
+  text-align: left;
+  margin-top: 2vh;
+  font-size: 200%;
+}
+
+.upload_wrapper{
+  display: flex;  
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 3vw;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
