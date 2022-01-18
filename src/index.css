@@ -14,7 +14,7 @@ body {
 
 
 .wrapper{
-  display: flex;  
+  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
@@ -31,6 +31,23 @@ body {
 .home_desc{
   margin-top: -7.5vh;
   margin-left: 1vw;
+}
+
+.wrapperUploadConfirmation{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.wrapperButtonRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 15vw;
+  align-items: center;
+  margin-top: 10vh;
 }
 
 
