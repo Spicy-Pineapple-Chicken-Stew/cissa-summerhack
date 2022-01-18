@@ -5,6 +5,7 @@ import {styled} from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import {useContext, useEffect, useState} from "react";
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
+import { borderRadius, Box } from '@mui/system';
 
 export default function UploadConfirmation(props){
     let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
@@ -32,6 +33,7 @@ export default function UploadConfirmation(props){
             },
         },
     });
+
 
     const SubmitButton = styled(Button)(({ theme }) => ({
         fontFamily: [
@@ -79,15 +81,55 @@ export default function UploadConfirmation(props){
         />
     )
 
-    const descriptionTextField = (
-        <CustomTextField
-            id={'pure-text-input'}
-            label={'Enter your text'}
-            multiline
-            rows={16}
-            sx={{width: '17vw', marginTop: '-3vh'}}
-            focused
-        />
+    const descriptionBoxPT = (
+        <Box
+        sx={{
+            width: '17vw',
+            height: '10vw', 
+            marginTop: '-3vh',
+            border: '2px solid rgba(72, 159, 181, 1)',
+            borderRadius: '16px',
+            fontSize: 24,
+            color: '#16697A'
+            }}
+        className = {'descriptionBox'}
+        >
+            Click the button above and enter texts in the textbox
+        </Box>
+    )
+
+    const descriptionBoxLink = (
+        <Box
+        sx={{
+            width: '17vw',
+            height: '10vw', 
+            marginTop: '-3vh',
+            border: '2px solid rgba(72, 159, 181, 1)',
+            borderRadius: '16px',
+            fontSize: 24,
+            color: '#16697A'
+            }}
+        className = {'descriptionBox'}
+        >
+            Click the button above and enter a link in the textbox
+        </Box>
+    )
+
+    const descriptionBoxYV = (
+        <Box
+        sx={{
+            width: '17vw',
+            height: '10vw', 
+            marginTop: '-3vh',
+            border: '2px solid rgba(72, 159, 181, 1)',
+            borderRadius: '16px',
+            fontSize: 24,
+            color: '#16697A'
+            }}
+        className = {'descriptionBox'}
+        >
+            Click the button above and choose a video to upload
+        </Box>
     )
 
     const Input = styled('input')({
@@ -102,9 +144,9 @@ export default function UploadConfirmation(props){
         if(!hasSelected){
             return(
                 <div className={'wrapperButtonRow'}>
-                    {descriptionTextField}
-                    {descriptionTextField}
-                    {descriptionTextField}
+                    {descriptionBoxPT}
+                    {descriptionBoxLink}
+                    {descriptionBoxYV}
                 </div>
             )
         }else{
