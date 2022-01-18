@@ -7,7 +7,9 @@ import PhoneButton from '../Components/PhoneButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
+
 function Upload_Phone(props){
+
 
     return(
         <div className ='upload_wrapper'>
@@ -28,7 +30,7 @@ function Upload_Phone(props){
         </div>
     )
 
-}
+};
 
 export default Upload_Phone;
 
