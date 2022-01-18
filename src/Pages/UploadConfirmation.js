@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ColorButton from '../Components/ButtonDef'
-import {Collapse, Fade, Paper, TextField, Zoom} from "@mui/material";
+import {TextField, Zoom} from "@mui/material";
 import {styled} from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import {useContext, useEffect, useState} from "react";
@@ -11,6 +11,7 @@ export default function UploadConfirmation(props){
     let [hasSelected, setHasSelected] = useState(false);
     let [currentSelection, setCurrentSelection] = useState(null);
     let [animationState, setAnimationState] = useState(false);
+    let [file, setFile] = useState(null);
 
     const CustomTextField = styled(TextField)({
         '& label.Mui-focused': {
@@ -89,6 +90,10 @@ export default function UploadConfirmation(props){
         />
     )
 
+    const Input = styled('input')({
+        display: 'none',
+    });
+
     useEffect(() => {
         setAnimationState(false);
     }, [currentSelection])
@@ -120,11 +125,30 @@ export default function UploadConfirmation(props){
             }else{
                 return(
                     <div>
+                        {file != null && <h3>
+                            {file.name}
+                        </h3>}
                     </div>
                 )
             }
         }
     }
+
+    const onFileUpload = () => {
+
+        // Create an object of formData
+        const formData = new FormData();
+
+        // Update the formData object
+        formData.append(
+            "files",
+            file,
+            file.name
+        );
+
+        // Details of the uploaded file
+        formData.forEach((elem) => console.log(elem))
+    };
 
     return(
         <div className={'wrapperUploadConfirmation'}>
@@ -144,18 +168,24 @@ export default function UploadConfirmation(props){
                         setCurrentSelection('link')
                     }}
                 >Link</ColorButton>
-                <ColorButton
-                    sx={{width: '17vw'}}
-                    onClick={() => {// Demo of react context (CurrentPageContext)
-                        //setCurrentPage('main')
-                        setHasSelected(true)
-                        setCurrentSelection('customvideo')
-                    }}
-                >Your video</ColorButton>
+                <label htmlFor={"contained-button-file"}>
+                    <Input
+                        accept={[".gif"]} id={"contained-button-file"} type={"file"}
+                        onChange={(event) => {
+                            setFile(event.target.files[0])
+                            setHasSelected(true)
+                            setCurrentSelection('customvideo')
+                        }}
+                    />
+                    <ColorButton
+                        sx={{width: '17vw'}}
+                        component={"span"}
+                    >Your video</ColorButton>
+                </label>
             </div>
             {renderTextField()}
             {hasSelected && <div className={'wrapperButtonRow'}>
-                <SubmitButton sx={{width: '13vw'}}>Submit</SubmitButton>
+                <SubmitButton sx={{width: '13vw'}} onClick={() => {onFileUpload()}}>Submit</SubmitButton>
             </div>}
         </div>
     )
