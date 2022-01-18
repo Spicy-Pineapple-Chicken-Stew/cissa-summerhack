@@ -3,9 +3,9 @@ import './App.css';
 import Home from './Pages/Home';
 import Global_MenuBar from './Components/global_menubar';
 import Upload_desktop from './Pages/Upload_desktop_ver';
-import Home from "./Pages/Home";
 import UploadConfirmation from "./Pages/UploadConfirmation";
 import {CurrentPageContext} from "./Contexts/CurrentPageContext";
+
 
 function App() {
   let [currentPage, setCurrentPage] = useState('uploadconfirm');
