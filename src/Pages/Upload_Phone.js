@@ -15,9 +15,14 @@ function Upload_Phone(props){
                 <h1>Uploads</h1>
             </div>
             <div>
-                <PhoneButton/>
+                <PhoneButton text='Pure text' />
             </div>
-
+            <div>
+                <PhoneButton text='Link' />
+            </div>
+            <div>
+                <PhoneButton text='Your video' />
+            </div>
 
             
         </div>
