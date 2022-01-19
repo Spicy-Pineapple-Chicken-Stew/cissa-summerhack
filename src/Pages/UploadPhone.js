@@ -10,7 +10,7 @@ import FilePopup from '../Components/upload_popup_file';
 
 
 
-function Upload_Phone(props){
+function UploadPhone(props){
     const [openPT, setOpenPT] = React.useState(false);
     const [openL, setOpenL] = React.useState(false);
     const [openYV, setOpenYV] = React.useState(false);
@@ -28,7 +28,6 @@ function Upload_Phone(props){
                 <h1>Uploads</h1>
             </div>
             <div>
-<<<<<<< HEAD
                 <PhoneButton text='Pure text' OnClick={handleOpenPT} />
                 <TextboxPopup text='Pure text' openpop={openPT} closepop={handleClosePT} />
             </div>
@@ -39,44 +38,11 @@ function Upload_Phone(props){
             <div>
                 <PhoneButton text='Your video' OnClick={handleOpenYV}/>
                 <FilePopup text='Your Video' openpop={openYV} closepop={handleCloseYV} />
-=======
-                <PhoneButton text='Pure text'
-                    style ={{opacity: '0.15'}} />
-            </div>
-            <div>
-                <PhoneButton text='Link' desc='From the internet'/>
-            </div>
-            <div>
-                <PhoneButton text='Your video' desc='From your device' />
->>>>>>> master
             </div>
 
         </div>
     )
 
-};
+}
 
-export default Upload_Phone;
-
-/* working before!
-
-<div className = 'wrapper'>
-            <div className ='home_title'>
-                <h1>Uploads</h1>
-            </div>
-            <div>
-            <ColorButton variant="outlined" startIcon={<Avatar
-                src={
-                "http://www.wpsimplesponsorships.com/wp-content/uploads/2019/05/cropped-icon-256x256.png"
-                }
-            />}> Delete </ColorButton>
-            </div>
-
-
-            <div>
-                <ButtonBases/>
-            </div>
-        </div>
-
-
-*/
+export default UploadPhone;

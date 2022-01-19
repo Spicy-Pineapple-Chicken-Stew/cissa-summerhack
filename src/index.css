@@ -33,7 +33,7 @@ body {
   margin-left: 1vw;
 }
 
-<<<<<<< HEAD
+
 .wrapperUploadConfirmation{
   display: flex;
   flex-wrap: wrap;
@@ -57,7 +57,7 @@ body {
   align-items: center;
 }
 
-=======
+
 .upload_title{
   text-align: left;
   margin-top: 2vh;
@@ -65,13 +65,12 @@ body {
 }
 
 .upload_wrapper{
-  display: flex;  
+  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   text-align: left;
   margin-left: 3vw;
 }
->>>>>>> 30c31c55241754a6b5b362a80174a64528d16734
 
 
 code {
