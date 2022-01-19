@@ -64,16 +64,16 @@ export default function FilePopup(prop){
                     width: 3/4,
                     position: 'absolute',
                     top: '30%',
-                    left: '12.5%' 
+                    left: '12.5%'
                     }}
             >
                 <Box sx={{
                     bgcolor: 'rgba(130, 192, 204, 1)',
                     border: '2px solid rgba(72, 159, 181, 1)'}}
                 >
-                    <Typography 
-                        id="modal-title" 
-                        variant="h4" 
+                    <Typography
+                        id="modal-title"
+                        variant="h4"
                         align='center'
                         color='rgba(237, 231, 227, 1)'
                     >
@@ -87,17 +87,17 @@ export default function FilePopup(prop){
                                     setFile(event.target.files[0])
                                 }}
                             />
-                            <Button variant='contained'>
+                            <Button variant='contained' component={"span"}>
                                 Upload file
                             </Button>
                         </label>
-                        {file != null && 
+                        {file != null &&
                         <h3>
                             current file:  {file.name}
                         </h3>}
                     </Box>
                     {file != null &&
-                    <SubmitButton 
+                    <SubmitButton
                     sx={{
                         width: 1/4,
                         position: 'relative',
