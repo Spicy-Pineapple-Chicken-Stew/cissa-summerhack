@@ -1,4 +1,3 @@
-import json
 import time
 from random import choice
 from string import ascii_letters, digits
@@ -13,7 +12,6 @@ import os
 from google.cloud import storage, speech
 
 from app import GPT2_model
-from app.apis import api
 
 PUNCTUATIONS = ".?!,;:()'\"/+-*&^%$#@ "
 
@@ -47,18 +45,14 @@ def clean_text(text):
     return formatted_text
 
 
-@api.route('/text_summary')
-def text_summary():
-    text = request.args.get('text')
+def text_summary(text, task_id):
     if text is None or len(text) == 0:
         raise Exception("InvalidArgument", "text is required")
 
-    return jsonify({"summary": ''.join(GPT2_model(text))})
+    result = ''.join(GPT2_model(text))
 
 
-@api.route('/website_summary')
-def website_summary():
-    url = request.args.get('url')
+def website_summary(url, task_id):
     if url is None or len(url) == 0:
         raise Exception("InvalidArgument", "url is required")
 
@@ -80,11 +74,10 @@ def website_summary():
     texts = [tag.get_text() for tag in p_tags]
     cleaned_texts = ''.join(list(map(clean_text, texts)))
 
-    return jsonify({"summary": ''.join(GPT2_model(cleaned_texts))})
+    result = ''.join(GPT2_model(cleaned_texts))
 
 
-@api.route('/youtube_summary')
-def youtube_summary():
+def youtube_summary(url, task_id):
     url = request.args.get('url')
     if url is None or len(url) == 0:
         raise Exception("InvalidArgument", "url is required")
@@ -97,7 +90,6 @@ def youtube_summary():
         os.mkdir("temp_downloads")
 
     stream = video.streams.filter(only_audio=True)[-1]
-    task_id = ''.join(choice(ascii_letters + digits) for _ in range(10)) + str(int(time.time()))
     filename = f"{task_id}.{stream.subtype}"
     stream.download(output_path="temp_downloads", filename=filename)
 
@@ -131,9 +123,5 @@ def youtube_summary():
     os.remove("temp_downloads/" + filename)
 
     punctuated = requests.post("http://bark.phon.ioc.ee/punctuator", data={"text": transcription}).text
-    print(punctuated)
 
-    return jsonify({"summary": ''.join(GPT2_model(punctuated))})
-
-
-print("summarize endpoints loaded")
+    result = ''.join(GPT2_model(punctuated))

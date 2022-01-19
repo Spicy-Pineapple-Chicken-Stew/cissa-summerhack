@@ -48,7 +48,6 @@ def negate(sentence):
         return None
 
 
-@api.route("/generate_questions")
 def multi_choice():
     text = request.args.get("text")
     if text is None or text == "":
@@ -83,8 +82,3 @@ def multi_choice():
                               json={"text": text}).json()
 
     question_n_answers = generated["result"] + question_n_answers
-
-    return jsonify({"result": question_n_answers})
-
-
-print("Language Processing Endpoints Loaded")
