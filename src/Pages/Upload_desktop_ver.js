@@ -2,6 +2,8 @@ import React from "react";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import ColorButton from '../Components/ButtonDef'
+import Success_Upload from "../Components/success";
+import Fail_Upload from "../Components/fail";
 
 
 function Upload_desktop()
@@ -34,8 +36,10 @@ function Upload_desktop()
             >
                 <ColorButton fullWidth = 'true'>Your video</ColorButton>
             </Box>
+            <Success_Upload>Test</Success_Upload>
+            <Fail_Upload>Test</Fail_Upload>
         </Box>
-
+        
         <Box>
             a box
         </Box>    
