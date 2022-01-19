@@ -15,6 +15,10 @@ function Home(props){
             <div className ='home_desc'>
                 <p>Add description   </p>
             </div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 30c31c55241754a6b5b362a80174a64528d16734
             <div>
             <ColorButton>Begin</ColorButton>
 
@@ -26,7 +30,6 @@ function Home(props){
             </div>
         </div>
     )
-
 }
 
 export default Home;

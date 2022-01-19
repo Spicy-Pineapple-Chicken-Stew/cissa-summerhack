@@ -13,17 +13,21 @@ const ColorButton = styled(Button)(({ theme }) => ({
         '"Segoe UI Emoji"',
         '"Segoe UI Symbol"',
       ].join(','),
-    fontColor: '#EDE7E3',
+    color: '#ffffff',
     backgroundColor: '#489fb5',
     padding: '6px 12px',
     border: '1px solid',
     fontSize: 16,
     '&:hover': {
         backgroundColor: '#59a9bd',
+<<<<<<< HEAD
+        color: '#676767'
+=======
+>>>>>>> 30c31c55241754a6b5b362a80174a64528d16734
     },
     '&:active': {
         backgroundColor:'#4896b5',
     },
 }));
 
-export default ColorButton; 
+export default ColorButton;
