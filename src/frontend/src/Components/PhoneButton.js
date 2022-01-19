@@ -69,6 +69,7 @@ export default function PhoneButton(props){
     <UploadP_Button
           variant= 'outlined' 
           style={{ width: 'calc((100% - 5vw))' }}
+          onClick={props.OnClick}
     >
     <div style = {{flexWrap: 'wrap', display:'flex', flexDirection:'column', alignItems: 'center'}}>
       <Box component="div" sx={{ display: 'block', alignItems: 'center', display:'flex',marginTop: -3 }}>

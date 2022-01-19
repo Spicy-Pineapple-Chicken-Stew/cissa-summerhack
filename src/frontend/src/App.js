@@ -36,7 +36,7 @@ function App() {
         <Global_MenuBar/>
       </div>
       <div className="App">
-        <Upload_Phone/>
+        <Upload_Phone />
       </div>
     </div>
 >>>>>>> 30c31c55241754a6b5b362a80174a64528d16734
