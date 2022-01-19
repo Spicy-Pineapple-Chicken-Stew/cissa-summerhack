@@ -7,7 +7,7 @@ import {useContext, useEffect, useState} from "react";
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
 import { borderRadius, Box } from '@mui/system';
 
-export default function UploadConfirmation(props){
+export default function UploadDesktop(props){
     let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
     let [hasSelected, setHasSelected] = useState(false);
     let [currentSelection, setCurrentSelection] = useState(null);
@@ -85,7 +85,7 @@ export default function UploadConfirmation(props){
         <Box
         sx={{
             width: '17vw',
-            height: '10vw', 
+            height: '10vw',
             marginTop: '-3vh',
             border: '2px solid rgba(72, 159, 181, 1)',
             borderRadius: '16px',
@@ -102,7 +102,7 @@ export default function UploadConfirmation(props){
         <Box
         sx={{
             width: '17vw',
-            height: '10vw', 
+            height: '10vw',
             marginTop: '-3vh',
             border: '2px solid rgba(72, 159, 181, 1)',
             borderRadius: '16px',
@@ -119,7 +119,7 @@ export default function UploadConfirmation(props){
         <Box
         sx={{
             width: '17vw',
-            height: '10vw', 
+            height: '10vw',
             marginTop: '-3vh',
             border: '2px solid rgba(72, 159, 181, 1)',
             borderRadius: '16px',
