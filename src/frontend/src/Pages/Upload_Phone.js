@@ -5,10 +5,21 @@ import Avatar from '@mui/material/Avatar';
 import ButtonBases from '../Components/Imagebutton';
 import PhoneButton from '../Components/PhoneButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import TextboxPopup from '../Components/upload_popup';
+import FilePopup from '../Components/upload_popup_file';
 
 
 
 function Upload_Phone(props){
+    const [openPT, setOpenPT] = React.useState(false);
+    const [openL, setOpenL] = React.useState(false);
+    const [openYV, setOpenYV] = React.useState(false);
+    const handleOpenPT = () => setOpenPT(true);
+    const handleOpenL = () => setOpenL(true);
+    const handleOpenYV = () => setOpenYV(true);
+    const handleClosePT = () => setOpenPT(false);
+    const handleCloseL = () => setOpenL(false);
+    const handleCloseYV = () => setOpenYV(false);
 
 
     return(
@@ -17,16 +28,18 @@ function Upload_Phone(props){
                 <h1>Uploads</h1>
             </div>
             <div>
-                <PhoneButton text='Pure text' />
+                <PhoneButton text='Pure text' OnClick={handleOpenPT} />
+                <TextboxPopup text='Pure text' openpop={openPT} closepop={handleClosePT} />
             </div>
             <div>
-                <PhoneButton text='Link' />
+                <PhoneButton text='Link' OnClick={handleOpenL} />
+                <TextboxPopup text='Link' openpop={openL} closepop={handleCloseL} />
             </div>
             <div>
-                <PhoneButton text='Your video' />
+                <PhoneButton text='Your video' OnClick={handleOpenYV}/>
+                <FilePopup text='Your Video' openpop={openYV} closepop={handleCloseYV} />
             </div>
 
-            
         </div>
     )
 

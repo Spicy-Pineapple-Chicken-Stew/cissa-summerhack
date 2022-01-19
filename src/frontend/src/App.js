@@ -13,7 +13,7 @@ function App() {
         <Global_MenuBar/>
       </div>
       <div className="App">
-        <Upload_Phone/>
+        <Upload_Phone />
       </div>
     </div>
     )
