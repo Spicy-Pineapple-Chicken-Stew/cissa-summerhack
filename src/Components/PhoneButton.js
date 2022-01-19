@@ -70,6 +70,7 @@ export default function PhoneButton(props){
           variant= 'outlined' 
           endIcon={<LibraryBooksIcon style={{ color: '#ede7e3'}}/>}
           style={{ width: 'calc((100% - 5vw))' }}
+          onClick={props.OnClick}
     >
     {props.text}
     </UploadP_Button>
