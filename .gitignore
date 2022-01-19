@@ -3,3 +3,4 @@
 **/__pycache__
 src/backend/config.py
 src/backend/credentials.json
+src/frontend/package-lock.json
