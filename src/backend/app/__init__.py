@@ -15,8 +15,7 @@ nltk.download('averaged_perceptron_tagger')
 from app.apis import api as api_blueprint
 from app.auth.endpoints import auth as auth_blueprint
 from app.error_handler import *
-from app.apis.language_processing_endpoints import *
-from app.apis.summarize_endpoints import *
+from app.apis.endpoints import *
 
 app.register_blueprint(api_blueprint)
 app.register_blueprint(auth_blueprint)
