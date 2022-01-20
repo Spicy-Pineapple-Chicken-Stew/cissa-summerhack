@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Switch } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import MC_Sidemenu from '../Components/MycontentsDetailedViewSidemenu';
 
 
 export default function MC_detailedview(){
@@ -17,6 +18,9 @@ export default function MC_detailedview(){
                     Detailed
                 </Box>
             </Typography>
+            <Box sx={{width: 'auto', height: 'auto'}}>
+                <MC_Sidemenu />
+            </Box>
         </div>
     )
 }
