@@ -11,6 +11,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import {CurrentPageContext} from "../Contexts/CurrentPageContext";
+import {useContext} from "react";
 
 
 const pages = ['Home', 'Upload'];
@@ -21,7 +23,8 @@ const Global_MenuBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [anchorElContent, setAnchorElContent] = React.useState(null);
-  
+    let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
+
     const handleOpenNavMenu = (event) => {
       setAnchorElNav(event.currentTarget);
     };
@@ -31,21 +34,21 @@ const Global_MenuBar = () => {
     const handleOpenContentMenu = (event) => {
         setAnchorElContent(event.currentTarget);
     };
-  
+
     const handleCloseNavMenu = () => {
       setAnchorElNav(null);
     };
-  
+
     const handleCloseUserMenu = () => {
       setAnchorElUser(null);
     };
-    
+
     const handleCloseContentMenu = () => {
         setAnchorElContent(null);
     };
 
     return (
-            <AppBar 
+            <AppBar
             position="static"
             style={{background: '#82C0CC'}}
             >
@@ -64,7 +67,7 @@ const Global_MenuBar = () => {
                             BRIDGE
                         </Typography>
                     </Box>
-            
+
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', xl: 'none' } }} >
                         <IconButton
                         size="large"
@@ -82,7 +85,7 @@ const Global_MenuBar = () => {
                         anchorOrigin={{
                             vertical: 'bottom',
                             horizontal: 'left',
-                            
+
                         }}
                         keepMounted
                         transformOrigin={{
@@ -102,20 +105,20 @@ const Global_MenuBar = () => {
                         ))}
                         </Menu>
                     </Box>
-                    
+
                     <Box sx={{ flexGrow: 0, display: { xs: 'flex', xl: 'flex' } }}>
                         {pages.map((page) => (
                         <Button
                             key={page}
-                            onClick={handleCloseNavMenu}
+                            onClick={() => {setCurrentPage(page)}}
                             sx={{ my: 2, color: 'white', display: 'flex' }}
                         >
                             {page}
                         </Button>
                         ))}
                     </Box>
-                    
-                    <Box sx={{ 
+
+                    <Box sx={{
                         flexGrow: 1 ,
                         whiteSpace: 'pre' }}>
                         <Tooltip title="My Contents">
