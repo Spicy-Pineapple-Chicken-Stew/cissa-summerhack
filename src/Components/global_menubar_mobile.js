@@ -17,7 +17,7 @@ const pages = ['Home', 'Upload'];
 const my_contents = ['All contents', 'Summary', 'Flash Cards'];
 const accounts = ['Log in', 'Settings', 'Log out'];
 
-const Global_MenuBar = () => {
+const Global_MenuBar_mobile = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [anchorElContent, setAnchorElContent] = React.useState(null);
@@ -52,14 +52,14 @@ const Global_MenuBar = () => {
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                     <Box sx={{
-                        width: 1/16,
+                        width: 1/4,
                         display: { xs: 'flex', xl: 'flex' }
                         }} >
                         <Typography
                             variant="h6"
                             noWrap
                             component="div"
-                            sx={{ mx: "auto", display: { xs: 'block', xl: 'flex' } }}
+                            sx={{ mx: "auto", display: { xs: 'flex', xl: 'flex' } }}
                         >
                             BRIDGE
                         </Typography>
@@ -117,7 +117,7 @@ const Global_MenuBar = () => {
                     
                     <Box sx={{ 
                         flexGrow: 1 ,
-                        whiteSpace: 'pre' }}>
+                        whiteSpace: 'normal' }}>
                         <Tooltip title="My Contents">
                         <Button onClick={handleOpenContentMenu} color="inherit" >
                         My Contents
@@ -182,4 +182,4 @@ const Global_MenuBar = () => {
 
       );
     };
-export default Global_MenuBar;
+export default Global_MenuBar_mobile;
