@@ -9,7 +9,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 800,
+  width: '42vw',
   bgcolor: '#82C0CC',
   border: '1px round',
   borderRadius: 2,
@@ -43,12 +43,12 @@ export default function Success_Upload(props) {
 
           <Box>
           <Light_Button sx={{
-            width: 300,
+            width: '16vw',
             position: "relative",
             left: '5%',
           }}>My Contents</Light_Button>
           <Light_Button sx={{
-            width: 300,
+            width: '16vw',
             position: "relative",
             left: '20%',
           }}
