@@ -1,7 +1,3 @@
-import json
-import time
-from random import choice
-from string import ascii_letters, digits
 import subprocess
 
 from flask import request, jsonify
@@ -13,7 +9,7 @@ import os
 from google.cloud import storage, speech
 
 from app import GPT2_model
-from app.apis import api
+from app.tasks import get_task
 
 PUNCTUATIONS = ".?!,;:()'\"/+-*&^%$#@ "
 
@@ -47,20 +43,19 @@ def clean_text(text):
     return formatted_text
 
 
-@api.route('/text_summary')
-def text_summary():
-    text = request.args.get('text')
-    if text is None or len(text) == 0:
-        raise Exception("InvalidArgument", "text is required")
+def text_summary(text, task_id):
+    task = get_task(task_id)
+    task.status = 'processing text'
 
-    return jsonify({"summary": ''.join(GPT2_model(text))})
+    result = ''.join(GPT2_model(text))
+
+    task.status = 'done'
+    task.content = result
 
 
-@api.route('/website_summary')
-def website_summary():
-    url = request.args.get('url')
-    if url is None or len(url) == 0:
-        raise Exception("InvalidArgument", "url is required")
+def website_summary(url, task_id):
+    task = get_task(task_id)
+    task.status = 'getting website'
 
     headers = {
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
@@ -75,19 +70,22 @@ def website_summary():
     if response.status_code != 200:
         raise Exception("WebsiteError", "Unable to fetch website")
 
+    task.status = 'processing website'
     soup = BeautifulSoup(response.text, 'html.parser')
     p_tags = soup.find_all('p')
     texts = [tag.get_text() for tag in p_tags]
     cleaned_texts = ''.join(list(map(clean_text, texts)))
 
-    return jsonify({"summary": ''.join(GPT2_model(cleaned_texts))})
+    task.status = 'processing text'
+    result = ''.join(GPT2_model(cleaned_texts))
+
+    task.status = 'done'
+    task.content = result
 
 
-@api.route('/youtube_summary')
-def youtube_summary():
-    url = request.args.get('url')
-    if url is None or len(url) == 0:
-        raise Exception("InvalidArgument", "url is required")
+def youtube_summary(url, task_id):
+    task = get_task(task_id)
+    task.status = 'getting video'
 
     video = YouTube(url)
     if len(video.streams.filter(only_audio=True)) == 0:
@@ -97,19 +95,21 @@ def youtube_summary():
         os.mkdir("temp_downloads")
 
     stream = video.streams.filter(only_audio=True)[-1]
-    task_id = ''.join(choice(ascii_letters + digits) for _ in range(10)) + str(int(time.time()))
     filename = f"{task_id}.{stream.subtype}"
     stream.download(output_path="temp_downloads", filename=filename)
 
+    task.status = 'encoding video'
     command = f"ffmpeg -i temp_downloads/{filename} -f wav -ac 1 -ar 16000 temp_downloads/{task_id}.wav"
     subprocess.call(command, shell=True)
 
+    task.status = 'preparing video'
     # Upload audio to Google Cloud Storage
     storage_client = storage.Client.from_service_account_json('credentials.json')
     bucket = storage_client.get_bucket("summerhackspeech")
     blob = bucket.blob(f"{task_id}.wav")
     blob.upload_from_filename(filename="temp_downloads/" + task_id + ".wav")
 
+    task.status = 'processing speech to text'
     # Perform speech recognition
     speech_client = speech.SpeechClient.from_service_account_json('credentials.json')
     audio = speech.RecognitionAudio({"uri": f"gs://summerhackspeech/{task_id}.wav"})
@@ -130,10 +130,10 @@ def youtube_summary():
     os.remove("temp_downloads/" + task_id + ".wav")
     os.remove("temp_downloads/" + filename)
 
+    task.status = 'processing text'
     punctuated = requests.post("http://bark.phon.ioc.ee/punctuator", data={"text": transcription}).text
-    print(punctuated)
 
-    return jsonify({"summary": ''.join(GPT2_model(punctuated))})
+    result = ''.join(GPT2_model(punctuated))
 
-
-print("summarize endpoints loaded")
+    task.status = 'done'
+    task.content = result
