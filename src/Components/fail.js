@@ -13,35 +13,18 @@ const style = {
   width: 400,
   height: 150,
   bgcolor: '#289FB5',
-  border: '1px round', 
+  border: '1px round',
   borderRadius: 2,
   boxShadow: 24,
   p: 4,
 };
 
-const text_format = {
-  fontFamily: [
-    'Oxygen',
-    'Arial',
-    'sans-serif',
-    '"Apple Color Emoji"',
-    '"Segoe UI Emoji"',
-    '"Segoe UI Symbol"',
-  ].join(','),
-  fontColor: '#EAEAEA',
-};
-
-export default function Fail_Upload() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+export default function Fail_Upload(props) {
   return (
     <div>
-      <Button onClick={handleOpen}>Fail</Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={props.open}
+        onClose={props.handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -56,14 +39,16 @@ export default function Fail_Upload() {
                 m: 1}}>
             Error, please try again
             </Box>
-            
+
           <Box>
           <Light_Button sx={{
                   width: 200,
                   position: "relative",
-                  
+
                   transform: 'translate(50%, 25%)',
-          }}>Try again</Light_Button>
+          }}
+                        onClick={props.handleClose}
+          >Try again</Light_Button>
           </Box>
         </Box>
       </Modal>
