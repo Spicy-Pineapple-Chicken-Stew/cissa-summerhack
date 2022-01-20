@@ -4,8 +4,10 @@ from pymongo import MongoClient
 from config import *
 from allennlp_models.pretrained import load_predictor
 import nltk
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 GPT2_model = TransformerSummarizer(transformer_type="GPT2", transformer_model_key="gpt2-medium")
 openIE_model = load_predictor('structured-prediction-srl-bert')

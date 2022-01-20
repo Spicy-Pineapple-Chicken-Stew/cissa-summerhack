@@ -13,17 +13,25 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
 import {useContext} from "react";
+import {UserContext} from "../Contexts/UserContext";
 
 
 const pages = ['Home', 'Upload'];
 const my_contents = ['All contents', 'Summary', 'Flash Cards'];
-const accounts = ['Log in', 'Settings', 'Log out'];
+var accounts;
 
 const Global_MenuBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [anchorElContent, setAnchorElContent] = React.useState(null);
     let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
+    let [user, setUser] = useContext(UserContext);
+
+    if(user != null){
+        accounts = ['Settings', 'Log out'];
+    }else{
+        accounts = ['Log in'];
+    }
 
     const handleOpenNavMenu = (event) => {
       setAnchorElNav(event.currentTarget);
@@ -173,7 +181,16 @@ const Global_MenuBar = () => {
                         onClose={handleCloseUserMenu}
                         >
                         {accounts.map((account) => (
-                            <MenuItem key={account} onClick={handleCloseNavMenu}>
+                            <MenuItem key={account} onClick={() => {
+                                if(account === 'Log out'){
+                                    setUser(null);
+                                }else if(account === 'Settings'){
+                                    alert(user)
+                                }else{
+                                    setCurrentPage(account)
+                                }
+                                }
+                            }>
                             <Typography textAlign="center">{account}</Typography>
                             </MenuItem>
                         ))}

@@ -1,13 +1,14 @@
 import * as React from 'react';
 import ColorButton from '../Components/ButtonDef'
-import {TextField, Zoom} from "@mui/material";
+import {Zoom} from "@mui/material";
 import {styled} from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import {useContext, useEffect, useState} from "react";
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
-import { borderRadius, Box } from '@mui/system';
+import { Box } from '@mui/system';
 import Success_Upload from "../Components/success";
 import Fail_Upload from "../Components/fail";
+import {CustomTextField} from "../Components/CustomTextField";
 
 export default function UploadDesktop(props){
     let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
@@ -16,27 +17,7 @@ export default function UploadDesktop(props){
     let [animationState, setAnimationState] = useState(false);
     let [file, setFile] = useState(null);
     let [successModal, setSuccessModal] = useState(false)
-    let [failModal, setFailModal] = useState(false)
-
-    const CustomTextField = styled(TextField)({
-        '& label.Mui-focused': {
-            color: '#489fb5',
-        },
-        '& .MuiInput-underline:after': {
-            borderBottomColor: '#489fb5',
-        },
-        '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-                borderColor: '#489fb5',
-            },
-            '&:hover fieldset': {
-                borderColor: '#489fb5',
-            },
-            '&.Mui-focused fieldset': {
-                borderColor: '#489fb5',
-            },
-        },
-    });
+    let [failModal, setFailModal] = useState(false);
 
 
     const SubmitButton = styled(Button)(({ theme }) => ({

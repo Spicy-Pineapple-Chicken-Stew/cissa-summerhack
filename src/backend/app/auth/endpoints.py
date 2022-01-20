@@ -13,8 +13,6 @@ def login():
     if not ('username' in request.form and 'password' in request.form):
         raise Exception("InvalidArgument", "username and password are required")
 
-    f = request.files['file']
-
     user = users.find_one({'username': request.form['username']})
 
     if user is None:
@@ -34,11 +32,13 @@ def register():
     if user is not None:
         return jsonify({"status": "failure", "reason": "User already exists"})
 
-    user_id = users.insert_one({"username": request.form['username'],
-                                "password": request.form['password'],
-                                "user_id": ''.join(choice(ascii_letters + digits) for _ in range(10))})
+    user_id = ''.join(choice(ascii_letters + digits) for _ in range(10))
 
-    return jsonify({'status':  "success"})
+    users.insert_one({"username": request.form['username'],
+                                "password": request.form['password'],
+                                "user_id": user_id})
+
+    return jsonify({'status':  "success", "user_id": user_id})
 
 
 print("Auth Endpoints Loaded")
