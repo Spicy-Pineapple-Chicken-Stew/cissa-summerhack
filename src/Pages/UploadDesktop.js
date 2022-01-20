@@ -6,6 +6,8 @@ import Button from "@mui/material/Button";
 import {useContext, useEffect, useState} from "react";
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
 import { borderRadius, Box } from '@mui/system';
+import Success_Upload from "../Components/success";
+import Fail_Upload from "../Components/fail";
 
 export default function UploadDesktop(props){
     let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
@@ -13,6 +15,8 @@ export default function UploadDesktop(props){
     let [currentSelection, setCurrentSelection] = useState(null);
     let [animationState, setAnimationState] = useState(false);
     let [file, setFile] = useState(null);
+    let [successModal, setSuccessModal] = useState(false)
+    let [failModal, setFailModal] = useState(false)
 
     const CustomTextField = styled(TextField)({
         '& label.Mui-focused': {
@@ -227,8 +231,13 @@ export default function UploadDesktop(props){
             </div>
             {renderTextField()}
             {hasSelected && <div className={'wrapperButtonRow'}>
-                <SubmitButton sx={{width: '13vw'}} onClick={() => {onFileUpload()}}>Submit</SubmitButton>
+                <SubmitButton sx={{width: '13vw'}} onClick={() => {
+                    //setSuccessModal(true);
+                    setSuccessModal(true)
+                }}>Submit</SubmitButton>
             </div>}
+            <Success_Upload open={successModal} handleClose={() => {setSuccessModal(false)}}/>
+            <Fail_Upload open={failModal} handleClose={() => {setFailModal(false)}}/>
         </div>
     )
 }
