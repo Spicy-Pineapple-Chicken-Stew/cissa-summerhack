@@ -5,10 +5,14 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import {styled} from "@mui/material/styles";
-
+import {useState} from "react";
+import Success_Upload from "./success";
+import Fail_Upload from "./fail";
 
 
 export default function TextboxPopup(prop){
+    let [successModal, setSuccessModal] = useState(false)
+    let [failModal, setFailModal] = useState(false)
 
     const SubmitButton = styled(Button)(({ theme }) => ({
         fontFamily: [
@@ -65,39 +69,42 @@ export default function TextboxPopup(prop){
                     width: 3/4,
                     position: 'absolute',
                     top: '30%',
-                    left: '12.5%' 
+                    left: '12.5%'
                     }}
             >
                 <Box sx={{
                     bgcolor: 'rgba(130, 192, 204, 1)',
                     border: '2px solid rgba(72, 159, 181, 1)'}}
                 >
-                    <Typography 
-                        id="modal-title" 
-                        variant="h4" 
+                    <Typography
+                        id="modal-title"
+                        variant="h4"
                         align='center'
                         color='rgba(237, 231, 227, 1)'
                     >
                         {prop.text}
                     </Typography>
-                    <CustomTextField 
-                        id="modal-content" 
-                        label="Enter in this box" 
-                        multiline 
-                        maxRows={10} 
-                        fullWidth 
+                    <CustomTextField
+                        id="modal-content"
+                        label="Enter in this box"
+                        multiline
+                        maxRows={10}
+                        fullWidth
                     />
-                    <SubmitButton 
+                    <SubmitButton
                     sx={{
                         width: 1/4,
                         position: 'relative',
                         left: '37.5%'
                         }}
+                    onClick={() => {setFailModal(true)}}
                     >
                         Submit
                     </SubmitButton>
                 </Box>
             </Modal>
+            <Success_Upload open={successModal} handleClose={() => {setSuccessModal(false)}}/>
+            <Fail_Upload open={failModal} handleClose={() => {setFailModal(false)}}/>
         </div>
     )
 }

@@ -232,8 +232,8 @@ export default function UploadDesktop(props){
             {renderTextField()}
             {hasSelected && <div className={'wrapperButtonRow'}>
                 <SubmitButton sx={{width: '13vw'}} onClick={() => {
-                    //setSuccessModal(true);
-                    setSuccessModal(true)
+                    setSuccessModal(true);
+                    //setFailModal(true)
                 }}>Submit</SubmitButton>
             </div>}
             <Success_Upload open={successModal} handleClose={() => {setSuccessModal(false)}}/>

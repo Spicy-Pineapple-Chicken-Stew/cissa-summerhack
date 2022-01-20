@@ -4,11 +4,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {styled} from "@mui/material/styles";
-
+import {useState} from "react";
+import Success_Upload from "./success";
+import Fail_Upload from "./fail";
 
 
 export default function FilePopup(prop){
     let [file, setFile] = React.useState(null);
+    let [successModal, setSuccessModal] = useState(false)
+    let [failModal, setFailModal] = useState(false)
 
     const SubmitButton = styled(Button)(({ theme }) => ({
         fontFamily: [
@@ -103,12 +107,17 @@ export default function FilePopup(prop){
                         position: 'relative',
                         left: '37.5%'
                         }}
-                    onClick={() => {onFileUpload()}}
+                    onClick={() => {
+                        onFileUpload()
+                        setFailModal(true)
+                    }}
                     >
                         Submit
                     </SubmitButton>}
                 </Box>
             </Modal>
+            <Success_Upload open={successModal} handleClose={() => {setSuccessModal(false)}}/>
+            <Fail_Upload open={failModal} handleClose={() => {setFailModal(false)}}/>
         </div>
     )
 }
