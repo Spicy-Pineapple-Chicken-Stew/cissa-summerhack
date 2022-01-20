@@ -6,13 +6,15 @@ import Home from './Pages/Home'
 import UploadDesktop from "./Pages/UploadDesktop";
 import {CurrentPageContext} from "./Contexts/CurrentPageContext";
 import {MobileContext} from "./Contexts/MobileContext";
-import global_menubar_mobile from "./Components/global_menubar_mobile";
 import Global_MenuBar_mobile from "./Components/global_menubar_mobile";
+import LoginRegistration from "./Pages/LoginRegistration";
+import {UserContext} from "./Contexts/UserContext";
 
 
 function App() {
   let [currentPage, setCurrentPage] = useState('Home');
   let [isMobile, setIsMobile] = useState(false);
+  let [user, setUser] = useState(null);
 
     function handleWindowSizeChange() {
         setIsMobile(window.innerWidth <= 768);
@@ -27,16 +29,19 @@ function App() {
   return (
       <CurrentPageContext.Provider value={[currentPage, setCurrentPage]}>
           <MobileContext.Provider value={[isMobile, setIsMobile]}>
-              <div>
+              <UserContext.Provider value={[user, setUser]}>
                   <div>
-                      {isMobile ? <Global_MenuBar_mobile/> : <Global_MenuBar />}
+                      <div>
+                          {isMobile ? <Global_MenuBar_mobile/> : <Global_MenuBar />}
+                      </div>
+                      <div className="App">
+                          {currentPage === 'Home' && <Home/>}
+                          {currentPage === 'Upload' && !isMobile && <UploadDesktop/>}
+                          {currentPage === 'Upload' && isMobile && <UploadPhone />}
+                          {currentPage === 'Log in' && <LoginRegistration/>}
+                      </div>
                   </div>
-                  <div className="App">
-                      {currentPage === 'Home' && <Home/>}
-                      {currentPage === 'Upload' && !isMobile && <UploadDesktop/>}
-                      {currentPage === 'Upload' && isMobile && <UploadPhone />}
-                  </div>
-              </div>
+              </UserContext.Provider>
           </MobileContext.Provider>
       </CurrentPageContext.Provider>
     )
