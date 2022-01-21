@@ -65,24 +65,24 @@ export default function MC_Sidemenu(){
                 {contents}
                 {(contents == 'Summary') &&
                 <Box sx={{
-                border: '2px solid rgba(72, 159, 181, 1)',
-                borderRadius: '8px',
-                marginTop: 1,
-                height: 550,
-                textAlign: 'left',
-                fontSize: '1vw'
+                    border: '2px solid rgba(72, 159, 181, 1)',
+                    borderRadius: '8px',
+                    marginTop: 1,
+                    height: 550,
+                    textAlign: 'left',
+                    fontSize: '1vw'
                 }}>
                     {contents}
                 </Box>
                 }
                 {(contents == 'Original submission') &&
                 <Box sx={{
-                border: '2px solid rgba(72, 159, 181, 1)',
-                borderRadius: '8px',
-                marginTop: 1,
-                height: 550,
-                textAlign: 'left',
-                fontSize: '1vw'
+                    border: '2px solid rgba(72, 159, 181, 1)',
+                    borderRadius: '8px',
+                    marginTop: 1,
+                    height: 550,
+                    textAlign: 'left',
+                    fontSize: '1vw'
                 }}>
                     {contents}
                 </Box>
