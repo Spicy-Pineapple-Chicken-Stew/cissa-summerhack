@@ -56,6 +56,16 @@ def summary_youtube():
     return jsonify({"task_id": task_id})
 
 
+@api.route("/file_summary", methods=['POST'])
+def summary_file():
+    file = request.files['files']
+    if not os.path.exists("temp_downloads"):
+        os.mkdir("temp_downloads")
+
+    file.save(os.getcwd() + f'/temp_downloads/{file.filename}')
+    return jsonify({"status": "ok"})
+
+
 @api.route("/generate_questions")
 def question_generate():
     text = request.args.get("text")
