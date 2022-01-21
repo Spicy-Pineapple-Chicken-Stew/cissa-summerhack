@@ -75,7 +75,7 @@ export default function UploadDesktop(props){
             marginTop: '-3vh',
             border: '2px solid rgba(72, 159, 181, 1)',
             borderRadius: '16px',
-            fontSize: 24,
+            fontSize: '1.3vw',
             color: '#16697A'
             }}
         className = {'descriptionBox'}
@@ -92,7 +92,7 @@ export default function UploadDesktop(props){
             marginTop: '-3vh',
             border: '2px solid rgba(72, 159, 181, 1)',
             borderRadius: '16px',
-            fontSize: 24,
+            fontSize: '1.3vw',
             color: '#16697A'
             }}
         className = {'descriptionBox'}
@@ -109,7 +109,7 @@ export default function UploadDesktop(props){
             marginTop: '-3vh',
             border: '2px solid rgba(72, 159, 181, 1)',
             borderRadius: '16px',
-            fontSize: 24,
+            fontSize: '1.3vw',
             color: '#16697A'
             }}
         className = {'descriptionBox'}
