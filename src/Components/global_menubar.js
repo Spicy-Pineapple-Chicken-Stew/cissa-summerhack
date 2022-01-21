@@ -56,7 +56,7 @@ const Global_MenuBar = () => {
                         display: { xs: 'flex', xl: 'flex' }
                         }} >
                         <Typography
-                            variant="h6"
+                            fontSize={'1.1vw'}
                             noWrap
                             component="div"
                             sx={{ mx: "auto", display: { xs: 'block', xl: 'flex' } }}
