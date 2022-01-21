@@ -15,7 +15,7 @@ function Home(props){
                 <p>Add description   </p>
             </div>
             <div>
-            <ColorButton onClick={() => {setCurrentPage('Upload')}}>Begin</ColorButton>
+                <ColorButton onClick={() => {setCurrentPage('Upload')}}>Begin</ColorButton>
             </div>
         </div>
     )
