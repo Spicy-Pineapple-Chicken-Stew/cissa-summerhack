@@ -28,13 +28,13 @@ function App() {
     }, []);
     */
   return (
-    <div className="App">
-        <div>
-            <div>
+    <div>
+      <div>
         <Global_MenuBar/>
-        </div>
+      </div>
+      <div className="App">
         <MycontentsQuickView/>
-        </div>
+      </div>
     </div>
       
       /*
