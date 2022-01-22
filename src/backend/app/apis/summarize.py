@@ -53,51 +53,7 @@ def text_summary(text, task_id):
     task.content = result
 
 
-def website_summary(url, task_id):
-    task = get_task(task_id)
-    task.status = 'getting website'
-
-    headers = {
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-        "Accept-Encoding": "gzip, deflate",
-        "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
-        "Upgrade-Insecure-Requests": "1",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36",
-        "X-Amzn-Trace-Id": "Root=1-61e29364-4e0ba3d6238d5c515e652b2c"
-    }
-
-    response = requests.get(url, headers=headers)
-    if response.status_code != 200:
-        raise Exception("WebsiteError", "Unable to fetch website")
-
-    task.status = 'processing website'
-    soup = BeautifulSoup(response.text, 'html.parser')
-    p_tags = soup.find_all('p')
-    texts = [tag.get_text() for tag in p_tags]
-    cleaned_texts = ''.join(list(map(clean_text, texts)))
-
-    task.status = 'processing text'
-    result = ''.join(GPT2_model(cleaned_texts))
-
-    task.status = 'done'
-    task.content = result
-
-
-def youtube_summary(url, task_id):
-    task = get_task(task_id)
-    task.status = 'getting video'
-
-    video = YouTube(url)
-    if len(video.streams.filter(only_audio=True)) == 0:
-        raise Exception("YoutubeError", "Unable to fetch audio")
-
-    if not os.path.exists("temp_downloads"):
-        os.mkdir("temp_downloads")
-
-    stream = video.streams.filter(only_audio=True)[-1]
-    filename = f"{task_id}.{stream.subtype}"
-    stream.download(output_path="temp_downloads", filename=filename)
-
+def process_video(task, filename, task_id):
     task.status = 'encoding video'
     command = f"ffmpeg -i temp_downloads/{filename} -f wav -ac 1 -ar 16000 temp_downloads/{task_id}.wav"
     subprocess.call(command, shell=True)
@@ -137,3 +93,72 @@ def youtube_summary(url, task_id):
 
     task.status = 'done'
     task.content = result
+
+
+def website_summary(url, task_id):
+    task = get_task(task_id)
+    task.status = 'getting website'
+
+    try:
+        headers = {
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36",
+            "X-Amzn-Trace-Id": "Root=1-61e29364-4e0ba3d6238d5c515e652b2c"
+        }
+
+        response = requests.get(url, headers=headers)
+        if response.status_code != 200:
+            raise Exception("WebsiteError", "Unable to fetch website")
+
+        task.status = 'processing website'
+        soup = BeautifulSoup(response.text, 'html.parser')
+        p_tags = soup.find_all('p')
+        texts = [tag.get_text() for tag in p_tags]
+        cleaned_texts = ''.join(list(map(clean_text, texts)))
+
+        task.status = 'processing text'
+        result = ''.join(GPT2_model(cleaned_texts))
+
+        task.status = 'done'
+        task.content = result
+    except Exception as e:
+        task.error = True
+        task.error_message = str(e)
+
+
+def youtube_summary(url, task_id):
+    task = get_task(task_id)
+    task.status = 'getting video'
+
+    try:
+        video = YouTube(url)
+        if len(video.streams.filter(only_audio=True)) == 0:
+            raise Exception("YoutubeError", "Unable to fetch audio")
+
+        if not os.path.exists("temp_downloads"):
+            os.mkdir("temp_downloads")
+
+        stream = video.streams.filter(only_audio=True)[-1]
+        filename = f"{task_id}.{stream.subtype}"
+        stream.download(output_path="temp_downloads", filename=filename)
+
+        process_video(task, filename, task_id)
+    except Exception as e:
+        task.error = True
+        task.error_message = str(e)
+
+
+def file_summary(filename, task_id):
+    task = get_task(task_id)
+    task.status = 'processing file'
+
+    try:
+        process_video(task, filename, task_id)
+    except Exception as e:
+        task.error = True
+        task.error_message = str(e)
+
+

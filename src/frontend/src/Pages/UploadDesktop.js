@@ -176,9 +176,10 @@ export default function UploadDesktop(props){
 
         // Details of the uploaded file
         axios.post("http://194.193.55.245:9000/api/file_summary", formData).then((response) => {
+            //console.log(response.data)
             setSuccessModal(true)
         }).catch((error) => {
-            alert(error)
+            setFailModal(true)
             console.log(error.response)
         })
     };
