@@ -11,8 +11,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import {CurrentPageContext} from "../Contexts/CurrentPageContext";
 import {useContext} from "react";
+import {CurrentPageContext} from "../Contexts/CurrentPageContext";
 import {UserContext} from "../Contexts/UserContext";
 
 
@@ -20,7 +20,7 @@ const pages = ['Home', 'Upload'];
 const my_contents = ['All contents', 'Summary', 'Flash Cards'];
 var accounts;
 
-const Global_MenuBar = () => {
+const Global_MenuBar_mobile = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [anchorElContent, setAnchorElContent] = React.useState(null);
@@ -63,14 +63,14 @@ const Global_MenuBar = () => {
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                     <Box sx={{
-                        width: 1/16,
+                        width: 1/4,
                         display: { xs: 'flex', xl: 'flex' }
                         }} >
                         <Typography
-                            fontSize={'1.1vw'}
+                            variant="h6"
                             noWrap
                             component="div"
-                            sx={{ mx: "auto", display: { xs: 'block', xl: 'flex' } }}
+                            sx={{ mx: "auto", display: { xs: 'flex', xl: 'flex' } }}
                         >
                             BRIDGE
                         </Typography>
@@ -118,7 +118,7 @@ const Global_MenuBar = () => {
                         {pages.map((page) => (
                         <Button
                             key={page}
-                            onClick={() => {setCurrentPage(page)}}
+                            onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'white', display: 'flex' }}
                         >
                             {page}
@@ -128,7 +128,7 @@ const Global_MenuBar = () => {
 
                     <Box sx={{
                         flexGrow: 1 ,
-                        whiteSpace: 'pre' }}>
+                        whiteSpace: 'normal' }}>
                         <Tooltip title="My Contents">
                         <Button onClick={handleOpenContentMenu} color="inherit" >
                         My Contents
@@ -189,8 +189,7 @@ const Global_MenuBar = () => {
                                 }else{
                                     setCurrentPage(account)
                                 }
-                                }
-                            }>
+                            }}>
                             <Typography textAlign="center">{account}</Typography>
                             </MenuItem>
                         ))}
@@ -202,4 +201,4 @@ const Global_MenuBar = () => {
 
       );
     };
-export default Global_MenuBar;
+export default Global_MenuBar_mobile;

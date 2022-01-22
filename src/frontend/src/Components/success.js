@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Light_Button from '../Components/ButtonDef_light'
 
@@ -10,37 +9,21 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 800,
+  width: '42vw',
   bgcolor: '#82C0CC',
-  border: '1px round', 
+  border: '1px round',
   borderRadius: 2,
   boxShadow: 24,
   p: 4,
 };
 
-const text_format = {
-  fontFamily: [
-    'Oxygen',
-    'Arial',
-    'sans-serif',
-    '"Apple Color Emoji"',
-    '"Segoe UI Emoji"',
-    '"Segoe UI Symbol"',
-  ].join(','),
-  fontColor: '#EAEAEA',
-};
-
-export default function Success_Upload() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+export default function Success_Upload(props) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Success</Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={props.open}
+        onClose={props.handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -57,18 +40,20 @@ export default function Success_Upload() {
             <br></br>
             "My Contents"
             </Box>
-            
+
           <Box>
           <Light_Button sx={{
-            width: 300,
+            width: '16vw',
             position: "relative",
             left: '5%',
           }}>My Contents</Light_Button>
           <Light_Button sx={{
-            width: 300,
+            width: '16vw',
             position: "relative",
             left: '20%',
-          }}>Add another content</Light_Button>
+          }}
+                        onClick={props.handleClose}
+          >Add another content</Light_Button>
           </Box>
         </Box>
       </Modal>

@@ -1,4 +1,6 @@
 **/.idea
 **/node_modules
+**/__pycache__
 src/backend/config.py
 src/backend/credentials.json
+src/frontend/package-lock.json
