@@ -10,8 +10,12 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import {CustomTextField} from '../Components/CustomTextField';
 import { styled } from '@mui/material/styles';
 import {FlashcardComponent} from 'react-flashcard';
+import {CurrentPageContext} from "../Contexts/CurrentPageContext";
+import {useContext} from "react";
 
-export default function MycontentsQuickView(){
+export default function MycontentsQuickViewMobile(){
+    let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
+
     const cardData = [
         {
             front: {
@@ -32,8 +36,7 @@ export default function MycontentsQuickView(){
                 flexDirection:'column', 
                 alignContent: 'flex-start',
                 marginLeft: '3%',
-                marginTop: '5%',
-                border: '1px solid #000000'}}>
+                marginTop: '5%'}}>
                     <Typography 
                     sx = {{
                     fontSize:'300%',
@@ -64,17 +67,27 @@ export default function MycontentsQuickView(){
                position: 'relative',
                flexWrap: 'wrap', 
                display:'flex', 
-               flexDirection:'row', 
+               flexDirection:'column', 
                alignContent: 'flex-start',
                justifyContent: 'flex-start',
             }}>
             
             <Box
                 sx={{
-                    width: '60%',
-                    height: 130,
+                    width: '100%',
+                    height: '100%',
+                    justifyContent: "flex-start",
+                    marginLeft: '1%'
+                }}>
+                <Typography variant='h5' align= "left">Summary</Typography>
+            </Box>
+
+            <Box
+                sx={{
+                    width: '100%',
+                    height: 150,
+                    marginBottom: '3%',
                     border: '1px solid #489FB5',
-                    marginRight: '2%',
                     borderRadius: '4px',
                     flexShrink: 1,
                     '&:hover': {
@@ -88,34 +101,32 @@ export default function MycontentsQuickView(){
             
             <Box
                 sx={{
-                    position: 'relative',
-                    width: '37.5%',
-                    height: 130,
-                    border: '1px solid #489FB5',
-                    borderRadius: '4px',
-                    '&:hover': {
-                        border: '1px solid #16697A',
-                        opacity: 0.9,
-                    },
+                    width: '100%',
+                    height: '100%',
+                    justifyContent: "flex-start",
+                    marginLeft: '1%'
                 }}>
-                <Typography variant='subtitle1'>Text here </Typography>
+                <Typography variant='h5' align= "left">Flashcards</Typography>
             </Box>
 
             <Box
                 sx={{
-                    marginTop: '3%',
-                    position: 'relative',
                     width: '100%',
-                    height: 300,
+                    height: 250,
+                    marginBottom: '3%',
                     border: '1px solid #489FB5',
                     borderRadius: '4px',
+                    flexShrink: 1,
                     '&:hover': {
                         border: '1px solid #16697A',
                         opacity: 0.9,
                     },
+                    
                 }}>
-                <FlashcardComponent dataSource={cardData} />
+                <Typography variant='subtitle1'>Text here</Typography>
             </Box>
+            
+           
 
             </Box>
             </div>
