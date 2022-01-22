@@ -50,7 +50,7 @@ export default function MycontentsQuickView(){
                 </Typography>
                 
                 <Typography variant='subtitle1'>
-                    <Box>
+                    <Box fullWidth sx={{marginLeft: '70vw'}}>
                         Change view: Default
                         <Switch />
                         Detailed
