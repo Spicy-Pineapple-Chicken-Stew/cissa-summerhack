@@ -9,8 +9,20 @@ import FormHelperText from '@mui/material/FormHelperText';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import {CustomTextField} from '../Components/CustomTextField';
 import { styled } from '@mui/material/styles';
+import {FlashcardComponent} from 'react-flashcard';
 
-export default function MC_detailedview(){
+export default function MycontentsQuickView(){
+    const cardData = [
+        {
+            front: {
+                text: "Sample question",
+            },
+            back: {
+                text: "Sample solution",
+            }
+        }
+    ]
+
     return (
         <div>
             <div>      
@@ -102,7 +114,7 @@ export default function MC_detailedview(){
                         opacity: 0.9,
                     },
                 }}>
-                <Typography variant='subtitle1'>Text here </Typography>
+                <FlashcardComponent dataSource={cardData} />
             </Box>
 
             </Box>
