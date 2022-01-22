@@ -36,12 +36,12 @@ export default function MC_Sidemenu(){
     return (
         <Box className='content_box'>
             <Box sx={{
-                width: 1/6,
+                width: 1/11,
                 height: 600,
                 bgcolor: 'rgba(130, 192, 204, 1)',
                 border: '2px solid rgba(72, 159, 181, 1)',
                 position: 'relative',
-                marginTop: '5%'
+                marginTop: '2%'
                 }}
             >
                 <div>
@@ -55,12 +55,13 @@ export default function MC_Sidemenu(){
                 </div>      
             </Box>
             <Box sx={{
-                width: 2/3,
+                width: 5/6,
                 height: 600,
                 position: 'relative',
-                marginTop: '5%',
-                marginLeft: '8%',
+                marginTop: '1%',
+                marginLeft: '4%',
                 fontSize: '2vw',
+                textAlign: 'left'
             }}>
                 {contents}
                 {(contents == 'Summary') &&
