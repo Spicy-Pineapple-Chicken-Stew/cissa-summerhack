@@ -21,7 +21,7 @@ export default function MycontentsQuickView(){
                 text: "Sample solution",
             }
         }
-    ]
+    ];
 
     return (
         <div>
@@ -39,7 +39,7 @@ export default function MycontentsQuickView(){
                     fontSize:'300%',
                     fontFamily: 'Oxygen',
                     color: 'rgba(22, 105, 122, 1)'
-                }} >
+                    }} >
                     <Box 
                     sx ={{flexWrap: 'wrap', 
                         display:'flex', 
@@ -58,8 +58,27 @@ export default function MycontentsQuickView(){
                 </Typography>
                 </Box>
             </div>
-            <div style ={{margin:'3%', marginTop: '3%'}}>
+            <div style ={{margin:'3%', marginTop: '1%'}}>
             
+            <Box sx={{display: 'flex', flexDirection: 'row'}}>
+                <Box sx={{
+                    width: '60%', 
+                    fontSize: '1vw', 
+                    textAlign: 'left'
+                }}
+                >
+                    Summary
+                </Box>
+                <Box sx={{
+                    width: '37.5%', 
+                    marginLeft: '2%', 
+                    fontSize: '1vw', 
+                    textAlign: 'left'
+                }}
+                >
+                    Original submission
+                </Box>
+            </Box>
            <Box sx ={{
                position: 'relative',
                flexWrap: 'wrap', 
@@ -68,7 +87,6 @@ export default function MycontentsQuickView(){
                alignContent: 'flex-start',
                justifyContent: 'flex-start',
             }}>
-            
             <Box
                 sx={{
                     width: '60%',
@@ -83,7 +101,7 @@ export default function MycontentsQuickView(){
                     },
                     
                 }}>
-                <Typography variant='subtitle1'>Text here</Typography>
+                <Typography variant='subtitle1'>Summary</Typography>
             </Box>
             
             <Box
@@ -98,12 +116,20 @@ export default function MycontentsQuickView(){
                         opacity: 0.9,
                     },
                 }}>
-                <Typography variant='subtitle1'>Text here </Typography>
+                <Typography variant='subtitle1'>Original submission</Typography>
             </Box>
-
+            
+            <Box sx={{
+                fontSize: '1vw', 
+                textAlign: 'left', 
+                width: '100%', 
+                marginTop: '1%'
+            }}
+            >
+                Flash card
+            </Box>
             <Box
                 sx={{
-                    marginTop: '3%',
                     position: 'relative',
                     width: '100%',
                     height: 300,
