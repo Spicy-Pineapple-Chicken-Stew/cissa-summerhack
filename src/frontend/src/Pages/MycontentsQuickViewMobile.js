@@ -65,7 +65,7 @@ export default function MycontentsQuickViewMobile(){
 
             <div style ={{margin:'3%', marginTop: '-0.5%'}}>
             
-           <Box sx ={{
+            <Box sx ={{
                position: 'relative',
                flexWrap: 'wrap', 
                display:'flex', 
@@ -125,11 +125,8 @@ export default function MycontentsQuickViewMobile(){
                     },
                     
                 }}>
-                <Typography variant='subtitle1'>Text here</Typography>
+                <FlashcardComponent dataSource={cardData} />
             </Box>
-            
-           
-
             </Box>
             </div>
         </div>
