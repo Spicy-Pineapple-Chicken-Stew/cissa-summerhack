@@ -1,17 +1,14 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Light_Button from '../Components/ButtonDef_light'
 
 const style = {
   position: 'absolute',
   top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  height: 150,
+  left: '25%',
+  width: '40vw',
+  height: '20vw',
   bgcolor: '#289FB5',
   border: '1px round', 
   borderRadius: 2,
@@ -59,11 +56,14 @@ export default function Fail_Upload() {
             
           <Box>
           <Light_Button sx={{
-                  width: 200,
+                  top: "10%",
+                  left: "5%",
+                  height: "10vw",
+                  width: '35vw',
                   position: "relative",
-                  
-                  transform: 'translate(50%, 25%)',
-          }}>Try again</Light_Button>
+          }}
+                        onClick={props.handleClose}
+          >Try again</Light_Button>
           </Box>
         </Box>
       </Modal>
