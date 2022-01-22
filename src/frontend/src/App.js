@@ -9,11 +9,12 @@ import {MobileContext} from "./Contexts/MobileContext";
 import Global_MenuBar_mobile from "./Components/global_menubar_mobile";
 import LoginRegistration from "./Pages/LoginRegistration";
 import {UserContext} from "./Contexts/UserContext";
-import MycontentsQuickView from './Pages/MycontentsQuickView';
-
+import MycontentsQuickViewDesktop from './Pages/MycontentsQuickViewDesktop';
+import MycontentsQuickViewMobile from './Pages/MycontentsQuickViewMobile';
 
 function App() {
-    let [currentPage, setCurrentPage] = useState('Home');
+
+    let [currentPage, setCurrentPage] = useState('MycontentsQuickViewMobile');
     let [isMobile, setIsMobile] = useState(false);
     let [user, setUser] = useState(null);
   
@@ -26,8 +27,9 @@ function App() {
               window.removeEventListener('resize', handleWindowSizeChange);
           }
       }, []);
-  
     return (
+
+
         <CurrentPageContext.Provider value={[currentPage, setCurrentPage]}>
             <MobileContext.Provider value={[isMobile, setIsMobile]}>
                 <UserContext.Provider value={[user, setUser]}>
@@ -36,7 +38,7 @@ function App() {
                             {isMobile ? <Global_MenuBar_mobile/> : <Global_MenuBar />}
                         </div>
                         <div className="App">
-                            {currentPage === 'Home' && <Home/>}
+                            {currentPage === 'MycontentsQuickViewMobile' && <MycontentsQuickViewMobile/>}
                             {currentPage === 'Upload' && !isMobile && <UploadDesktop/>}
                             {currentPage === 'Upload' && isMobile && <UploadPhone />}
                             {currentPage === 'Log in' && <LoginRegistration/>}
@@ -45,6 +47,7 @@ function App() {
                 </UserContext.Provider>
             </MobileContext.Provider>
         </CurrentPageContext.Provider>
+
       )
   }
   export default App;
