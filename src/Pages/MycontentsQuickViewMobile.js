@@ -52,16 +52,18 @@ export default function MycontentsQuickViewMobile(){
 
                 </Typography>
                 
-                <Typography variant='subtitle1'>
-                    <Box>
-                        Change view: Default
-                        <Switch />
-                        Detailed
-                    </Box>
+                
+                <Typography align='left' fontSize={'1vh'} ml={'57vw'} mr = {'3vw'} >
+                <Box>
+                    Change view: Default
+                    <Switch />
+                    Detailed
+                </Box>
                 </Typography>
                 </Box>
             </div>
-            <div style ={{margin:'3%', marginTop: '3%'}}>
+
+            <div style ={{margin:'3%', marginTop: '-0.5%'}}>
             
            <Box sx ={{
                position: 'relative',
