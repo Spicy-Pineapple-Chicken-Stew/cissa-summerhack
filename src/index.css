@@ -14,7 +14,7 @@ body {
 
 
 .wrapper{
-  display: flex;  
+  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
@@ -33,6 +33,49 @@ body {
   margin-left: 1vw;
 }
 
+
+.wrapperUploadConfirmation{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.wrapperButtonRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 15vw;
+  align-items: center;
+  margin-top: 10vh;
+}
+
+.descriptionBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.upload_title{
+  text-align: left;
+  margin-top: 2vh;
+  font-size: 200%;
+}
+
+.upload_wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 3vw;
+}
+
+.content_box{
+  display: flex;
+  flex-wrap: wrap;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;

@@ -1,7 +1,10 @@
 import * as React from 'react';
 import ColorButton from '../Components/ButtonDef'
+import {CurrentPageContext} from "../Contexts/CurrentPageContext";
+import {useContext} from "react";
 
 function Home(props){
+    let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
 
     return(
         <div className = 'wrapper'>
@@ -11,14 +14,11 @@ function Home(props){
             <div className ='home_desc'>
                 <p>Add description   </p>
             </div>
-            
             <div>
-                <ColorButton>Begin</ColorButton>
+            <ColorButton onClick={() => {setCurrentPage('Upload')}}>Begin</ColorButton>
             </div>
-
         </div>
     )
-
 }
 
 export default Home;
