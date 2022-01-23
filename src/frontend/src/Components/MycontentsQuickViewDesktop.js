@@ -100,6 +100,7 @@ export default function MycontentsQuickViewDesktop(props){
                     marginRight: '2%',
                     borderRadius: '4px',
                     flexShrink: 1,
+                    overflow: 'auto',
                     '&:hover': {
                         border: '1px solid #16697A',
                         opacity: 0.9,
@@ -116,6 +117,7 @@ export default function MycontentsQuickViewDesktop(props){
                     height: 130,
                     border: '1px solid #489FB5',
                     borderRadius: '4px',
+                    overflow: 'auto',
                     '&:hover': {
                         border: '1px solid #16697A',
                         opacity: 0.9,

@@ -64,6 +64,7 @@ export default function MC_Sidemenu(){
                     marginTop: 1,
                     height: 550,
                     textAlign: 'left',
+                    overflow: 'auto',
                     fontSize: '1vw'
                 }}>
                     {currentTask.taskResult}
@@ -76,6 +77,7 @@ export default function MC_Sidemenu(){
                     marginTop: 1,
                     height: 550,
                     textAlign: 'left',
+                    overflow: 'auto',
                     fontSize: '1vw'
                 }}>
                     {contents}

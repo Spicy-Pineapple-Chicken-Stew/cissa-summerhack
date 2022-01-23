@@ -95,6 +95,7 @@ export default function MycontentsQuickViewMobile(props){
                     border: '1px solid #489FB5',
                     borderRadius: '4px',
                     flexShrink: 1,
+                    overflow: 'auto',
                     '&:hover': {
                         border: '1px solid #16697A',
                         opacity: 0.9,

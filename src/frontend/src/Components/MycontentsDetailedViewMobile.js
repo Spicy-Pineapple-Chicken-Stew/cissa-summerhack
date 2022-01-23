@@ -68,6 +68,7 @@ export default function MC_detailedview_mobile(props){
                     marginTop: 1,
                     height: 500,
                     fontSize: '4vw',
+                    overflow: 'auto',
                     textAlign: 'left'
                 }}>
                     {contents_mobile}
@@ -79,6 +80,7 @@ export default function MC_detailedview_mobile(props){
                     marginTop: 1,
                     height: 500,
                     fontSize: '4vw',
+                    overflow: 'auto',
                     textAlign: 'left'
                 }}>
                     {contents_mobile}
