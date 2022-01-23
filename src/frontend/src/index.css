@@ -39,7 +39,7 @@ body {
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
+  text-align: left;
 }
 
 .wrapperButtonRow{

@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Light_Button from '../Components/ButtonDef_light'
+import {CurrentPageContext} from "../Contexts/CurrentPageContext";
+import {useContext} from "react";
 
 const style = {
   position: 'absolute',
@@ -18,6 +20,7 @@ const style = {
 };
 
 export default function Success_Upload(props) {
+  let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
 
   return (
     <div>
@@ -42,11 +45,16 @@ export default function Success_Upload(props) {
             </Box>
 
           <Box>
-          <Light_Button sx={{
+          <Light_Button
+              sx={{
             width: '16vw',
             position: "relative",
             left: '5%',
-          }}>My Contents</Light_Button>
+                }}
+              onClick={() => {
+                setCurrentPage('Task List')
+              }}
+          >My Contents</Light_Button>
           <Light_Button sx={{
             width: '16vw',
             position: "relative",

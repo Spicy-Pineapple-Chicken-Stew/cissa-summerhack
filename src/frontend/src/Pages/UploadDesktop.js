@@ -12,13 +12,13 @@ import {CustomTextField} from "../Components/CustomTextField";
 import axios from "axios";
 
 export default function UploadDesktop(props){
-    let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
     let [hasSelected, setHasSelected] = useState(false);
     let [currentSelection, setCurrentSelection] = useState(null);
     let [animationState, setAnimationState] = useState(false);
     let [file, setFile] = useState(null);
     let [successModal, setSuccessModal] = useState(false)
     let [failModal, setFailModal] = useState(false);
+    let [inputText, setInputText] = useState(null);
 
 
     const SubmitButton = styled(Button)(({ theme }) => ({
@@ -46,7 +46,7 @@ export default function UploadDesktop(props){
 
     const linkTextField = (
         <CustomTextField
-            id={'pure-text-input'}
+            id={'link-text-input'}
             label={'Enter your link'}
             multiline
             rows={1}
@@ -64,6 +64,7 @@ export default function UploadDesktop(props){
             rows={16}
             sx={{width: '81vw', marginLeft: '9vw', marginTop: '5vh'}}
             focused
+            onChange={(e) => {setInputText(e.target.value)}}
         />
     )
 
@@ -222,6 +223,21 @@ export default function UploadDesktop(props){
                 <SubmitButton sx={{width: '13vw'}} onClick={() => {
                     if(currentSelection === 'customvideo'){
                         onFileUpload()
+                    }else if(currentSelection === 'puretext'){
+                        axios.get(props.url + "/api/text_summary?text=" + inputText).then((response)=>{
+                            props.setTaskList([...props.taskList, {
+                                taskID: response.data.task_id,
+                                isDone: false,
+                                taskStatus: "pending",
+                                taskResult: "",
+                                isError: false,
+                                errorMessage: ""
+                            }])
+                            setSuccessModal(true)
+                        }).catch((error) => {
+                            setFailModal(true)
+                            console.log(error)
+                        })
                     }
                 }}>Submit</SubmitButton>
             </div>}
