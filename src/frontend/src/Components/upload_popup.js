@@ -8,11 +8,13 @@ import {styled} from "@mui/material/styles";
 import {useState} from "react";
 import Success_Upload from "./success";
 import Fail_Upload from "./fail";
+import axios from "axios";
 
 
-export default function TextboxPopup(prop){
+export default function TextboxPopup(props){
     let [successModal, setSuccessModal] = useState(false)
     let [failModal, setFailModal] = useState(false)
+    let [inputText, setInputText] = useState(null);
 
     const SubmitButton = styled(Button)(({ theme }) => ({
         fontFamily: [
@@ -61,8 +63,8 @@ export default function TextboxPopup(prop){
     return (
         <div>
             <Modal
-                open={prop.openpop}
-                onClose={prop.closepop}
+                open={props.openpop}
+                onClose={props.closepop}
                 aria-labelledby="modal-title"
                 aria-describedby="modal-content"
                 sx={{
@@ -82,7 +84,7 @@ export default function TextboxPopup(prop){
                         align='center'
                         color='rgba(237, 231, 227, 1)'
                     >
-                        {prop.text}
+                        {props.text}
                     </Typography>
                     <CustomTextField
                         id="modal-content"
@@ -90,6 +92,7 @@ export default function TextboxPopup(prop){
                         multiline
                         maxRows={10}
                         fullWidth
+                        onChange={(e) => {setInputText(e.target.value)}}
                     />
                     <SubmitButton
                     sx={{
@@ -97,7 +100,66 @@ export default function TextboxPopup(prop){
                         position: 'relative',
                         left: '37.5%'
                         }}
-                    onClick={() => {setFailModal(true)}}
+                    onClick={() => {
+                        if(props.type === 'puretext'){
+                            axios.get(props.url + "/api/text_summary?text=" + inputText).then((response)=>{
+                                props.setTaskList([{
+                                    taskID: response.data.task_id,
+                                    isDone: false,
+                                    taskTitle: "Text",
+                                    taskStatus: "pending",
+                                    taskResult: "",
+                                    isError: false,
+                                    errorMessage: ""
+                                }, ...props.taskList])
+                                setSuccessModal(true)
+                            }).catch((error) => {
+                                setFailModal(true)
+                                console.log(error)
+                            })
+                        }else if(props.type === 'link'){
+                            try{
+                                var parseURL = new URL(inputText);
+                            }catch{
+                                alert("Please enter a valid URL")
+                            }
+
+                            if(parseURL.hostname === 'www.youtube.com' || parseURL.hostname === 'youtube.com'){
+                                axios.get(props.url + "/api/youtube_summary?url=" + inputText).then((response)=>{
+                                    props.setTaskList([{
+                                        taskID: response.data.task_id,
+                                        isDone: false,
+                                        taskTitle: inputText,
+                                        taskStatus: "pending",
+                                        taskResult: "",
+                                        isError: false,
+                                        errorMessage: ""
+                                    }, ...props.taskList])
+                                    setSuccessModal(true)
+                                }).catch((error) => {
+                                    setFailModal(true)
+                                    console.log(error)
+                                })
+                            }else{
+                                axios.get(props.url + "/api/website_summary?url=" + inputText).then((response)=>{
+                                    props.setTaskList([{
+                                        taskID: response.data.task_id,
+                                        isDone: false,
+                                        taskTitle: inputText,
+                                        taskStatus: "pending",
+                                        taskResult: "",
+                                        questions: null,
+                                        isError: false,
+                                        errorMessage: ""
+                                    }, ...props.taskList])
+                                    setSuccessModal(true)
+                                }).catch((error) => {
+                                    setFailModal(true)
+                                    console.log(error)
+                                })
+                            }
+                        }
+                    }}
                     >
                         Submit
                     </SubmitButton>

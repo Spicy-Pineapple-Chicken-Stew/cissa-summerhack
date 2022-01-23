@@ -118,7 +118,9 @@ const Global_MenuBar_mobile = () => {
                         {pages.map((page) => (
                         <Button
                             key={page}
-                            onClick={handleCloseNavMenu}
+                            onClick={() => {
+                                setCurrentPage(page)
+                            }}
                             sx={{ my: 2, color: 'white', display: 'flex' }}
                         >
                             {page}
@@ -130,32 +132,10 @@ const Global_MenuBar_mobile = () => {
                         flexGrow: 1 ,
                         whiteSpace: 'normal' }}>
                         <Tooltip title="My Contents">
-                        <Button onClick={handleOpenContentMenu} color="inherit" >
-                        My Contents
+                        <Button onClick={() => {setCurrentPage("Task List")}} color="inherit" >
+                        My Tasks
                         </Button>
                         </Tooltip>
-                        <Menu
-                        sx={{ mt: '45px' }}
-                        id="menu-appbar"
-                        anchorEl={anchorElContent}
-                        anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                        }}
-                        open={Boolean(anchorElContent)}
-                        onClose={handleCloseContentMenu}
-                        >
-                        {my_contents.map((my_content) => (
-                            <MenuItem key={my_content} onClick={handleCloseContentMenu}>
-                            <Typography textAlign="center">{my_content}</Typography>
-                            </MenuItem>
-                        ))}
-                        </Menu>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>

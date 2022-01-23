@@ -7,9 +7,10 @@ import {styled} from "@mui/material/styles";
 import {useState} from "react";
 import Success_Upload from "./success";
 import Fail_Upload from "./fail";
+import axios from "axios";
 
 
-export default function FilePopup(prop){
+export default function FilePopup(props){
     let [file, setFile] = React.useState(null);
     let [successModal, setSuccessModal] = useState(false)
     let [failModal, setFailModal] = useState(false)
@@ -50,7 +51,21 @@ export default function FilePopup(prop){
         );
 
         // Details of the uploaded file
-        formData.forEach((elem) => console.log(elem))
+        axios.post("http://194.193.55.245:9000/api/file_summary", formData).then((response) => {
+            props.setTaskList([{
+                taskID: response.data.task_id,
+                isDone: false,
+                taskTitle: file.name,
+                taskStatus: "pending",
+                taskResult: "",
+                isError: false,
+                errorMessage: ""
+            }, ...props.taskList])
+            setSuccessModal(true)
+        }).catch((error) => {
+            setFailModal(true)
+            console.log(error.response)
+        })
     };
 
     const Input = styled('input')({
@@ -60,8 +75,8 @@ export default function FilePopup(prop){
     return (
         <div>
             <Modal
-                open={prop.openpop}
-                onClose={prop.closepop}
+                open={props.openpop}
+                onClose={props.closepop}
                 aria-labelledby="modal-title"
                 aria-describedby="modal-content"
                 sx={{
@@ -81,12 +96,12 @@ export default function FilePopup(prop){
                         align='center'
                         color='rgba(237, 231, 227, 1)'
                     >
-                        {prop.text}
+                        {props.text}
                     </Typography>
                     <Box>
                         <label htmlFor={"contained-button-file"}>
                             <Input
-                                accept={[".gif"]} id={"contained-button-file"} type={"file"}
+                                accept={[".webm", ".mkv", ".flv", ".avi", ".mov", ".wmv", ".mp4"]} id={"contained-button-file"} type={"file"}
                                 onChange={(event) => {
                                     setFile(event.target.files[0])
                                 }}
@@ -109,7 +124,6 @@ export default function FilePopup(prop){
                         }}
                     onClick={() => {
                         onFileUpload()
-                        setFailModal(true)
                     }}
                     >
                         Submit

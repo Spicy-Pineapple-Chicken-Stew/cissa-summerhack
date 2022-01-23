@@ -178,7 +178,7 @@ export default function UploadDesktop(props){
 
         // Details of the uploaded file
         axios.post("http://194.193.55.245:9000/api/file_summary", formData).then((response) => {
-            props.setTaskList([...props.taskList, {
+            props.setTaskList([{
                 taskID: response.data.task_id,
                 isDone: false,
                 taskTitle: file.name,
@@ -186,7 +186,7 @@ export default function UploadDesktop(props){
                 taskResult: "",
                 isError: false,
                 errorMessage: ""
-            }])
+            }, ...props.taskList])
             setSuccessModal(true)
         }).catch((error) => {
             setFailModal(true)
@@ -234,7 +234,7 @@ export default function UploadDesktop(props){
                         onFileUpload()
                     }else if(currentSelection === 'puretext'){
                         axios.get(props.url + "/api/text_summary?text=" + inputText).then((response)=>{
-                            props.setTaskList([...props.taskList, {
+                            props.setTaskList([{
                                 taskID: response.data.task_id,
                                 isDone: false,
                                 taskTitle: "Text",
@@ -242,17 +242,22 @@ export default function UploadDesktop(props){
                                 taskResult: "",
                                 isError: false,
                                 errorMessage: ""
-                            }])
+                            }, ...props.taskList])
                             setSuccessModal(true)
                         }).catch((error) => {
                             setFailModal(true)
                             console.log(error)
                         })
                     }else if(currentSelection === 'link'){
-                        var parseURL = new URL(inputText);
+                        try{
+                            var parseURL = new URL(inputText);
+                        }catch{
+                            alert("Please enter a valid URL")
+                        }
+
                         if(parseURL.hostname === 'www.youtube.com' || parseURL.hostname === 'youtube.com'){
                             axios.get(props.url + "/api/youtube_summary?url=" + inputText).then((response)=>{
-                                props.setTaskList([...props.taskList, {
+                                props.setTaskList([{
                                     taskID: response.data.task_id,
                                     isDone: false,
                                     taskTitle: inputText,
@@ -260,7 +265,7 @@ export default function UploadDesktop(props){
                                     taskResult: "",
                                     isError: false,
                                     errorMessage: ""
-                                }])
+                                }, ...props.taskList])
                                 setSuccessModal(true)
                             }).catch((error) => {
                                 setFailModal(true)
@@ -268,7 +273,7 @@ export default function UploadDesktop(props){
                             })
                         }else{
                             axios.get(props.url + "/api/website_summary?url=" + inputText).then((response)=>{
-                                props.setTaskList([...props.taskList, {
+                                props.setTaskList([{
                                     taskID: response.data.task_id,
                                     isDone: false,
                                     taskTitle: inputText,
@@ -277,7 +282,7 @@ export default function UploadDesktop(props){
                                     questions: null,
                                     isError: false,
                                     errorMessage: ""
-                                }])
+                                }, ...props.taskList])
                                 setSuccessModal(true)
                             }).catch((error) => {
                                 setFailModal(true)

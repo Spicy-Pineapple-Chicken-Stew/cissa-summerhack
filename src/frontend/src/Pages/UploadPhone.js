@@ -1,10 +1,5 @@
 import * as React from 'react';
-import ColorButton from '../Components/ButtonDef';
-import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
-import ButtonBases from '../Components/Imagebutton';
 import PhoneButton from '../Components/PhoneButton';
-import DeleteIcon from '@mui/icons-material/Delete';
 import TextboxPopup from '../Components/upload_popup';
 import FilePopup from '../Components/upload_popup_file';
 
@@ -29,15 +24,38 @@ function UploadPhone(props){
             </div>
             <div>
                 <PhoneButton text='Pure text' OnClick={handleOpenPT} />
-                <TextboxPopup text='Pure text' openpop={openPT} closepop={handleClosePT} />
+                <TextboxPopup
+                    text='Pure text'
+                    openpop={openPT}
+                    closepop={handleClosePT}
+                    type={"puretext"}
+                    taskList={props.taskList}
+                    setTaskList={props.setTaskList}
+                    url={props.url}
+                />
             </div>
             <div>
                 <PhoneButton text='Link' OnClick={handleOpenL} />
-                <TextboxPopup text='Link' openpop={openL} closepop={handleCloseL} />
+                <TextboxPopup
+                    text='Link'
+                    openpop={openL}
+                    closepop={handleCloseL}
+                    type={"link"}
+                    taskList={props.taskList}
+                    setTaskList={props.setTaskList}
+                    url={props.url}
+                />
             </div>
             <div>
                 <PhoneButton text='Your video' OnClick={handleOpenYV}/>
-                <FilePopup text='Your Video' openpop={openYV} closepop={handleCloseYV} />
+                <FilePopup
+                    text='Your Video'
+                    openpop={openYV}
+                    closepop={handleCloseYV}
+                    taskList={props.taskList}
+                    setTaskList={props.setTaskList}
+                    url={props.url}
+                />
             </div>
 
         </div>
