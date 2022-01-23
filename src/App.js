@@ -9,6 +9,7 @@ import {MobileContext} from "./Contexts/MobileContext";
 import Global_MenuBar_mobile from "./Components/global_menubar_mobile";
 import LoginRegistration from "./Pages/LoginRegistration";
 import {UserContext} from "./Contexts/UserContext";
+import MycontentsQuickView from './Pages/MycontentsQuickView';
 import MC_detailedview from "./Pages/MycontentsDetailedView";
 import MC_detailedview_mobile from "./Pages/MycontentsDetailedViewMobile";
 
