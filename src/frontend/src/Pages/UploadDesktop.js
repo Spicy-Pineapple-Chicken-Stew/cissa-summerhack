@@ -9,6 +9,7 @@ import { Box } from '@mui/system';
 import Success_Upload from "../Components/success";
 import Fail_Upload from "../Components/fail";
 import {CustomTextField} from "../Components/CustomTextField";
+import axios from "axios";
 
 export default function UploadDesktop(props){
     let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
@@ -74,7 +75,7 @@ export default function UploadDesktop(props){
             marginTop: '-3vh',
             border: '2px solid rgba(72, 159, 181, 1)',
             borderRadius: '16px',
-            fontSize: 24,
+            fontSize: '1.3vw',
             color: '#16697A'
             }}
         className = {'descriptionBox'}
@@ -91,7 +92,7 @@ export default function UploadDesktop(props){
             marginTop: '-3vh',
             border: '2px solid rgba(72, 159, 181, 1)',
             borderRadius: '16px',
-            fontSize: 24,
+            fontSize: '1.3vw',
             color: '#16697A'
             }}
         className = {'descriptionBox'}
@@ -108,7 +109,7 @@ export default function UploadDesktop(props){
             marginTop: '-3vh',
             border: '2px solid rgba(72, 159, 181, 1)',
             borderRadius: '16px',
-            fontSize: 24,
+            fontSize: '1.3vw',
             color: '#16697A'
             }}
         className = {'descriptionBox'}
@@ -153,7 +154,7 @@ export default function UploadDesktop(props){
                 return(
                     <div>
                         {file != null && <h3>
-                            {file.name}
+                            Current File: {file.name}
                         </h3>}
                     </div>
                 )
@@ -174,7 +175,13 @@ export default function UploadDesktop(props){
         );
 
         // Details of the uploaded file
-        formData.forEach((elem) => console.log(elem))
+        axios.post("http://194.193.55.245:9000/api/file_summary", formData).then((response) => {
+            //console.log(response.data)
+            setSuccessModal(true)
+        }).catch((error) => {
+            setFailModal(true)
+            console.log(error.response)
+        })
     };
 
     return(
@@ -197,7 +204,7 @@ export default function UploadDesktop(props){
                 >Link</ColorButton>
                 <label htmlFor={"contained-button-file"}>
                     <Input
-                        accept={[".gif"]} id={"contained-button-file"} type={"file"}
+                        accept={[".webm", ".mkv", ".flv", ".avi", ".mov", ".wmv", ".mp4"]} id={"contained-button-file"} type={"file"}
                         onChange={(event) => {
                             setFile(event.target.files[0])
                             setHasSelected(true)
@@ -213,8 +220,9 @@ export default function UploadDesktop(props){
             {renderTextField()}
             {hasSelected && <div className={'wrapperButtonRow'}>
                 <SubmitButton sx={{width: '13vw'}} onClick={() => {
-                    setSuccessModal(true);
-                    //setFailModal(true)
+                    if(currentSelection === 'customvideo'){
+                        onFileUpload()
+                    }
                 }}>Submit</SubmitButton>
             </div>}
             <Success_Upload open={successModal} handleClose={() => {setSuccessModal(false)}}/>
