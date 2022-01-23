@@ -7,16 +7,14 @@ import { useFormControl } from '@mui/material/FormControl';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import {CustomTextField} from '../Components/CustomTextField';
+import {CustomTextField} from './CustomTextField';
 import { styled } from '@mui/material/styles';
 import {FlashcardComponent} from 'react-flashcard';
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
 import {useContext} from "react";
 
-export default function MycontentsQuickViewDesktop(){
-    let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
-
-    
+export default function MycontentsQuickViewDesktop(props){
+    let [isQuickView, setIsQuickView] = props.isQuickView;
 
     const cardData = [
         {
@@ -31,54 +29,57 @@ export default function MycontentsQuickViewDesktop(){
 
     return (
         <div>
-            <div>      
+            <div>
                 <Box sx =
-                {{flexWrap: 'wrap', 
-                display:'flex', 
-                flexDirection:'column', 
+                {{flexWrap: 'wrap',
+                display:'flex',
+                flexDirection:'column',
                 alignContent: 'flex-start',
                 marginLeft: '3%',
                 marginTop: '5%',
                 border: '1px solid #000000'}}>
-                    <Typography 
+                    <Typography
                     sx = {{
                     fontSize:'300%',
                     fontFamily: 'Oxygen',
                     color: 'rgba(22, 105, 122, 1)'
                     }} >
-                    <Box 
-                    sx ={{flexWrap: 'wrap', 
-                        display:'flex', 
+                    <Box
+                    sx ={{flexWrap: 'wrap',
+                        display:'flex',
                         flexDirection:'row'}}>
-                    
+
                     Title</Box>
 
                 </Typography>
-                
+
                 <Typography variant='subtitle1'>
                     <Box fullWidth sx={{marginLeft: '70vw'}}>
                         Change view: Default
-                        <Switch />
+                        <Switch
+                            checked={!isQuickView}
+                            onClick={() => {setIsQuickView(!isQuickView)}}
+                        />
                         Detailed
                     </Box>
                 </Typography>
                 </Box>
             </div>
             <div style ={{margin:'3%', marginTop: '1%'}}>
-            
+
             <Box sx={{display: 'flex', flexDirection: 'row'}}>
                 <Box sx={{
-                    width: '60%', 
-                    fontSize: '1vw', 
+                    width: '60%',
+                    fontSize: '1vw',
                     textAlign: 'left'
                 }}
                 >
                     Summary
                 </Box>
                 <Box sx={{
-                    width: '37.5%', 
-                    marginLeft: '2%', 
-                    fontSize: '1vw', 
+                    width: '37.5%',
+                    marginLeft: '2%',
+                    fontSize: '1vw',
                     textAlign: 'left'
                 }}
                 >
@@ -87,9 +88,9 @@ export default function MycontentsQuickViewDesktop(){
             </Box>
            <Box sx ={{
                position: 'relative',
-               flexWrap: 'wrap', 
-               display:'flex', 
-               flexDirection:'row', 
+               flexWrap: 'wrap',
+               display:'flex',
+               flexDirection:'row',
                alignContent: 'flex-start',
                justifyContent: 'flex-start',
             }}>
@@ -105,11 +106,11 @@ export default function MycontentsQuickViewDesktop(){
                         border: '1px solid #16697A',
                         opacity: 0.9,
                     },
-                    
+
                 }}>
                 <Typography variant='subtitle1'>Summary</Typography>
             </Box>
-            
+
             <Box
                 sx={{
                     position: 'relative',
@@ -124,11 +125,11 @@ export default function MycontentsQuickViewDesktop(){
                 }}>
                 <Typography variant='subtitle1'>Original submission</Typography>
             </Box>
-            
+
             <Box sx={{
-                fontSize: '1vw', 
-                textAlign: 'left', 
-                width: '100%', 
+                fontSize: '1vw',
+                textAlign: 'left',
+                width: '100%',
                 marginTop: '1%'
             }}
             >

@@ -9,18 +9,15 @@ import {MobileContext} from "./Contexts/MobileContext";
 import Global_MenuBar_mobile from "./Components/global_menubar_mobile";
 import LoginRegistration from "./Pages/LoginRegistration";
 import {UserContext} from "./Contexts/UserContext";
-import MycontentsQuickViewDesktop from './Pages/MycontentsQuickViewDesktop';
-import MycontentsQuickViewMobile from './Pages/MycontentsQuickViewMobile';
-import MC_detailedview from "./Pages/MycontentsDetailedView";
-import MC_detailedview_mobile from "./Pages/MycontentsDetailedViewMobile";
+import MyContents from "./Pages/MyContents";
 
 function App() {
-  let [currentPage, setCurrentPage] = useState('Contents Detailed');
+  let [currentPage, setCurrentPage] = useState('My Contents');
   let [isMobile, setIsMobile] = useState(false);
   let [user, setUser] = useState(null);
 
     function handleWindowSizeChange() {
-        setIsMobile(window.innerWidth <= 768);
+        setIsMobile(window.innerWidth < window.innerHeight);
     }
     useEffect(() => {
         window.addEventListener('resize', handleWindowSizeChange);
@@ -42,8 +39,7 @@ function App() {
                           {currentPage === 'Upload' && !isMobile && <UploadDesktop/>}
                           {currentPage === 'Upload' && isMobile && <UploadPhone />}
                           {currentPage === 'Log in' && <LoginRegistration/>}
-                          {currentPage === 'Contents Detailed' && !isMobile && <MC_detailedview />}
-                          {currentPage === 'Contents Detailed' && isMobile && <MC_detailedview_mobile />}
+                          {currentPage === 'My Contents' && <MyContents />}
                       </div>
                   </div>
               </UserContext.Provider>

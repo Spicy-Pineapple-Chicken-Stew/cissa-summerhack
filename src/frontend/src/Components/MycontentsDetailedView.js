@@ -2,10 +2,12 @@ import * as React from 'react';
 import { Switch } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import MC_Sidemenu from '../Components/MycontentsDetailedViewSidemenu';
+import MC_Sidemenu from './MycontentsDetailedViewSidemenu';
 
 
-export default function MC_detailedview(){
+export default function MC_detailedview(props){
+    let [isQuickView, setIsQuickView] = props.isQuickView;
+
 
     return (
         <div>
@@ -15,11 +17,14 @@ export default function MC_detailedview(){
             <Typography align='left' fontSize={'1vw'} ml={'70vw'}>
                 <Box>
                     Change view: Default
-                    <Switch />
+                    <Switch
+                        checked={!isQuickView}
+                        onClick={() => {setIsQuickView(!isQuickView)}}
+                    />
                     Detailed
                 </Box>
             </Typography>
-            <Box sx={{width: 'auto', height: 'auto'}}>                
+            <Box sx={{width: 'auto', height: 'auto'}}>
                 <MC_Sidemenu />
             </Box>
         </div>
