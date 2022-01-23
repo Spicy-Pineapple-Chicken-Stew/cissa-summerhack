@@ -7,6 +7,7 @@ class Task:
         self.title = None
         self.status = None
         self.content = None
+        self.questions = None
 
         self.error = False
         self.error_message = None

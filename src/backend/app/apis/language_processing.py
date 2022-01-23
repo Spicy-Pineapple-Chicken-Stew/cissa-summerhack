@@ -49,45 +49,39 @@ def negate(sentence):
         return None
 
 
-def generate_questions(text, task_id):
-    task = get_task(task_id)
+def generate_questions(text, task):
+    question_n_answers = []
 
-    try:
-        question_n_answers = []
+    task.status = 'generating questions'
+    for sentence in text.split("."):
+        prediction = openIE_model.predict(sentence)
+        for p in prediction["verbs"]:
+            verb = ""
+            arguments = []
 
-        task.status = 'generating questions'
-        for sentence in text.split("."):
-            prediction = openIE_model.predict(sentence)
-            for p in prediction["verbs"]:
-                verb = ""
-                arguments = []
+            for match in re.findall(r"\[([^\[\]]+)\]", p['description']):
+                if len(match.split(":")) == 2:
+                    arg_type, arg_clause = match.split(":")
+                    # Extract only verbs and arguments of type ARG{INT}
+                    if arg_type == 'V':
+                        verb = arg_clause
+                    elif len(arg_type) == 4 and arg_type[:3] == 'ARG' and arg_type[3].isdigit():
+                        arguments.append((arg_type, arg_clause))
 
-                for match in re.findall(r"\[([^\[\]]+)\]", p['description']):
-                    if len(match.split(":")) == 2:
-                        arg_type, arg_clause = match.split(":")
-                        # Extract only verbs and arguments of type ARG{INT}
-                        if arg_type == 'V':
-                            verb = arg_clause
-                        elif len(arg_type) == 4 and arg_type[:3] == 'ARG' and arg_type[3].isdigit():
-                            arguments.append((arg_type, arg_clause))
+            arguments = sorted(arguments, key=lambda x: x[0])
+            if len(arguments) > 1:
+                # Concat second -> last arguments into single string. Answer is the first argument
+                question_n_answers.append(({"question": f"What/who{verb}{''.join([arg[1] for arg in arguments[1:]])}", "answer": arguments[0][1]}))
 
-                arguments = sorted(arguments, key=lambda x: x[0])
-                if len(arguments) > 1:
-                    # Concat second -> last arguments into single string. Answer is the first argument
-                    question_n_answers.append(({"question": f"What/who{verb}{''.join([arg[1] for arg in arguments[1:]])}", "answer": arguments[0][1]}))
+        if negate(sentence) is not None:
+            question_n_answers.append(negate(sentence))
 
-            if negate(sentence) is not None:
-                question_n_answers.append(negate(sentence))
+    task.status = 'generating more questions'
+    generated = requests.post("https://devpy.lumoslearning.com/llp/darshan/Jul20/question-answer-bert-gpt/question_generation/question_bert.php",
+                              json={"text": text}).json()
 
-        task.status = 'generating more questions'
-        generated = requests.post("https://devpy.lumoslearning.com/llp/darshan/Jul20/question-answer-bert-gpt/question_generation/question_bert.php",
-                                  json={"text": text}).json()
+    if "result" in generated:
+        question_n_answers = generated["result"] + question_n_answers
 
-        if "result" in generated:
-            question_n_answers = generated["result"] + question_n_answers
-
-        task.status = 'done'
-        task.content = question_n_answers
-    except Exception as e:
-        task.error = True
-        task.error_message = str(e)
+    task.status = 'done'
+    return question_n_answers

@@ -53,6 +53,7 @@ export default function UploadDesktop(props){
             maxRows={1}
             sx={{width: '81vw', marginLeft: '9vw', marginTop: '5vh'}}
             focused
+            onChange={(e) => {setInputText(e.target.value)}}
         />
     );
 
@@ -177,7 +178,15 @@ export default function UploadDesktop(props){
 
         // Details of the uploaded file
         axios.post("http://194.193.55.245:9000/api/file_summary", formData).then((response) => {
-            //console.log(response.data)
+            props.setTaskList([...props.taskList, {
+                taskID: response.data.task_id,
+                isDone: false,
+                taskTitle: file.name,
+                taskStatus: "pending",
+                taskResult: "",
+                isError: false,
+                errorMessage: ""
+            }])
             setSuccessModal(true)
         }).catch((error) => {
             setFailModal(true)
@@ -228,6 +237,7 @@ export default function UploadDesktop(props){
                             props.setTaskList([...props.taskList, {
                                 taskID: response.data.task_id,
                                 isDone: false,
+                                taskTitle: "Text",
                                 taskStatus: "pending",
                                 taskResult: "",
                                 isError: false,
@@ -238,6 +248,42 @@ export default function UploadDesktop(props){
                             setFailModal(true)
                             console.log(error)
                         })
+                    }else if(currentSelection === 'link'){
+                        var parseURL = new URL(inputText);
+                        if(parseURL.hostname === 'www.youtube.com' || parseURL.hostname === 'youtube.com'){
+                            axios.get(props.url + "/api/youtube_summary?url=" + inputText).then((response)=>{
+                                props.setTaskList([...props.taskList, {
+                                    taskID: response.data.task_id,
+                                    isDone: false,
+                                    taskTitle: inputText,
+                                    taskStatus: "pending",
+                                    taskResult: "",
+                                    isError: false,
+                                    errorMessage: ""
+                                }])
+                                setSuccessModal(true)
+                            }).catch((error) => {
+                                setFailModal(true)
+                                console.log(error)
+                            })
+                        }else{
+                            axios.get(props.url + "/api/website_summary?url=" + inputText).then((response)=>{
+                                props.setTaskList([...props.taskList, {
+                                    taskID: response.data.task_id,
+                                    isDone: false,
+                                    taskTitle: inputText,
+                                    taskStatus: "pending",
+                                    taskResult: "",
+                                    questions: null,
+                                    isError: false,
+                                    errorMessage: ""
+                                }])
+                                setSuccessModal(true)
+                            }).catch((error) => {
+                                setFailModal(true)
+                                console.log(error)
+                            })
+                        }
                     }
                 }}>Submit</SubmitButton>
             </div>}

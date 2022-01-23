@@ -10,6 +10,7 @@ from google.cloud import storage, speech
 
 from app import GPT2_model
 from app.tasks import get_task
+from app.apis.language_processing import generate_questions
 
 PUNCTUATIONS = ".?!,;:()'\"/+-*&^%$#@ "
 
@@ -51,6 +52,7 @@ def text_summary(text, task_id):
 
     task.status = 'done'
     task.content = result
+    task.questions = generate_questions(result, task)
 
 
 def process_video(task, filename, task_id):
@@ -91,8 +93,8 @@ def process_video(task, filename, task_id):
 
     result = ''.join(GPT2_model(punctuated))
 
-    task.status = 'done'
     task.content = result
+    task.questions = generate_questions(result, task)
 
 
 def website_summary(url, task_id):
@@ -115,6 +117,11 @@ def website_summary(url, task_id):
 
         task.status = 'processing website'
         soup = BeautifulSoup(response.text, 'html.parser')
+
+        for title in soup.find_all('title'):
+            task.title = title.get_text()
+            break
+
         p_tags = soup.find_all('p')
         texts = [tag.get_text() for tag in p_tags]
         cleaned_texts = ''.join(list(map(clean_text, texts)))
@@ -122,8 +129,8 @@ def website_summary(url, task_id):
         task.status = 'processing text'
         result = ''.join(GPT2_model(cleaned_texts))
 
-        task.status = 'done'
         task.content = result
+        task.questions = generate_questions(result, task)
     except Exception as e:
         task.error = True
         task.error_message = str(e)
@@ -135,6 +142,8 @@ def youtube_summary(url, task_id):
 
     try:
         video = YouTube(url)
+        task.title = video.title
+
         if len(video.streams.filter(only_audio=True)) == 0:
             raise Exception("YoutubeError", "Unable to fetch audio")
 

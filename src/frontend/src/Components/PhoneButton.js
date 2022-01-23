@@ -67,17 +67,17 @@ export default function PhoneButton(props){
   return(
     <div>
     <UploadP_Button
-          variant= 'outlined' 
+          variant= 'outlined'
           style={{ width: 'calc((100% - 5vw))' }}
           onClick={props.OnClick}
     >
     <div style = {{flexWrap: 'wrap', display:'flex', flexDirection:'column', alignItems: 'center'}}>
-      <Box component="div" sx={{ display: 'block', alignItems: 'center', display:'flex',marginTop: -3 }}>
-      
+      <Box component="div" sx={{ display: 'block', alignItems: 'center',marginTop: -3 }}>
+
       <h3>{props.text}</h3>
 
       <LibraryBooksIcon style={{ color: '#ede7e3'}}/>
-      
+
       </Box>
       <Box component="div" sx={{ display: 'block', marginTop: -1.5 }}>inlineinlineinlineinlineinlineinlineinline</Box>
     </div>
@@ -98,20 +98,20 @@ export default function PhoneButton(props){
   return(
     <div>
     <UploadP_Button
-          variant= 'outlined' 
+          variant= 'outlined'
           style={{ width: 'calc((100% - 5vw))' }}
     >
     <div>
       <div style ={{flexWrap: 'wrap', display:'flex', flexDirection:'row', alignItems: 'center'}}>
-      
+
       <h3>{props.text}</h3>
 
       <LibraryBooksIcon style={{ color: '#ede7e3'}}/>
-      
+
       </div>
-    
+
     <p style = {{marginTop: -10, marginLeft: -10, alignItems: 'center'}}>{props.desc}</p>
-    
+
     </div>
     </UploadP_Button>
     </div>
@@ -130,20 +130,20 @@ export default function PhoneButton(props){
   return(
     <div>
     <UploadP_Button
-          variant= 'outlined' 
+          variant= 'outlined'
           style={{ width: 'calc((100% - 5vw))' }}
     >
     <div>
       <div style ={{flexWrap: 'wrap', display:'flex', flexDirection:'row', alignItems: 'center'}}>
-      
+
       <h3>{props.text}</h3>
 
       <LibraryBooksIcon style={{ color: '#ede7e3', justifyContent: 'right', flex: '10'}}/>
-      
+
       </div>
-    
+
     <p style = {{marginTop: -10}}>get a life </p>
-    
+
     </div>
     </UploadP_Button>
     </div>
@@ -174,7 +174,7 @@ export default function PhoneButton(props){
   return(
     <div>
     <UploadP_Button
-          variant= 'outlined' 
+          variant= 'outlined'
           endIcon={<LibraryBooksIcon style={{ color: '#ede7e3'}}/>}
           style={{ width: 'calc((100% - 5vw))' }}
     >

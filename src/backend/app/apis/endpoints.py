@@ -74,7 +74,7 @@ def summary_file():
 
     return jsonify({"task_id": task_id})
 
-
+'''
 @api.route("/generate_questions")
 def question_generate():
     text = request.args.get("text")
@@ -88,7 +88,7 @@ def question_generate():
     task.start()
 
     return jsonify({"task_id": task_id})
-
+'''
 
 @api.route("/get_status")
 def test_status():
@@ -103,6 +103,6 @@ def test_status():
 
     if task.status == 'done':
         global_task_queue.remove(task)
-        return jsonify({"status": task.status, "result": task.content})
+        return jsonify({"status": task.status, "title": task.title, "result": task.content, "questions": task.questions})
 
-    return jsonify({"status": task.status})
+    return jsonify({"status": task.status, "title": task.title})

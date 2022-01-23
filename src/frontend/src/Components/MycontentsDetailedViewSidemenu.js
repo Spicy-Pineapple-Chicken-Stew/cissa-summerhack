@@ -3,9 +3,13 @@ import { Box } from '@mui/system';
 import { Button } from '@mui/material';
 import { styled } from "@mui/material/styles";
 import { FlashcardComponent } from 'react-flashcard'
+import {useContext} from "react";
+import {CurrentTaskContext} from "../Contexts/CurrentTaskContext";
+import parseQuestions from "../Functions/ParseQuestions";
 
 export default function MC_Sidemenu(){
     let [contents, setContents] = React.useState('Summary');
+    let [currentTask, setCurrentTask] = useContext(CurrentTaskContext);
 
     const Menu_button = styled(Button)(({ theme }) => ({
         fontFamily: [
@@ -21,17 +25,6 @@ export default function MC_Sidemenu(){
         textDecorationLine: 'underline',
         width: 'auto',
     }));
-
-    const cardData = [
-        {
-            front: {
-                text: "This is a sample question.",
-            },
-            back: {
-                text: "This is a sample solution.",
-            }
-        }
-    ]
 
     return (
         <Box className='content_box'>
@@ -52,7 +45,7 @@ export default function MC_Sidemenu(){
                 </div>
                 <div>
                     <Menu_button onClick={() => setContents('Original submission')}>Original submission</Menu_button>
-                </div>      
+                </div>
             </Box>
             <Box sx={{
                 width: 5/6,
@@ -73,7 +66,7 @@ export default function MC_Sidemenu(){
                     textAlign: 'left',
                     fontSize: '1vw'
                 }}>
-                    {contents}
+                    {currentTask.taskResult}
                 </Box>
                 }
                 {(contents == 'Original submission') &&
@@ -89,7 +82,7 @@ export default function MC_Sidemenu(){
                 </Box>
                 }
                 {(contents == 'Flash cards') &&
-                <FlashcardComponent dataSource={cardData} />
+                <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />
                 }
             </Box>
         </Box>

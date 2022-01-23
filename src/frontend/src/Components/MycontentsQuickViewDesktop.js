@@ -4,12 +4,15 @@ import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import {FlashcardComponent} from 'react-flashcard';
 import {CurrentTaskContext} from "../Contexts/CurrentTaskContext";
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
+import parseQuestions from "../Functions/ParseQuestions";
 
 export default function MycontentsQuickViewDesktop(props){
     let [isQuickView, setIsQuickView] = props.isQuickView;
     let [currentTask, setCurrentTask] = useContext(CurrentTaskContext);
 
+
+    /*
     const cardData = [
         {
             front: {
@@ -20,6 +23,7 @@ export default function MycontentsQuickViewDesktop(props){
             }
         }
     ];
+     */
 
     return (
         <div>
@@ -43,7 +47,7 @@ export default function MycontentsQuickViewDesktop(props){
                         display:'flex',
                         flexDirection:'row'}}>
 
-                    Title</Box>
+                        {currentTask.taskTitle}</Box>
 
                 </Typography>
 
@@ -141,9 +145,8 @@ export default function MycontentsQuickViewDesktop(props){
                         opacity: 0.9,
                     },
                 }}>
-                <FlashcardComponent dataSource={cardData} />
+                <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />
             </Box>
-
             </Box>
             </div>
         </div>
