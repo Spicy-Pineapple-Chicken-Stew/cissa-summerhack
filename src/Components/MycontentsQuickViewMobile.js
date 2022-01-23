@@ -2,30 +2,14 @@ import * as React from 'react';
 import { Switch } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import TextField from '@mui/material/TextField';
-import { useFormControl } from '@mui/material/FormControl';
-import FormControl from '@mui/material/FormControl';
-import FormHelperText from '@mui/material/FormHelperText';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import {CustomTextField} from './CustomTextField';
-import { styled } from '@mui/material/styles';
-import {FlashcardComponent} from 'react-flashcard';
-import {CurrentPageContext} from "../Contexts/CurrentPageContext";
+import {FlashcardComponent} from './TestFlashcardComponent';
 import {useContext} from "react";
+import {CurrentTaskContext} from "../Contexts/CurrentTaskContext";
+import parseQuestions from "../Functions/ParseQuestions";
 
 export default function MycontentsQuickViewMobile(props){
     let [isQuickView, setIsQuickView] = props.isQuickView;
-
-    const cardData = [
-        {
-            front: {
-                text: "Sample question",
-            },
-            back: {
-                text: "Sample solution",
-            }
-        }
-    ]
+    let [currentTask, setCurrentTask] = useContext(CurrentTaskContext);
 
     return (
         <div>
@@ -48,7 +32,7 @@ export default function MycontentsQuickViewMobile(props){
                         display:'flex',
                         flexDirection:'row'}}>
 
-                    Title</Box>
+                        {currentTask.taskTitle}</Box>
 
                 </Typography>
 
@@ -102,7 +86,7 @@ export default function MycontentsQuickViewMobile(props){
                     },
 
                 }}>
-                <Typography variant='subtitle1'>Text here</Typography>
+                <Typography variant='subtitle1'>{currentTask.taskResult}</Typography>
             </Box>
 
             <Box
@@ -129,7 +113,7 @@ export default function MycontentsQuickViewMobile(props){
                     },
 
                 }}>
-                <FlashcardComponent dataSource={cardData} />
+                <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />
             </Box>
             </Box>
             </div>

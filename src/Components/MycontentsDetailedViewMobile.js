@@ -6,11 +6,15 @@ import { InputLabel } from '@mui/material';
 import { MenuItem } from '@mui/material';
 import { FormControl } from '@mui/material';
 import { Select } from '@mui/material';
-import { FlashcardComponent } from 'react-flashcard'
+import { FlashcardComponent } from './TestFlashcardComponent'
+import {useContext} from "react";
+import {CurrentTaskContext} from "../Contexts/CurrentTaskContext";
+import parseQuestions from "../Functions/ParseQuestions";
 
 export default function MC_detailedview_mobile(props){
     const [contents_mobile, setContents_mobile] = React.useState('Summary');
     let [isQuickView, setIsQuickView] = props.isQuickView;
+    let [currentTask, setCurrentTask] = useContext(CurrentTaskContext);
 
     const handleContentChange = (Event) => {
         setContents_mobile(Event.target.value);
@@ -30,7 +34,7 @@ export default function MC_detailedview_mobile(props){
     return (
         <div>
             <Typography align='left' fontSize={'4vw'} ml={2} fontFamily={'Oxygen'} color={'rgba(22, 105, 122, 1)'}>
-                <Box>Studymaterialaccleratedmath2lec21.mp4</Box>
+                <Box>{currentTask.taskTitle}</Box>
             </Typography>
             <Typography align='left' fontSize={'3vw'} ml={2}>
                 <Box>
@@ -71,7 +75,7 @@ export default function MC_detailedview_mobile(props){
                     overflow: 'auto',
                     textAlign: 'left'
                 }}>
-                    {contents_mobile}
+                    {currentTask.taskResult}
                 </Box>}
                 {(contents_mobile === 'Original submission') &&
                 <Box sx={{
@@ -86,7 +90,7 @@ export default function MC_detailedview_mobile(props){
                     {contents_mobile}
                 </Box>}
                 {(contents_mobile === 'Flash cards') &&
-                <FlashcardComponent dataSource={cardData} />}
+                <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />}
             </Box>
         </div>
     )

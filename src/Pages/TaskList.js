@@ -33,6 +33,14 @@ export default function TaskListPage(props){
         margin: 2
     };
 
+    const error_box = {
+        width   : "80",
+        height: "20",
+        border: '3px solid rgb(255,0,0)',
+        borderRadius: "8px",
+        margin: 2
+    };
+
     const Input = styled('input')({
         display: 'none',
     });
@@ -45,12 +53,13 @@ export default function TaskListPage(props){
         borderRadius: '16px',
         fontSize: 24,
         color: '#16697A',
+        overflowY: "scroll"
     }
 
     useEffect(() => {
         var timer = setInterval(() => {
             props.taskList.forEach((taskObj) => {
-                if(!taskObj.isDone){
+                if(!taskObj.isDone && !taskObj.isError){
                     axios.get(props.url + "/api/get_status?task_id=" + taskObj.taskID).then((response)=>{
                         if(response.data.title != null){
                             taskObj.taskTitle = response.data.title;
@@ -108,6 +117,10 @@ export default function TaskListPage(props){
                                     setCurrentPage("My Contents")
                                     setCurrentTask(taskObj)
                                 }}>{taskObj.taskTitle} - {taskObj.taskStatus}</Box>
+                            )
+                        }else if(taskObj.isError){
+                            return(
+                                <Box sx={error_box}>{taskObj.taskTitle} - ERROR - {taskObj.errorMessage}</Box>
                             )
                         }else{
                             return(

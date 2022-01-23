@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Switch } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import {FlashcardComponent} from 'react-flashcard';
+import {FlashcardComponent} from './TestFlashcardComponent';
 import {CurrentTaskContext} from "../Contexts/CurrentTaskContext";
 import {useContext, useEffect} from "react";
 import parseQuestions from "../Functions/ParseQuestions";
