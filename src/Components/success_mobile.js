@@ -2,16 +2,16 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import Light_Button from './ButtonDef_light'
+import Light_Button from '../Components/ButtonDef_light'
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
 import {useContext} from "react";
 
 const style = {
-  position: 'relative',
+  position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '42vw',
+  width: '75vw',
   bgcolor: '#82C0CC',
   border: '1px round',
   borderRadius: 2,
@@ -47,18 +47,17 @@ export default function Success_Upload(props) {
           <Box>
           <Light_Button
               sx={{
-            width: '16vw',
+            width: '30vw',
             position: "relative",
-            left: '5%',
                 }}
               onClick={() => {
                 setCurrentPage('Task List')
               }}
           >My Contents</Light_Button>
           <Light_Button sx={{
-            width: '16vw',
+            width: '35vw',
             position: "relative",
-            left: '20%',
+            left: '15%',
           }}
                         onClick={props.handleClose}
           >Add another content</Light_Button>
