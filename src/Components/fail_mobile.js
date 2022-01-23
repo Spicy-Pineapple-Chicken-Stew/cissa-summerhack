@@ -5,10 +5,10 @@ import Light_Button from '../Components/ButtonDef_light'
 
 const style = {
     position: 'relative',
-    top: '45%',
-    left: '35%',
-    width: '25vw',
-    height: '8vw',
+    top: '40%',
+    left: '20%',
+    width: '50vw',
+    height: '15vw',
     bgcolor: '#289FB5',
     border: '1px round',
     borderRadius: 2,
@@ -30,7 +30,7 @@ export default function Fail_Upload(props) {
             <Box sx={
               {textAlign: 'center',
                 color: "#EAEAEA",
-                fontSize: "1.2vw",
+                fontSize: "4vw",
                 fontWeight: 900,
                 fontFamily: 'Oxygen',
                 m: 1}}>
@@ -40,11 +40,11 @@ export default function Fail_Upload(props) {
           <Box>
           <Light_Button sx={{
                   position: "relative",
-                  top: "50%",
-                  left: "30%",
-                  width: '10vw',
-                  height: "3vw",
-                  fontSize: "1vw"
+                  top: "10%",
+                  left: "25%",
+                  width: '25vw',
+                  height: "8vw",
+                  fontSize: "3vw"
           }}
                         onClick={props.handleClose}
           >Try again</Light_Button>
