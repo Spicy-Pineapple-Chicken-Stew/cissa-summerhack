@@ -72,6 +72,10 @@ body {
   margin-left: 3vw;
 }
 
+.content_box{
+  display: flex;
+  flex-wrap: wrap;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
