@@ -8,8 +8,9 @@ import { FormControl } from '@mui/material';
 import { Select } from '@mui/material';
 import { FlashcardComponent } from 'react-flashcard'
 
-export default function MC_detailedview_mobile(){
-    const [contents_mobile, setContents_mobile] = React.useState('');
+export default function MC_detailedview_mobile(props){
+    const [contents_mobile, setContents_mobile] = React.useState('Summary');
+    let [isQuickView, setIsQuickView] = props.isQuickView;
 
     const handleContentChange = (Event) => {
         setContents_mobile(Event.target.value);
@@ -34,7 +35,10 @@ export default function MC_detailedview_mobile(){
             <Typography align='left' fontSize={'3vw'} ml={2}>
                 <Box>
                     Change view: Default
-                    <Switch />
+                    <Switch
+                        checked={!isQuickView}
+                        onClick={() => {setIsQuickView(!isQuickView)}}
+                    />
                     Detailed
                 </Box>
             </Typography>
@@ -57,7 +61,7 @@ export default function MC_detailedview_mobile(){
                 </Box>
             </Box>
             <Box fullWidth>
-                {(contents_mobile == 'Summary') &&
+                {(contents_mobile === 'Summary') &&
                 <Box sx={{
                     border: '2px solid rgba(72, 159, 181, 1)',
                     borderRadius: '8px',
@@ -68,7 +72,7 @@ export default function MC_detailedview_mobile(){
                 }}>
                     {contents_mobile}
                 </Box>}
-                {(contents_mobile == 'Original submission') &&
+                {(contents_mobile === 'Original submission') &&
                 <Box sx={{
                     border: '2px solid rgba(72, 159, 181, 1)',
                     borderRadius: '8px',
@@ -79,7 +83,7 @@ export default function MC_detailedview_mobile(){
                 }}>
                     {contents_mobile}
                 </Box>}
-                {(contents_mobile == 'Flash cards') &&
+                {(contents_mobile === 'Flash cards') &&
                 <FlashcardComponent dataSource={cardData} />}
             </Box>
         </div>
