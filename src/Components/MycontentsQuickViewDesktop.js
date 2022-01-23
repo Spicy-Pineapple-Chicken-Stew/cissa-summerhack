@@ -2,19 +2,13 @@ import * as React from 'react';
 import { Switch } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import TextField from '@mui/material/TextField';
-import { useFormControl } from '@mui/material/FormControl';
-import FormControl from '@mui/material/FormControl';
-import FormHelperText from '@mui/material/FormHelperText';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import {CustomTextField} from './CustomTextField';
-import { styled } from '@mui/material/styles';
 import {FlashcardComponent} from 'react-flashcard';
-import {CurrentPageContext} from "../Contexts/CurrentPageContext";
+import {CurrentTaskContext} from "../Contexts/CurrentTaskContext";
 import {useContext} from "react";
 
 export default function MycontentsQuickViewDesktop(props){
     let [isQuickView, setIsQuickView] = props.isQuickView;
+    let [currentTask, setCurrentTask] = useContext(CurrentTaskContext);
 
     const cardData = [
         {
@@ -108,7 +102,7 @@ export default function MycontentsQuickViewDesktop(props){
                     },
 
                 }}>
-                <Typography variant='subtitle1'>Summary</Typography>
+                <Typography variant='subtitle1'>{currentTask.taskResult}</Typography>
             </Box>
 
             <Box

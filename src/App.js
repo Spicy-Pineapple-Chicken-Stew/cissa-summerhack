@@ -10,17 +10,24 @@ import Global_MenuBar_mobile from "./Components/global_menubar_mobile";
 import LoginRegistration from "./Pages/LoginRegistration";
 import {UserContext} from "./Contexts/UserContext";
 import MyContents from "./Pages/MyContents";
+import TaskListPage from "./Pages/TaskList";
+import {CurrentTaskContext} from "./Contexts/CurrentTaskContext";
 
 function App() {
-  let [currentPage, setCurrentPage] = useState('My Contents');
+  let [currentPage, setCurrentPage] = useState('Home');
   let [isMobile, setIsMobile] = useState(false);
   let [user, setUser] = useState(null);
+  let [currentTask, setCurrentTask] = useState(null);
+  let [taskList, setTaskList] = useState([]);
+  const url = "http://194.193.55.245:9000";
+
 
     function handleWindowSizeChange() {
         setIsMobile(window.innerWidth < window.innerHeight);
     }
     useEffect(() => {
         window.addEventListener('resize', handleWindowSizeChange);
+
         return () => {
             window.removeEventListener('resize', handleWindowSizeChange);
         }
@@ -30,18 +37,21 @@ function App() {
       <CurrentPageContext.Provider value={[currentPage, setCurrentPage]}>
           <MobileContext.Provider value={[isMobile, setIsMobile]}>
               <UserContext.Provider value={[user, setUser]}>
-                  <div>
+                  <CurrentTaskContext.Provider value={[currentTask, setCurrentTask]}>
                       <div>
-                          {isMobile ? <Global_MenuBar_mobile/> : <Global_MenuBar />}
+                          <div>
+                              {isMobile ? <Global_MenuBar_mobile/> : <Global_MenuBar />}
+                          </div>
+                          <div className="App">
+                              {currentPage === 'Home' && <Home/>}
+                              {currentPage === 'Upload' && !isMobile && <UploadDesktop taskList={taskList} setTaskList={setTaskList} url={url}/>}
+                              {currentPage === 'Upload' && isMobile && <UploadPhone />}
+                              {currentPage === 'Log in' && <LoginRegistration/>}
+                              {currentPage === 'My Contents' && <MyContents />}
+                              {currentPage === 'Task List' && <TaskListPage taskList={taskList} setTaskList={setTaskList} url={url}/>}
+                          </div>
                       </div>
-                      <div className="App">
-                          {currentPage === 'Home' && <Home/>}
-                          {currentPage === 'Upload' && !isMobile && <UploadDesktop/>}
-                          {currentPage === 'Upload' && isMobile && <UploadPhone />}
-                          {currentPage === 'Log in' && <LoginRegistration/>}
-                          {currentPage === 'My Contents' && <MyContents />}
-                      </div>
-                  </div>
+                  </CurrentTaskContext.Provider>
               </UserContext.Provider>
           </MobileContext.Provider>
       </CurrentPageContext.Provider>
