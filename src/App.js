@@ -27,7 +27,8 @@ function App() {
     }
     useEffect(() => {
         window.addEventListener('resize', handleWindowSizeChange);
-
+        setIsMobile(window.innerWidth < window.innerHeight || window.innerWidth < 768);
+        
         return () => {
             window.removeEventListener('resize', handleWindowSizeChange);
         }
