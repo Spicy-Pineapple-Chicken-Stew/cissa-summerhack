@@ -23,7 +23,7 @@ function App() {
 
 
     function handleWindowSizeChange() {
-        setIsMobile(window.innerWidth < window.innerHeight);
+        setIsMobile(window.innerWidth < window.innerHeight || window.innerWidth < 768);
     }
     useEffect(() => {
         window.addEventListener('resize', handleWindowSizeChange);
