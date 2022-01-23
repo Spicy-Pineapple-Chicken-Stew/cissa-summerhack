@@ -3,7 +3,7 @@ import ColorButton from '../Components/ButtonDef'
 import {Zoom} from "@mui/material";
 import {styled} from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
 import { Box } from '@mui/system';
 import Success_Upload from "../Components/success";
@@ -18,7 +18,9 @@ export default function UploadDesktop(props){
     let [file, setFile] = useState(null);
     let [successModal, setSuccessModal] = useState(false)
     let [failModal, setFailModal] = useState(false);
-    let [inputText, setInputText] = useState(null);
+
+    const pureTextRef = useRef('');
+    const linkTextRef = useRef('');
 
 
     const SubmitButton = styled(Button)(({ theme }) => ({
@@ -53,7 +55,7 @@ export default function UploadDesktop(props){
             maxRows={1}
             sx={{width: '81vw', marginLeft: '9vw', marginTop: '5vh'}}
             focused
-            onChange={(e) => {setInputText(e.target.value)}}
+            inputRef={linkTextRef}
         />
     );
 
@@ -65,7 +67,7 @@ export default function UploadDesktop(props){
             rows={16}
             sx={{width: '81vw', marginLeft: '9vw', marginTop: '5vh'}}
             focused
-            onChange={(e) => {setInputText(e.target.value)}}
+            inputRef={pureTextRef}
         />
     )
 
@@ -165,7 +167,6 @@ export default function UploadDesktop(props){
     }
 
     const onFileUpload = () => {
-
         // Create an object of formData
         const formData = new FormData();
 
@@ -233,7 +234,7 @@ export default function UploadDesktop(props){
                     if(currentSelection === 'customvideo'){
                         onFileUpload()
                     }else if(currentSelection === 'puretext'){
-                        axios.get(props.url + "/api/text_summary?text=" + inputText).then((response)=>{
+                        axios.get(props.url + "/api/text_summary?text=" + pureTextRef.current.value).then((response)=>{
                             props.setTaskList([{
                                 taskID: response.data.task_id,
                                 isDone: false,
@@ -250,17 +251,17 @@ export default function UploadDesktop(props){
                         })
                     }else if(currentSelection === 'link'){
                         try{
-                            var parseURL = new URL(inputText);
+                            var parseURL = new URL(linkTextRef.current.value);
                         }catch{
                             alert("Please enter a valid URL")
                         }
 
                         if(parseURL.hostname === 'www.youtube.com' || parseURL.hostname === 'youtube.com'){
-                            axios.get(props.url + "/api/youtube_summary?url=" + inputText).then((response)=>{
+                            axios.get(props.url + "/api/youtube_summary?url=" + linkTextRef.current.value).then((response)=>{
                                 props.setTaskList([{
                                     taskID: response.data.task_id,
                                     isDone: false,
-                                    taskTitle: inputText,
+                                    taskTitle: linkTextRef.current.value,
                                     taskStatus: "pending",
                                     taskResult: "",
                                     isError: false,
@@ -272,11 +273,11 @@ export default function UploadDesktop(props){
                                 console.log(error)
                             })
                         }else{
-                            axios.get(props.url + "/api/website_summary?url=" + inputText).then((response)=>{
+                            axios.get(props.url + "/api/website_summary?url=" + linkTextRef.current.value).then((response)=>{
                                 props.setTaskList([{
                                     taskID: response.data.task_id,
                                     isDone: false,
-                                    taskTitle: inputText,
+                                    taskTitle: linkTextRef.current.value,
                                     taskStatus: "pending",
                                     taskResult: "",
                                     questions: null,
