@@ -37,9 +37,9 @@ export default function Summarylist(){
                 Summary
             </Box>
             <Box sx={{
-                border: '3px solid #16697A', 
+                border: '3px solid #16697A',
                 borderRadius: 2,
-                height: '32vw', 
+                height: '32vw',
                 marginTop: '5vw',
                 overflow: 'auto'
                 }}
@@ -48,7 +48,7 @@ export default function Summarylist(){
                     <ContentButton fullWidth sx={{marginBottom: '0.25vw', marginTop: '0.25vw'}}>{content}</ContentButton>
                 ))}
             </Box>
-            
+
         </div>
     )
 }

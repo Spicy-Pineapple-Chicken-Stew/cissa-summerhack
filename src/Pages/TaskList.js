@@ -49,25 +49,28 @@ export default function TaskListPage(props){
 
     useEffect(() => {
         var timer = setInterval(() => {
-            console.log(props.taskList)
-            var newList = []
-            props.taskList.forEach(async (taskObj) => {
+            props.taskList.forEach((taskObj) => {
                 if(!taskObj.isDone){
-                    var response = await axios.get(props.url + "/api/get_status?task_id=" + taskObj.taskID)
-                    if(response.data.status === 'done'){
-                        taskObj.isDone = true;
-                        taskObj.taskStatus = response.data.status
-                        taskObj.taskResult = response.data.result
-                    }else if(response.data.error != null){
-                        taskObj.isError = true;
-                        taskObj.errorMessage = response.data.error
-                    }else{
-                        taskObj.taskStatus = response.data.status
-                    }
+                    axios.get(props.url + "/api/get_status?task_id=" + taskObj.taskID).then((response)=>{
+                        if(response.data.title != null){
+                            taskObj.taskTitle = response.data.title;
+                        }
+
+                        if(response.data.status === 'done'){
+                            taskObj.isDone = true;
+                            taskObj.taskStatus = response.data.status
+                            taskObj.taskResult = response.data.result
+                            taskObj.questions = response.data.questions
+                        }else if(response.data.error != null){
+                            taskObj.isError = true;
+                            taskObj.errorMessage = response.data.error
+                        }else{
+                            taskObj.taskStatus = response.data.status
+                        }
+                        props.setTaskList([...props.taskList])
+                    })
                 }
-                newList.push(taskObj)
             })
-            props.setTaskList([...newList])
         }, 1000)
 
         return () => {clearInterval(timer)}
@@ -83,7 +86,7 @@ export default function TaskListPage(props){
                                 <Box sx={success_box} onClick={() => {
                                     setCurrentPage("My Contents")
                                     setCurrentTask(taskObj)
-                                }}>Task ID: {taskObj.taskID} Task Status: {taskObj.taskStatus}</Box>
+                                }}>{taskObj.taskTitle} - {taskObj.taskStatus}</Box>
                             )
                         }else{
                             return(
@@ -99,15 +102,18 @@ export default function TaskListPage(props){
             return(
                 <Box justifyContent={"center"} sx={box_style}>
                     {props.taskList.map((taskObj) => {
-                        return(
-                            <Box
-                                sx={taskObj.isDone ? success_box : in_progress}
-                                onClick={taskObj.isDone && (() => {
+                        if(taskObj.isDone){
+                            return(
+                                <Box sx={success_box} onClick={() => {
                                     setCurrentPage("My Contents")
                                     setCurrentTask(taskObj)
-                                })}
-                            >Task ID: {taskObj.taskID} Task Status: {taskObj.taskStatus}</Box>
-                        )
+                                }}>{taskObj.taskTitle} - {taskObj.taskStatus}</Box>
+                            )
+                        }else{
+                            return(
+                                <Box sx={in_progress}>{taskObj.taskTitle} - {taskObj.taskStatus}</Box>
+                            );
+                        }
                     })}
                 </Box>
             )
