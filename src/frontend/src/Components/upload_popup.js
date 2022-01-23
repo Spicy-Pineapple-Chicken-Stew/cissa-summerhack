@@ -124,7 +124,7 @@ export default function TextboxPopup(props){
                                 alert("Please enter a valid URL")
                             }
 
-                            if(parseURL.hostname === 'www.youtube.com' || parseURL.hostname === 'youtube.com'){
+                            if(parseURL.hostname === 'www.youtube.com' || parseURL.hostname === 'youtube.com' || parseURL.hostname === 'youtu.be'){
                                 axios.get(props.url + "/api/youtube_summary?url=" + inputText).then((response)=>{
                                     props.setTaskList([{
                                         taskID: response.data.task_id,
