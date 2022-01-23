@@ -10,8 +10,12 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import {CustomTextField} from '../Components/CustomTextField';
 import { styled } from '@mui/material/styles';
 import {FlashcardComponent} from 'react-flashcard';
+import {CurrentPageContext} from "../Contexts/CurrentPageContext";
+import {useContext} from "react";
 
-export default function MycontentsQuickView(){
+export default function MycontentsQuickViewMobile(){
+    let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
+
     const cardData = [
         {
             front: {
@@ -21,7 +25,7 @@ export default function MycontentsQuickView(){
                 text: "Sample solution",
             }
         }
-    ];
+    ]
 
     return (
         <div>
@@ -32,14 +36,13 @@ export default function MycontentsQuickView(){
                 flexDirection:'column', 
                 alignContent: 'flex-start',
                 marginLeft: '3%',
-                marginTop: '5%',
-                border: '1px solid #000000'}}>
+                marginTop: '5%'}}>
                     <Typography 
                     sx = {{
                     fontSize:'300%',
                     fontFamily: 'Oxygen',
                     color: 'rgba(22, 105, 122, 1)'
-                    }} >
+                }} >
                     <Box 
                     sx ={{flexWrap: 'wrap', 
                         display:'flex', 
@@ -49,50 +52,44 @@ export default function MycontentsQuickView(){
 
                 </Typography>
                 
-                <Typography variant='subtitle1'>
-                    <Box fullWidth sx={{marginLeft: '70vw'}}>
-                        Change view: Default
-                        <Switch />
-                        Detailed
-                    </Box>
+                
+                <Typography align='left' fontSize={'1vh'} ml={'57vw'} mr = {'3vw'} >
+                <Box>
+                    Change view: Default
+                    <Switch />
+                    Detailed
+                </Box>
                 </Typography>
                 </Box>
             </div>
-            <div style ={{margin:'3%', marginTop: '1%'}}>
+
+            <div style ={{margin:'3%', marginTop: '-0.5%'}}>
             
-            <Box sx={{display: 'flex', flexDirection: 'row'}}>
-                <Box sx={{
-                    width: '60%', 
-                    fontSize: '1vw', 
-                    textAlign: 'left'
-                }}
-                >
-                    Summary
-                </Box>
-                <Box sx={{
-                    width: '37.5%', 
-                    marginLeft: '2%', 
-                    fontSize: '1vw', 
-                    textAlign: 'left'
-                }}
-                >
-                    Original submission
-                </Box>
-            </Box>
-           <Box sx ={{
+            <Box sx ={{
                position: 'relative',
                flexWrap: 'wrap', 
                display:'flex', 
-               flexDirection:'row', 
+               flexDirection:'column', 
                alignContent: 'flex-start',
                justifyContent: 'flex-start',
             }}>
+            
             <Box
                 sx={{
-                    width: '60%',
-                    height: 130,
+                    width: '100%',
+                    height: '100%',
+                    justifyContent: "flex-start",
+                    marginLeft: '1%'
+                }}>
+                <Typography variant='h5' align= "left">Summary</Typography>
+            </Box>
+
+            <Box
+                sx={{
+                    width: '100%',
+                    height: 150,
+                    marginBottom: '3%',
                     border: '1px solid #489FB5',
-                    marginRight: '2%',
                     borderRadius: '4px',
                     flexShrink: 1,
                     '&:hover': {
@@ -101,48 +98,35 @@ export default function MycontentsQuickView(){
                     },
                     
                 }}>
-                <Typography variant='subtitle1'>Summary</Typography>
+                <Typography variant='subtitle1'>Text here</Typography>
             </Box>
             
             <Box
                 sx={{
-                    position: 'relative',
-                    width: '37.5%',
-                    height: 130,
-                    border: '1px solid #489FB5',
-                    borderRadius: '4px',
-                    '&:hover': {
-                        border: '1px solid #16697A',
-                        opacity: 0.9,
-                    },
-                }}>
-                <Typography variant='subtitle1'>Original submission</Typography>
-            </Box>
-            
-            <Box sx={{
-                fontSize: '1vw', 
-                textAlign: 'left', 
-                width: '100%', 
-                marginTop: '1%'
-            }}
-            >
-                Flash card
-            </Box>
-            <Box
-                sx={{
-                    position: 'relative',
                     width: '100%',
-                    height: 300,
+                    height: '100%',
+                    justifyContent: "flex-start",
+                    marginLeft: '1%'
+                }}>
+                <Typography variant='h5' align= "left">Flashcards</Typography>
+            </Box>
+
+            <Box
+                sx={{
+                    width: '100%',
+                    height: 250,
+                    marginBottom: '3%',
                     border: '1px solid #489FB5',
                     borderRadius: '4px',
+                    flexShrink: 1,
                     '&:hover': {
                         border: '1px solid #16697A',
                         opacity: 0.9,
                     },
+                    
                 }}>
                 <FlashcardComponent dataSource={cardData} />
             </Box>
-
             </Box>
             </div>
         </div>
