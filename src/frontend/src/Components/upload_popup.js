@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import {styled} from "@mui/material/styles";
-import {useState} from "react";
+import {useRef, useState} from "react";
 import Success_Upload from "./success";
 import Fail_Upload from "./fail";
 import axios from "axios";
@@ -14,7 +14,8 @@ import axios from "axios";
 export default function TextboxPopup(props){
     let [successModal, setSuccessModal] = useState(false)
     let [failModal, setFailModal] = useState(false)
-    let [inputText, setInputText] = useState(null);
+
+    const textFieldRef = useRef('');
 
     const SubmitButton = styled(Button)(({ theme }) => ({
         fontFamily: [
@@ -92,7 +93,7 @@ export default function TextboxPopup(props){
                         multiline
                         maxRows={10}
                         fullWidth
-                        onChange={(e) => {setInputText(e.target.value)}}
+                        inputRef={textFieldRef}
                     />
                     <SubmitButton
                     sx={{
@@ -102,7 +103,7 @@ export default function TextboxPopup(props){
                         }}
                     onClick={() => {
                         if(props.type === 'puretext'){
-                            axios.get(props.url + "/api/text_summary?text=" + inputText).then((response)=>{
+                            axios.get(props.url + "/api/text_summary?text=" + textFieldRef.current.value).then((response)=>{
                                 props.setTaskList([{
                                     taskID: response.data.task_id,
                                     isDone: false,
@@ -119,17 +120,17 @@ export default function TextboxPopup(props){
                             })
                         }else if(props.type === 'link'){
                             try{
-                                var parseURL = new URL(inputText);
+                                var parseURL = new URL(textFieldRef.current.value);
                             }catch{
                                 alert("Please enter a valid URL")
                             }
 
                             if(parseURL.hostname === 'www.youtube.com' || parseURL.hostname === 'youtube.com' || parseURL.hostname === 'youtu.be'){
-                                axios.get(props.url + "/api/youtube_summary?url=" + inputText).then((response)=>{
+                                axios.get(props.url + "/api/youtube_summary?url=" + textFieldRef.current.value).then((response)=>{
                                     props.setTaskList([{
                                         taskID: response.data.task_id,
                                         isDone: false,
-                                        taskTitle: inputText,
+                                        taskTitle: textFieldRef.current.value,
                                         taskStatus: "pending",
                                         taskResult: "",
                                         isError: false,
@@ -141,11 +142,11 @@ export default function TextboxPopup(props){
                                     console.log(error)
                                 })
                             }else{
-                                axios.get(props.url + "/api/website_summary?url=" + inputText).then((response)=>{
+                                axios.get(props.url + "/api/website_summary?url=" + textFieldRef.current.value).then((response)=>{
                                     props.setTaskList([{
                                         taskID: response.data.task_id,
                                         isDone: false,
-                                        taskTitle: inputText,
+                                        taskTitle: textFieldRef.current.value,
                                         taskStatus: "pending",
                                         taskResult: "",
                                         questions: null,

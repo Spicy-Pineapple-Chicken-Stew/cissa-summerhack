@@ -57,7 +57,6 @@ function UploadPhone(props){
                     url={props.url}
                 />
             </div>
-
         </div>
     )
 
