@@ -125,7 +125,7 @@ const Global_MenuBar = () => {
                         whiteSpace: 'pre' }}>
                         <Tooltip title="My Contents">
                         <Button onClick={() => {setCurrentPage("Task List")}} color="inherit" >
-                        My Tasks
+                        My Content
                         </Button>
                         </Tooltip>
                     </Box>

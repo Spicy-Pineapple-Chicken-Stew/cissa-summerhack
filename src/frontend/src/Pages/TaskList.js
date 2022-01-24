@@ -2,12 +2,16 @@ import * as React from 'react';
 import {styled} from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import {useContext, useEffect, useState} from "react";
-import { Box } from '@mui/system';
+import { Box, fontSize, typography } from '@mui/system';
 import axios from "axios";
-import {Switch} from "@mui/material";
+import {Switch, Typography} from "@mui/material";
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
 import {CurrentTaskContext} from "../Contexts/CurrentTaskContext";
 import {UserContext} from "../Contexts/UserContext";
+
+import WebIcon from '@mui/icons-material/Web';
+import VideocamIcon from '@mui/icons-material/Videocam';
+import FileCopyIcon from '@mui/icons-material/FileCopy';
 
 export default function TaskListPage(props){
     let [hasSelected, setHasSelected] = useState(false);
@@ -16,29 +20,33 @@ export default function TaskListPage(props){
     let [user, setUser] = useContext(UserContext);
 
     const success_box = {
+        fontSize: 24,
+        display: "flex",
         width   : "80",
         height: "20",
         border: '3px solid rgba(17, 221, 74, 1)',
         borderRadius: "8px",
         margin: 2,
         '&:hover': {
-            backgroundColor: 'rgba(103,103,103,0.36)',
+            backgroundColor: 'rgba(0,56,255,0.36)',
             cursor: "pointer"
         },
     };
 
     const in_progress = {
+        display: "flex",
         width   : "80",
         height: "20",
-        border: '3px solid rgba(255, 138, 0, 1)',
+        border: '3px solid rgba(174, 192, 255, 1)',
         borderRadius: "8px",
         margin: 2
     };
 
     const error_box = {
+        display: "flex",
         width   : "80",
         height: "20",
-        border: '3px solid rgb(255,0,0)',
+        border: '3px solid rgb(204,2,2)',
         borderRadius: "8px",
         margin: 2
     };
@@ -56,6 +64,12 @@ export default function TaskListPage(props){
         fontSize: 24,
         color: '#16697A',
         overflowY: "scroll"
+    }
+
+    const icon_style ={
+        display: "flex",
+        marginLeft: 2,
+        marginRight: 2
     }
 
     useEffect(() => {
@@ -105,7 +119,9 @@ export default function TaskListPage(props){
                                 <Box sx={success_box} onClick={() => {
                                     setCurrentPage("My Contents")
                                     setCurrentTask(taskObj)
-                                }}>{taskObj.taskTitle} - {taskObj.taskStatus}</Box>
+                                }}>
+                                    <WebIcon sx={icon_style}></WebIcon>
+                                    {taskObj.taskTitle} - {taskObj.taskStatus}</Box>
                             )
                         }else{
                             return(
@@ -126,15 +142,21 @@ export default function TaskListPage(props){
                                 <Box sx={success_box} onClick={() => {
                                     setCurrentPage("My Contents")
                                     setCurrentTask(taskObj)
-                                }}>{taskObj.taskTitle} - {taskObj.taskStatus}</Box>
+                                }}>
+                                    <WebIcon sx={icon_style}></WebIcon>
+                                    {taskObj.taskTitle} - {taskObj.taskStatus}</Box>
                             )
                         }else if(taskObj.isError){
                             return(
-                                <Box sx={error_box}>{taskObj.taskTitle} - ERROR - {taskObj.errorMessage}</Box>
+                                <Box sx={error_box}>
+                                    <FileCopyIcon sx={icon_style}></FileCopyIcon>
+                                    {taskObj.taskTitle} - ERROR - {taskObj.errorMessage}</Box>
                             )
                         }else{
                             return(
-                                <Box sx={in_progress}>{taskObj.taskTitle} - {taskObj.taskStatus}</Box>
+                                <Box sx={in_progress}>
+                                    <VideocamIcon sx={icon_style}></VideocamIcon>
+                                    {taskObj.taskTitle} - {taskObj.taskStatus}</Box>
                             );
                         }
                     })}
