@@ -12,6 +12,7 @@ import {UserContext} from "./Contexts/UserContext";
 import MyContents from "./Pages/MyContents";
 import TaskListPage from "./Pages/TaskList";
 import {CurrentTaskContext} from "./Contexts/CurrentTaskContext";
+import axios from "axios";
 
 function App() {
   let [currentPage, setCurrentPage] = useState('Home');
@@ -33,6 +34,17 @@ function App() {
             window.removeEventListener('resize', handleWindowSizeChange);
         }
     }, []);
+
+    useEffect(() => {
+        if(user != null){
+            axios.get(url + "/api/get_tasks?userid=" + user).then((response) => {
+                setTaskList(response.data.tasks)
+            }).catch((error) => {
+                alert(error.response)
+                console.log(error.response)
+            })
+        }
+    }, [user])
 
   return (
       <CurrentPageContext.Provider value={[currentPage, setCurrentPage]}>
