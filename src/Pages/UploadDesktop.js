@@ -74,6 +74,7 @@ export default function UploadDesktop(props){
     const descriptionBoxPT = (
         <Box
         sx={{
+            textAlign: "center",
             width: '17vw',
             height: '10vw',
             marginTop: '-3vh',
@@ -84,13 +85,14 @@ export default function UploadDesktop(props){
             }}
         className = {'descriptionBox'}
         >
-            Click the button above and enter texts in the textbox
+            Click the button above and enter or past text to be summarised
         </Box>
     )
 
     const descriptionBoxLink = (
         <Box
         sx={{
+            textAlign: "center",
             width: '17vw',
             height: '10vw',
             marginTop: '-3vh',
@@ -101,13 +103,14 @@ export default function UploadDesktop(props){
             }}
         className = {'descriptionBox'}
         >
-            Click the button above and enter a link in the textbox
+            Click the button above and enter or past a url to be summarised
         </Box>
     )
 
     const descriptionBoxYV = (
         <Box
         sx={{
+            textAlign: "center",
             width: '17vw',
             height: '10vw',
             marginTop: '-3vh',
@@ -118,9 +121,15 @@ export default function UploadDesktop(props){
             }}
         className = {'descriptionBox'}
         >
-            Click the button above and choose a video to upload
+            Click the button above and upload a video to be summarised
         </Box>
     )
+
+    const button_style = {
+        fontSize: "1.4vw",
+        width: '17vw',
+        height: "3vw"
+    }
 
     const Input = styled('input')({
         display: 'none',
@@ -200,14 +209,14 @@ export default function UploadDesktop(props){
             <h1 style={{marginTop: '5vh'}}>Choose what to upload</h1>
             <div className={'wrapperButtonRow'}>
                 <ColorButton
-                    sx={{width: '17vw'}}
+                    sx={button_style}
                     onClick={() => {
                         setHasSelected(true)
                         setCurrentSelection('puretext')
                     }}
                 >Pure text</ColorButton>
                 <ColorButton
-                    sx={{width: '17vw'}}
+                    sx={button_style}
                     onClick={() => {
                         setHasSelected(true)
                         setCurrentSelection('link')
@@ -223,7 +232,9 @@ export default function UploadDesktop(props){
                         }}
                     />
                     <ColorButton
-                        sx={{width: '17vw'}}
+                        sx={
+                            button_style
+                        }
                         component={"span"}
                     >Your video</ColorButton>
                 </label>
