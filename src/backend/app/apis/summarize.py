@@ -91,8 +91,9 @@ def process_video(task, filename, task_id):
     task.status = 'processing text'
     punctuated = requests.post("http://bark.phon.ioc.ee/punctuator", data={"text": transcription}).text
 
-    result = ''.join(GPT2_model(punctuated))
+    print(punctuated)
 
+    result = ''.join(GPT2_model(punctuated))
     task.content = result
     task.questions = generate_questions(result, task)
 

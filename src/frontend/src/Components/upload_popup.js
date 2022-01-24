@@ -6,8 +6,8 @@ import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import {styled} from "@mui/material/styles";
 import {useRef, useState} from "react";
-import Success_Upload from "./success";
-import Fail_Upload from "./fail";
+import Success_Upload from "./success_mobile";
+import Fail_Upload from "./fail_mobile";
 import axios from "axios";
 
 

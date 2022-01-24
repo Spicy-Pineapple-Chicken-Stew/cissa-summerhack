@@ -10,6 +10,9 @@ from app import global_task_queue
 from app.tasks import Task, get_task
 from app.apis.summarize import *
 from app.apis.language_processing import *
+from app import db
+
+users = db.users
 
 
 @api.route("/text_summary")
@@ -106,3 +109,32 @@ def test_status():
         return jsonify({"status": task.status, "title": task.title, "result": task.content, "questions": task.questions})
 
     return jsonify({"status": task.status, "title": task.title})
+
+
+@api.route("/save_task", methods=['POST'])
+def save_task():
+    user_id = request.args.get("userid")
+    if user_id is None:
+        raise Exception("InvalidArgument", "userid is required")
+
+    task_obj = request.json
+    user = users.find_one({'user_id': user_id})
+    if user is None:
+        raise Exception("UserNotFound", "user not found")
+
+    users.update_one({'user_id': user_id}, {'$push': {'tasks': task_obj}})
+
+    return jsonify({"status": "success"})
+
+
+@api.route("get_tasks")
+def get_tasks():
+    user_id = request.args.get("userid")
+    if user_id is None:
+        raise Exception("InvalidArgument", "userid is required")
+
+    user = users.find_one({'user_id': user_id})
+    if user is None:
+        raise Exception("UserNotFound", "user not found")
+
+    return jsonify({"tasks": user['tasks']})
