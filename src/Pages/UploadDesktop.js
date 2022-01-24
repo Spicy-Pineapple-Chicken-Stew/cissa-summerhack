@@ -46,6 +46,10 @@ export default function UploadDesktop(props){
         },
     }));
 
+    const input_style = {
+        width: '88.4vw', marginLeft: '5.4vw', marginTop: '5vh'
+    }
+
     const linkTextField = (
         <CustomTextField
             id={'link-text-input'}
@@ -53,7 +57,7 @@ export default function UploadDesktop(props){
             multiline
             rows={1}
             maxRows={1}
-            sx={{width: '81vw', marginLeft: '9vw', marginTop: '5vh'}}
+            sx={input_style}
             focused
             inputRef={linkTextRef}
         />
@@ -65,24 +69,27 @@ export default function UploadDesktop(props){
             label={'Enter your text'}
             multiline
             rows={16}
-            sx={{width: '81vw', marginLeft: '9vw', marginTop: '5vh'}}
+            sx={input_style}
             focused
             inputRef={pureTextRef}
         />
     )
+    
+    const descriptBox = {
+        textAlign: "center",
+        width: '26vw',
+        height: '14vw',
+        margin: "-5vw",
+        marginTop: '-1vw',
+        border: '2px solid rgba(72, 159, 181, 1)',
+        borderRadius: '16px',
+        fontSize: '1.65vw',
+        color: '#16697A'
+    }
 
     const descriptionBoxPT = (
         <Box
-        sx={{
-            textAlign: "center",
-            width: '17vw',
-            height: '10vw',
-            marginTop: '-3vh',
-            border: '2px solid rgba(72, 159, 181, 1)',
-            borderRadius: '16px',
-            fontSize: '1.3vw',
-            color: '#16697A'
-            }}
+        sx={descriptBox}
         className = {'descriptionBox'}
         >
             Click the button above and enter or past text to be summarised
@@ -91,16 +98,7 @@ export default function UploadDesktop(props){
 
     const descriptionBoxLink = (
         <Box
-        sx={{
-            textAlign: "center",
-            width: '17vw',
-            height: '10vw',
-            marginTop: '-3vh',
-            border: '2px solid rgba(72, 159, 181, 1)',
-            borderRadius: '16px',
-            fontSize: '1.3vw',
-            color: '#16697A'
-            }}
+        sx={descriptBox}
         className = {'descriptionBox'}
         >
             Click the button above and enter or past a url to be summarised
@@ -109,16 +107,7 @@ export default function UploadDesktop(props){
 
     const descriptionBoxYV = (
         <Box
-        sx={{
-            textAlign: "center",
-            width: '17vw',
-            height: '10vw',
-            marginTop: '-3vh',
-            border: '2px solid rgba(72, 159, 181, 1)',
-            borderRadius: '16px',
-            fontSize: '1.3vw',
-            color: '#16697A'
-            }}
+        sx={descriptBox}
         className = {'descriptionBox'}
         >
             Click the button above and upload a video to be summarised
@@ -126,9 +115,11 @@ export default function UploadDesktop(props){
     )
 
     const button_style = {
-        fontSize: "1.4vw",
-        width: '17vw',
-        height: "3vw"
+        fontSize: "1.8vw",
+        width: '26vw',
+        height: "3.5vw",
+        margin: "-4.9vw",
+        marginTop: "-10vh"
     }
 
     const Input = styled('input')({
@@ -206,7 +197,10 @@ export default function UploadDesktop(props){
 
     return(
         <div className={'wrapperUploadConfirmation'}>
-            <h1 style={{marginTop: '5vh'}}>Choose what to upload</h1>
+            <h1 style={{
+                        marginTop: '10vh',
+                        textAlign: "center",
+                        fontSize: 42}}>Choose what to upload:</h1>
             <div className={'wrapperButtonRow'}>
                 <ColorButton
                     sx={button_style}
@@ -241,7 +235,11 @@ export default function UploadDesktop(props){
             </div>
             {renderTextField()}
             {hasSelected && <div className={'wrapperButtonRow'}>
-                <SubmitButton sx={{width: '13vw'}} onClick={() => {
+                <SubmitButton sx={{
+                    width: '14vw',
+                height: "3.4vw",
+            fontSize: "1.5vw",
+        marginTop: "-4vw"}} onClick={() => {
                     if(currentSelection === 'customvideo'){
                         onFileUpload()
                     }else if(currentSelection === 'puretext'){
