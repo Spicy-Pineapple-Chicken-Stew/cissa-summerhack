@@ -7,11 +7,13 @@ import axios from "axios";
 import {Switch} from "@mui/material";
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
 import {CurrentTaskContext} from "../Contexts/CurrentTaskContext";
+import {UserContext} from "../Contexts/UserContext";
 
 export default function TaskListPage(props){
     let [hasSelected, setHasSelected] = useState(false);
     let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
     let [currentTask, setCurrentTask] = useContext(CurrentTaskContext);
+    let [user, setUser] = useContext(UserContext);
 
     const success_box = {
         width   : "80",
@@ -70,6 +72,14 @@ export default function TaskListPage(props){
                             taskObj.taskStatus = response.data.status
                             taskObj.taskResult = response.data.result
                             taskObj.questions = response.data.questions
+                            if(user != null){
+                                axios.post(props.url + "/api/save_task?userid=" + user, taskObj).then((response) => {
+
+                                }).catch((error) => {
+                                    alert(error.response)
+                                    console.log(error.response)
+                                })
+                            }
                         }else if(response.data.error != null){
                             taskObj.isError = true;
                             taskObj.errorMessage = response.data.error
