@@ -18,7 +18,7 @@ import {UserContext} from "../Contexts/UserContext";
 
 const pages = ['Home', 'Upload'];
 const my_contents = ['All contents', 'Summary', 'Flash Cards'];
-var accounts;
+const accounts = ['Settings', 'Log out'];
 
 const Global_MenuBar_mobile = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -26,12 +26,6 @@ const Global_MenuBar_mobile = () => {
     const [anchorElContent, setAnchorElContent] = React.useState(null);
     let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
     let [user, setUser] = useContext(UserContext);
-
-    if(user != null){
-        accounts = ['Settings', 'Log out'];
-    }else{
-        accounts = ['Log in'];
-    }
 
     const handleOpenNavMenu = (event) => {
       setAnchorElNav(event.currentTarget);
@@ -139,11 +133,14 @@ const Global_MenuBar_mobile = () => {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                            <Avatar alt="Remy Sharp" />
-                        </IconButton>
-                        </Tooltip>
+                        {user != null && <Tooltip title="Open settings">
+                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                <Avatar alt="Remy Sharp" />
+                            </IconButton>
+                        </Tooltip>}
+                        {user == null &&  <Button onClick={() => {setCurrentPage("Log in")}} color="inherit" >
+                            Login
+                        </Button>}
                         <Menu
                         sx={{ mt: '45px' }}
                         id="menu-appbar"
@@ -166,8 +163,6 @@ const Global_MenuBar_mobile = () => {
                                     setUser(null);
                                 }else if(account === 'Settings'){
                                     alert(user)
-                                }else{
-                                    setCurrentPage(account)
                                 }
                             }}>
                             <Typography textAlign="center">{account}</Typography>
