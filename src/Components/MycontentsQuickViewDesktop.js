@@ -11,6 +11,7 @@ export default function MycontentsQuickViewDesktop(props){
     let [isQuickView, setIsQuickView] = props.isQuickView;
     let [currentTask, setCurrentTask] = useContext(CurrentTaskContext);
 
+    console.log(currentTask.taskPreview)
 
     /*
     const cardData = [
@@ -123,7 +124,13 @@ export default function MycontentsQuickViewDesktop(props){
                         opacity: 0.9,
                     },
                 }}>
-                <Typography variant='subtitle1'>Original submission</Typography>
+                {currentTask.taskType === "puretext" && <Typography variant='subtitle1'>{currentTask.taskPreview}</Typography>}
+                {currentTask.taskType === "youtube" && <iframe src={currentTask.taskPreview}
+                        title="YouTube video player" frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen></iframe>}
+                {currentTask.taskType === 'website' && <Typography variant='subtitle1'>No preview available</Typography>}
+                {currentTask.taskType === 'file' && <img src={"data:image/jpg;base64, " + currentTask.taskPreview} height={'100%'}/>}
             </Box>
 
             <Box sx={{

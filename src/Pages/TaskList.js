@@ -68,6 +68,9 @@ export default function TaskListPage(props){
                         }
 
                         if(response.data.status === 'done'){
+                            if(response.data.preview != null){
+                                taskObj.taskPreview = response.data.preview
+                            }
                             taskObj.isDone = true;
                             taskObj.taskStatus = response.data.status
                             taskObj.taskResult = response.data.result
