@@ -3,7 +3,7 @@ import { Switch } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import {CurrentTaskContext} from "../Contexts/CurrentTaskContext";
-import MC_Sidemenu from './MycontentsDetailedViewSidemenu';
+import MC_Drawer from './MycontentsDetailedViewDrawer';
 import {useContext} from "react";
 
 
@@ -27,7 +27,7 @@ export default function MC_detailedview(props){
                 </Box>
             </Typography>
             <Box sx={{width: 'auto', height: 'auto'}}>
-                <MC_Sidemenu />
+                <MC_Drawer />
             </Box>
         </div>
     )
