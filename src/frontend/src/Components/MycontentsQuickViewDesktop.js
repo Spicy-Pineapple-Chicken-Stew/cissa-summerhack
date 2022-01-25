@@ -162,7 +162,7 @@ export default function MycontentsQuickViewDesktop(props){
                 {currentTask.taskType === "youtube" && <iframe src={currentTask.taskPreview}
                         title="YouTube video player" frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen></iframe>}
+                        allowFullScreen width={"100%"} height={"99%"}></iframe>}
                 {currentTask.taskType === 'website' && <Typography variant='subtitle1'>No preview available</Typography>}
                 {currentTask.taskType === 'file' && <img src={"data:image/jpg;base64, " + currentTask.taskPreview} height={'100%'}/>}
             </Box>
