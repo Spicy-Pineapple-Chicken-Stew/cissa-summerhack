@@ -105,9 +105,10 @@ export default function TextboxPopup(props){
                         if(props.type === 'puretext'){
                             axios.get(props.url + "/api/text_summary?text=" + textFieldRef.current.value).then((response)=>{
                                 props.setTaskList([{
+                                    taskType: "puretext",
                                     taskID: response.data.task_id,
                                     isDone: false,
-                                    taskTitle: "Text",
+                                    taskTitle: textFieldRef.current.value.slice(0, 10) + "...",
                                     taskStatus: "pending",
                                     taskResult: "",
                                     isError: false,
@@ -128,6 +129,7 @@ export default function TextboxPopup(props){
                             if(parseURL.hostname === 'www.youtube.com' || parseURL.hostname === 'youtube.com' || parseURL.hostname === 'youtu.be'){
                                 axios.get(props.url + "/api/youtube_summary?url=" + textFieldRef.current.value).then((response)=>{
                                     props.setTaskList([{
+                                        taskType: "youtube",
                                         taskID: response.data.task_id,
                                         isDone: false,
                                         taskTitle: textFieldRef.current.value,
@@ -144,6 +146,7 @@ export default function TextboxPopup(props){
                             }else{
                                 axios.get(props.url + "/api/website_summary?url=" + textFieldRef.current.value).then((response)=>{
                                     props.setTaskList([{
+                                        taskType: "website",
                                         taskID: response.data.task_id,
                                         isDone: false,
                                         taskTitle: textFieldRef.current.value,

@@ -3,13 +3,13 @@ import ColorButton from '../Components/ButtonDef'
 import {Zoom} from "@mui/material";
 import {styled} from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import {useContext, useEffect, useRef, useState} from "react";
-import {CurrentPageContext} from "../Contexts/CurrentPageContext";
+import {useEffect, useRef, useState} from "react";
 import { Box } from '@mui/system';
 import Success_Upload from "../Components/success";
 import Fail_Upload from "../Components/fail";
 import {CustomTextField} from "../Components/CustomTextField";
 import axios from "axios";
+import getParameterByName from "../Functions/GetURLParams";
 
 export default function UploadDesktop(props){
     let [hasSelected, setHasSelected] = useState(false);
@@ -180,6 +180,8 @@ export default function UploadDesktop(props){
         // Details of the uploaded file
         axios.post("http://194.193.55.245:9000/api/file_summary", formData).then((response) => {
             props.setTaskList([{
+                taskType: "file",
+                taskPreview: "",
                 taskID: response.data.task_id,
                 isDone: false,
                 taskTitle: file.name,
@@ -234,21 +236,27 @@ export default function UploadDesktop(props){
                     if(currentSelection === 'customvideo'){
                         onFileUpload()
                     }else if(currentSelection === 'puretext'){
-                        axios.get(props.url + "/api/text_summary?text=" + pureTextRef.current.value).then((response)=>{
-                            props.setTaskList([{
-                                taskID: response.data.task_id,
-                                isDone: false,
-                                taskTitle: "Text",
-                                taskStatus: "pending",
-                                taskResult: "",
-                                isError: false,
-                                errorMessage: ""
-                            }, ...props.taskList])
-                            setSuccessModal(true)
-                        }).catch((error) => {
-                            setFailModal(true)
-                            console.log(error)
-                        })
+                        if(pureTextRef.current.value.length < 11){
+                            alert("Not enough text provided")
+                        }else{
+                            axios.get(props.url + "/api/text_summary?text=" + pureTextRef.current.value).then((response)=>{
+                                props.setTaskList([{
+                                    taskType: "puretext",
+                                    taskID: response.data.task_id,
+                                    isDone: false,
+                                    taskTitle: pureTextRef.current.value.slice(0, 10) + "...",
+                                    taskPreview: pureTextRef.current.value,
+                                    taskStatus: "pending",
+                                    taskResult: "",
+                                    isError: false,
+                                    errorMessage: ""
+                                }, ...props.taskList])
+                                setSuccessModal(true)
+                            }).catch((error) => {
+                                setFailModal(true)
+                                console.log(error)
+                            })
+                        }
                     }else if(currentSelection === 'link'){
                         try{
                             var parseURL = new URL(linkTextRef.current.value);
@@ -256,9 +264,12 @@ export default function UploadDesktop(props){
                             alert("Please enter a valid URL")
                         }
 
-                        if(parseURL.hostname === 'www.youtube.com' || parseURL.hostname === 'youtube.com'){
+                        if(parseURL.hostname === 'www.youtube.com' || parseURL.hostname === 'youtube.com' || parseURL.hostname === 'youtu.be'){
                             axios.get(props.url + "/api/youtube_summary?url=" + linkTextRef.current.value).then((response)=>{
+                                const videoID = getParameterByName("v", linkTextRef.current.value)
                                 props.setTaskList([{
+                                    taskType: "youtube",
+                                    taskPreview: `https://www.youtube.com/embed/${videoID}`,
                                     taskID: response.data.task_id,
                                     isDone: false,
                                     taskTitle: linkTextRef.current.value,
@@ -275,6 +286,7 @@ export default function UploadDesktop(props){
                         }else{
                             axios.get(props.url + "/api/website_summary?url=" + linkTextRef.current.value).then((response)=>{
                                 props.setTaskList([{
+                                    taskType: "website",
                                     taskID: response.data.task_id,
                                     isDone: false,
                                     taskTitle: linkTextRef.current.value,
