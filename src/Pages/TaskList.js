@@ -21,6 +21,7 @@ export default function TaskListPage(props){
 
     const success_box = {
         fontSize: 24,
+        p: 1.2,
         display: "flex",
         width   : "80",
         height: "20",
@@ -34,6 +35,7 @@ export default function TaskListPage(props){
     };
 
     const in_progress = {
+        p: 1.2,
         display: "flex",
         width   : "80",
         height: "20",
@@ -43,6 +45,7 @@ export default function TaskListPage(props){
     };
 
     const error_box = {
+        p: 1.2,
         display: "flex",
         width   : "80",
         height: "20",
