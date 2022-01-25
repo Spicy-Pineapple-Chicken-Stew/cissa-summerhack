@@ -127,7 +127,7 @@ const Global_MenuBar_mobile = () => {
                         whiteSpace: 'normal' }}>
                         <Tooltip title="My Contents">
                         <Button onClick={() => {setCurrentPage("Task List")}} color="inherit" >
-                        My Tasks
+                        My Content
                         </Button>
                         </Tooltip>
                     </Box>
