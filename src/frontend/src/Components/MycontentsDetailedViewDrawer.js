@@ -11,6 +11,7 @@ import { Typography } from '@mui/material';
 import {useContext} from "react";
 import {CurrentTaskContext} from "../Contexts/CurrentTaskContext";
 import parseQuestions from "../Functions/ParseQuestions";
+import Flashcard_edit from './MycontentsFlashcardEdit';
 
 export default function MC_Drawer(){
     let [contents, setContents] = React.useState('Summary');
@@ -117,6 +118,8 @@ export default function MC_Drawer(){
                 {(contents == 'View') &&
                 <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />
                 }
+                {(contents == 'Edit') &&
+                <Flashcard_edit />}
             </Box>
         </Box>
     )
