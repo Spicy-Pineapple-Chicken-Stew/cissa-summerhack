@@ -74,7 +74,7 @@ export default function UploadDesktop(props){
             inputRef={pureTextRef}
         />
     )
-    
+
     const descriptBox = {
         textAlign: "center",
         width: '25.4vw',
@@ -142,9 +142,7 @@ export default function UploadDesktop(props){
             )
         }else{
             if(animationState === false){
-                var timer = setInterval(() => {setAnimationState(true)}, 5)
-            }else{
-                clearInterval(timer)
+                setTimeout(() => {setAnimationState(true)}, 150);
             }
 
             if(currentSelection === 'puretext'){
