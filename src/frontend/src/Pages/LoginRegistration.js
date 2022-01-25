@@ -6,11 +6,33 @@ import axios from "axios";
 import {UserContext} from "../Contexts/UserContext";
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
 
-export default function LoginRegistration(){
+export default function LoginRegistration(props){
     let [username, setUsername] = useState(null)
     let [password, setPassword] = useState(null)
     let [user, setUser] = useContext(UserContext);
     let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
+
+
+    function postExistingTasks(userid){
+        if(props.taskList.length === 0){
+            setUser(userid)
+            setCurrentPage('Home')
+        }else{
+            for(var i = 0; i < props.taskList.length; i++){
+                (function(e){
+                    axios.post(props.url + "/api/save_task?userid=" + userid, props.taskList[i]).then((response) => {
+                        if(e === props.taskList.length - 1){
+                            setUser(userid)
+                            setCurrentPage('Home')
+                        }
+                    }).catch((error) => {
+                        alert(error.response)
+                        console.log(error.response)
+                    })
+                })(i)
+            }
+        }
+    }
 
     return(
         <div style={{
@@ -71,8 +93,7 @@ export default function LoginRegistration(){
                                 "Content-Type": "application/x-www-form-urlencoded"
                                 }}).then((response) => {
                             if(response.data.status === 'success'){
-                                setUser(response.data.user_id)
-                                setCurrentPage('Home')
+                                postExistingTasks(response.data.user_id)
                             }else{
                                 alert(response.data.reason)
                             }
@@ -90,8 +111,7 @@ export default function LoginRegistration(){
                                     "Content-Type": "application/x-www-form-urlencoded"
                                 }}).then((response) => {
                             if(response.data.status === 'success'){
-                                setUser(response.data.user_id)
-                                setCurrentPage('Home')
+                                postExistingTasks(response.data.user_id)
                             }else{
                                 alert(response.data.reason)
                             }

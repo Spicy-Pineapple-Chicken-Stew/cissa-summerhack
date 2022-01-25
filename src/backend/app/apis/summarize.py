@@ -11,7 +11,7 @@ import os
 from google.cloud import storage, speech
 import cv2
 
-from app import GPT2_model
+from app import GPT2_model, BERT_model
 from app.tasks import get_task
 from app.apis.language_processing import generate_questions
 
@@ -58,7 +58,7 @@ def text_summary(text, task_id):
     task.questions = generate_questions(result, task)
 
 
-def process_video(task, filename, task_id):
+def process_video(task, filename, task_id, bert=False):
     task.status = 'encoding video'
     command = f"ffmpeg -i temp_downloads/{filename} -f wav -ac 1 -ar 16000 temp_downloads/{task_id}.wav"
     subprocess.call(command, shell=True)
@@ -94,9 +94,20 @@ def process_video(task, filename, task_id):
     task.status = 'processing text'
     punctuated = requests.post("http://bark.phon.ioc.ee/punctuator", data={"text": transcription}).text
 
-    print(punctuated)
+    if bert:
+        word_len = len(punctuated.split(" "))
+        if word_len < 200:
+            ratio = 0.7
+        elif word_len < 400:
+            ratio = 0.5
+        elif word_len < 600:
+            ratio = 0.3
+        else:
+            ratio = 0.2
+        result = ''.join(BERT_model(punctuated, ratio=ratio))
+    else:
+        result = ''.join(GPT2_model(punctuated))
 
-    result = ''.join(GPT2_model(punctuated))
     task.content = result
     task.questions = generate_questions(result, task)
 
@@ -158,7 +169,7 @@ def youtube_summary(url, task_id):
         filename = f"{task_id}.{stream.subtype}"
         stream.download(output_path="temp_downloads", filename=filename)
 
-        process_video(task, filename, task_id)
+        process_video(task, filename, task_id, bert=True)
     except Exception as e:
         task.error = True
         task.error_message = str(e)
@@ -202,8 +213,9 @@ def file_summary(filename, task_id):
             task.preview = encoded_string.decode('utf-8')
 
         video.release()
+        os.remove(f"temp_downloads/{task_id}.jpg")
 
-        process_video(task, filename, task_id)
+        process_video(task, filename, task_id, bert=True)
     except Exception as e:
         task.error = True
         task.error_message = str(e)

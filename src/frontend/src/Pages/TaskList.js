@@ -119,7 +119,7 @@ export default function TaskListPage(props){
         if(!hasSelected){
             return(
                 <Box justifyContent={"center"} sx={box_style}>
-                    {props.taskList.map((taskObj) => {
+                    {props.taskList != null && props.taskList.map((taskObj) => {
                         if(taskObj.isDone){
                             return(
                                 <Box sx={success_box} onClick={() => {
@@ -142,7 +142,7 @@ export default function TaskListPage(props){
         }else{
             return(
                 <Box justifyContent={"center"} sx={box_style}>
-                    {props.taskList.map((taskObj) => {
+                    {props.taskList != null && props.taskList.map((taskObj) => {
                         if(taskObj.isDone){
                             return(
                                 <Box sx={success_box} onClick={() => {

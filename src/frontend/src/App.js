@@ -48,7 +48,6 @@ function App() {
 
     useEffect(() => {
         const unloadCallback = (event) => {
-            alert("Test")
             event.preventDefault();
             event.returnValue = "";
             return "";
@@ -71,7 +70,7 @@ function App() {
                               {currentPage === 'Home' && <Home/>}
                               {currentPage === 'Upload' && !isMobile && <UploadDesktop taskList={taskList} setTaskList={setTaskList} url={url}/>}
                               {currentPage === 'Upload' && isMobile && <UploadPhone taskList={taskList} setTaskList={setTaskList} url={url}/>}
-                              {currentPage === 'Log in' && <LoginRegistration/>}
+                              {currentPage === 'Log in' && <LoginRegistration taskList={taskList} url={url}/>}
                               {currentPage === 'My Contents' && <MyContents />}
                               {currentPage === 'Task List' && <TaskListPage taskList={taskList} setTaskList={setTaskList} url={url}/>}
                           </div>

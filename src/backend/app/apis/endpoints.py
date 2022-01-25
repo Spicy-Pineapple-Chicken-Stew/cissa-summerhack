@@ -77,21 +77,6 @@ def summary_file():
 
     return jsonify({"task_id": task_id})
 
-'''
-@api.route("/generate_questions")
-def question_generate():
-    text = request.args.get("text")
-    if text is None or text == "":
-        raise Exception("InvalidArgument", "text is required")
-
-    task_id = ''.join(choice(ascii_letters + digits) for _ in range(10)) + str(int(time.time()))
-
-    global_task_queue.append(Task(task_id=task_id))
-    task = threading.Thread(target=generate_questions, args=(text, task_id,))
-    task.start()
-
-    return jsonify({"task_id": task_id})
-'''
 
 @api.route("/get_status")
 def test_status():
@@ -121,6 +106,10 @@ def save_task():
     user = users.find_one({'user_id': user_id})
     if user is None:
         raise Exception("UserNotFound", "user not found")
+
+    for taskObj in user["tasks"]:
+        if taskObj["taskID"] == task_obj["taskID"]:
+            return jsonify({"status": "failure", "message": "task already exists"})
 
     users.update_one({'user_id': user_id}, {'$push': {'tasks': task_obj}})
 
