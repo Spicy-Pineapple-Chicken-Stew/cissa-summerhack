@@ -8,6 +8,7 @@ class Task:
         self.status = None
         self.content = None
         self.questions = None
+        self.preview = None
 
         self.error = False
         self.error_message = None
