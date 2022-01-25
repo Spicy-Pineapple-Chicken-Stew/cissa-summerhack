@@ -106,7 +106,7 @@ def test_status():
 
     if task.status == 'done':
         global_task_queue.remove(task)
-        return jsonify({"status": task.status, "title": task.title, "result": task.content, "questions": task.questions})
+        return jsonify({"status": task.status, "title": task.title, "result": task.content, "questions": task.questions, "preview": task.preview})
 
     return jsonify({"status": task.status, "title": task.title})
 
