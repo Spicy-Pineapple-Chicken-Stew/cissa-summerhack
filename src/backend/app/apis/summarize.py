@@ -1,4 +1,6 @@
+import base64
 import subprocess
+import random
 
 from flask import request, jsonify
 import requests
@@ -7,6 +9,7 @@ from bs4.element import Comment
 from pytube import YouTube
 import os
 from google.cloud import storage, speech
+import cv2
 
 from app import GPT2_model
 from app.tasks import get_task
@@ -166,9 +169,44 @@ def file_summary(filename, task_id):
     task.status = 'processing file'
 
     try:
+        video = cv2.VideoCapture(os.getcwd() + f"/temp_downloads/{filename}")
+        has_captured = False
+        frame_count = 0
+
+        while True:
+            ret, frame = video.read()
+            if ret:
+                frame_count += 1
+                if 80 < frame.mean() < 220:
+                    cv2.imwrite(f"temp_downloads/{task_id}.jpg", frame)
+                    has_captured = True
+                    break
+            else:
+                break
+
+        rand_frame_ind = random.randint(0, frame_count - 1)
+
+        if not has_captured:
+            frame_ind = 0
+            while True:
+                ret, frame = video.read()
+                if ret:
+                    if rand_frame_ind == frame_ind:
+                        cv2.imwrite(f"temp_downloads/{task_id}.jpg", frame)
+                    frame_ind += 1
+                else:
+                    break
+
+        with open(f"temp_downloads/{task_id}.jpg", "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read())
+            task.preview = encoded_string.decode('utf-8')
+
+        video.release()
+
         process_video(task, filename, task_id)
     except Exception as e:
         task.error = True
         task.error_message = str(e)
+        print(str(e))
 
 
