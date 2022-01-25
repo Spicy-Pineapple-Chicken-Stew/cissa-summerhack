@@ -46,6 +46,18 @@ function App() {
         }
     }, [user])
 
+    useEffect(() => {
+        const unloadCallback = (event) => {
+            alert("Test")
+            event.preventDefault();
+            event.returnValue = "";
+            return "";
+        };
+
+        window.addEventListener("beforeunload", unloadCallback);
+        return () => window.removeEventListener("beforeunload", unloadCallback);
+    }, []);
+
   return (
       <CurrentPageContext.Provider value={[currentPage, setCurrentPage]}>
           <MobileContext.Provider value={[isMobile, setIsMobile]}>
