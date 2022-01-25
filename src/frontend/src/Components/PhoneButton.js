@@ -68,7 +68,8 @@ export default function PhoneButton(props){
     <div>
     <UploadP_Button
           variant= 'outlined'
-          style={{ width: 'calc((100% - 5vw))' }}
+          style={{width: 'calc((100% - 3vw))',
+                  height: 'calc((100% - 2vw))'}}
           onClick={props.OnClick}
     >
     <div style = {{flexWrap: 'wrap', display:'flex', flexDirection:'column', alignItems: 'center'}}>
@@ -79,7 +80,7 @@ export default function PhoneButton(props){
       <LibraryBooksIcon style={{ color: '#ede7e3'}}/>
 
       </Box>
-      <Box component="div" sx={{ display: 'block', marginTop: -1.5 }}>inlineinlineinlineinlineinlineinlineinline</Box>
+      <Box component="div" sx={{ display: 'block', marginTop: -1.5 }}>Tap box to enter content to be summarised</Box>
     </div>
     </UploadP_Button>
     </div>
