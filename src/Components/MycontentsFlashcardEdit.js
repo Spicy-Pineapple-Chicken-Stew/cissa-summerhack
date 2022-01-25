@@ -20,7 +20,6 @@ export default function Flashcard_edit(){
     const saveNewQuestion = () => {
         currentTask.questions.forEach(element => {
             if (element.question == taskQuestion){
-                alert("saving")
                 element.question = questionTextRef.current.value;
                 element.answer = answerTextRef.current.value;
                 setOpenModel(false);
@@ -35,6 +34,14 @@ export default function Flashcard_edit(){
                 setOpenModel(false);
             }
         }
+    }
+
+    const addNewQuestion = () => {
+        currentTask.questions.push({
+            question: questionTextRef.current.value,
+            answer: answerTextRef.current.value
+        });
+        handleAddNewClose(false);
     }
 
 
@@ -66,7 +73,7 @@ export default function Flashcard_edit(){
         marginLeft: '5%',
         textTransform: 'capitalize',
     }));
-
+    
     const style = {
         position: 'absolute',
         top: '50%',
@@ -193,7 +200,7 @@ export default function Flashcard_edit(){
                             />
                     </Box>
                     <Box sx={{marginTop: '1vw'}}>
-                        <Button onClick={handleAddNewClose}>Save</Button>
+                        <Button onClick={addNewQuestion}>Save</Button>
                     </Box>
                 </Box>
             </Modal>
