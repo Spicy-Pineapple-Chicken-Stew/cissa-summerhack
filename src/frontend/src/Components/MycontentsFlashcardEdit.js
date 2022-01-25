@@ -17,11 +17,33 @@ export default function Flashcard_edit(){
     const handleAddNewClose = () => setAddNewModal(false);
     const [taskQuestion, setTaskQuestion] = React.useState(null);
     const [taskAnswer, setTaskAnswer] = React.useState(null);
+    const saveNewQuestion = () => {
+        currentTask.questions.forEach(element => {
+            if (element.question == taskQuestion){
+                alert("saving")
+                element.question = questionTextRef.current.value;
+                element.answer = answerTextRef.current.value;
+                setOpenModel(false);
+            }
+        });
+    }
+
+    const deleteQuestion = () => {
+        for(var i  = 0; i < currentTask.questions.length; i++){
+            if(currentTask.questions[i].question == taskQuestion){
+                currentTask.questions.splice(i, 1);
+                setOpenModel(false);
+            }
+        }
+    }
+
+
 
     const questionTextRef = React.useRef('');
     const answerTextRef = React.useRef('');
     const newQuestionTextRef = React.useRef('');
     const newAnswerTextRef = React.useRef('');
+
 
     const Flashcard_button = styled(Button)(({ theme }) => ({
         fontFamily: [
@@ -81,7 +103,12 @@ export default function Flashcard_edit(){
                             </Typography>
                         </Flashcard_button>
                         
-                        <Button sx={{position: 'relative', marginLeft: '0.5%', color: '#489FB5'}}>
+                        <Button onClick={() => {
+                            alert("sdfjlksdfj")
+                            setTaskQuestion(quest.question);
+                            setTaskAnswer(quest.answer);
+                            deleteQuestion();
+                        }} sx={{position: 'relative', marginLeft: '0.5%', color: '#489FB5'}}>
                                 <DeleteForeverIcon />
                         </Button>
                     </Box>
@@ -123,8 +150,8 @@ export default function Flashcard_edit(){
                                 />
                         </Box>
                         <Box sx={{marginTop: '1vw'}}>
-                            <Button onClick={handleClose}>Save</Button>
-                            <Button onClick={handleClose}>Delete</Button>
+                            <Button onClick={saveNewQuestion}>Save</Button>
+                            <Button onClick={deleteQuestion}>Delete</Button>
                         </Box>
                     </Box>
                 </Modal>
