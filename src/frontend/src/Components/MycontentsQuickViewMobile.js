@@ -23,7 +23,7 @@ export default function MycontentsQuickViewMobile(props){
                 marginTop: '5%'}}>
                     <Typography
                     sx = {{
-                    fontSize:'300%',
+                    fontSize:'180%',
                     fontFamily: 'Oxygen',
                     color: 'rgba(22, 105, 122, 1)'
                 }} >
@@ -37,7 +37,7 @@ export default function MycontentsQuickViewMobile(props){
                 </Typography>
 
 
-                <Typography align='left' fontSize={'1vh'} ml={'57vw'} mr = {'3vw'} >
+                <Typography align='left' fontSize={'2vh'} ml={'35vw'} mr = {'3vw'} >
                 <Box>
                     Change view: Default
                     <Switch
@@ -74,7 +74,7 @@ export default function MycontentsQuickViewMobile(props){
             <Box
                 sx={{
                     width: '100%',
-                    height: 150,
+                    height: 180,
                     marginBottom: '3%',
                     border: '1px solid #489FB5',
                     borderRadius: '4px',
