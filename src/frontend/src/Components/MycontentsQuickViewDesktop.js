@@ -72,7 +72,7 @@ export default function MycontentsQuickViewDesktop(props){
                     textAlign: 'left'
                 }}
                 >
-                    Summary
+                    Flash cards
                 </Box>
                 <Box sx={{
                     width: '37.5%',
@@ -84,6 +84,7 @@ export default function MycontentsQuickViewDesktop(props){
                     Original submission
                 </Box>
             </Box>
+            
            <Box sx ={{
                position: 'relative',
                flexWrap: 'wrap',
@@ -92,10 +93,53 @@ export default function MycontentsQuickViewDesktop(props){
                alignContent: 'flex-start',
                justifyContent: 'flex-start',
             }}>
+
+                        <Box
+                sx={{
+                    position: 'relative',
+                    width: '55%',
+                    height: 100,
+                    border: '1px solid #489FB5',
+                    borderRadius: '4px',
+                    '&:hover': {
+                        border: '1px solid #16697A',
+                        opacity: 0.9,
+                    },
+                }}>
+                <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />
+            </Box>
+
             <Box
                 sx={{
-                    width: '60%',
-                    height: 130,
+                    position: 'relative',
+                    width: '40%',
+                    height: 280,
+                    border: '1px solid #489FB5',
+                    borderRadius: '4px',
+                    overflow: 'auto',
+                    marginLeft: "3vw",
+                    '&:hover': {
+                        border: '1px solid #16697A',
+                        opacity: 0.9,
+                    },
+                }}>
+                <Typography variant='subtitle1'>Original submission</Typography>
+            </Box>
+
+
+            <Box sx={{
+                fontSize: '1vw',
+                textAlign: 'left',
+                width: '100%',
+                marginTop: '1%'
+            }}
+            >
+                Summary
+            </Box>
+            <Box
+                sx={{
+                    width: '100%',
+                    height: 240,
                     border: '1px solid #489FB5',
                     marginRight: '2%',
                     borderRadius: '4px',
@@ -108,46 +152,6 @@ export default function MycontentsQuickViewDesktop(props){
 
                 }}>
                 <Typography variant='subtitle1'>{currentTask.taskResult}</Typography>
-            </Box>
-
-            <Box
-                sx={{
-                    position: 'relative',
-                    width: '37.5%',
-                    height: 130,
-                    border: '1px solid #489FB5',
-                    borderRadius: '4px',
-                    overflow: 'auto',
-                    '&:hover': {
-                        border: '1px solid #16697A',
-                        opacity: 0.9,
-                    },
-                }}>
-                <Typography variant='subtitle1'>Original submission</Typography>
-            </Box>
-
-            <Box sx={{
-                fontSize: '1vw',
-                textAlign: 'left',
-                width: '100%',
-                marginTop: '1%'
-            }}
-            >
-                Flash card
-            </Box>
-            <Box
-                sx={{
-                    position: 'relative',
-                    width: '100%',
-                    height: 300,
-                    border: '1px solid #489FB5',
-                    borderRadius: '4px',
-                    '&:hover': {
-                        border: '1px solid #16697A',
-                        opacity: 0.9,
-                    },
-                }}>
-                <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />
             </Box>
             </Box>
             </div>

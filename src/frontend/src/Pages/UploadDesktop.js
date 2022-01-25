@@ -77,12 +77,13 @@ export default function UploadDesktop(props){
     
     const descriptBox = {
         textAlign: "center",
-        width: '26vw',
+        width: '25.4vw',
         height: '14vw',
         margin: "-5vw",
         marginTop: '-1vw',
+        p: 1,
         border: '2px solid rgba(72, 159, 181, 1)',
-        borderRadius: '16px',
+        borderRadius: '14px',
         fontSize: '1.65vw',
         color: '#16697A'
     }
@@ -109,8 +110,7 @@ export default function UploadDesktop(props){
         <Box
         sx={descriptBox}
         className = {'descriptionBox'}
-        >
-            Click the button above and upload a video to be summarised
+        >Click the button above and upload a video to be summarised
         </Box>
     )
 
@@ -118,6 +118,7 @@ export default function UploadDesktop(props){
         fontSize: "1.8vw",
         width: '26vw',
         height: "3.5vw",
+        borderRadius: '14px',
         margin: "-4.9vw",
         marginTop: "-10vh"
     }
