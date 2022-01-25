@@ -11,20 +11,6 @@ export default function MycontentsQuickViewDesktop(props){
     let [isQuickView, setIsQuickView] = props.isQuickView;
     let [currentTask, setCurrentTask] = useContext(CurrentTaskContext);
 
-
-    /*
-    const cardData = [
-        {
-            front: {
-                text: "Sample question",
-            },
-            back: {
-                text: "Sample solution",
-            }
-        }
-    ];
-     */
-
     return (
         <div>
             <div>
@@ -33,19 +19,22 @@ export default function MycontentsQuickViewDesktop(props){
                 display:'flex',
                 flexDirection:'column',
                 alignContent: 'flex-start',
+                width: "94%",
                 marginLeft: '3%',
-                marginTop: '5%',
-                border: '1px solid #000000'}}>
+                marginTop: '3%',
+                border: '2px solid #16697A',
+                borderRadius: "4px"}}>
                     <Typography
                     sx = {{
-                    fontSize:'300%',
+                    fontSize:'260%',
                     fontFamily: 'Oxygen',
                     color: 'rgba(22, 105, 122, 1)'
                     }} >
                     <Box
                     sx ={{flexWrap: 'wrap',
                         display:'flex',
-                        flexDirection:'row'}}>
+                        flexDirection:'row',
+                        p: 1}}>
 
                         {currentTask.taskTitle}</Box>
 
@@ -65,20 +54,59 @@ export default function MycontentsQuickViewDesktop(props){
             </div>
             <div style ={{margin:'3%', marginTop: '1%'}}>
 
+            
+
+            <Box sx={{
+                fontSize: '1.5vw',
+                textAlign: 'left',
+                width: '100%',
+                marginTop: '1%',
+                p: 0.5
+            }}
+            >
+                Summary
+            </Box>
+            <Box
+                sx={{
+                    width: '100%',
+                    height: 240,
+                    border: '2px solid #489FB5',
+                    marginRight: '2%',
+                    borderRadius: '4px',
+                    flexShrink: 1,
+                    overflow: 'auto',
+                    '&:hover': {
+                        border: '2px solid #16697A',
+                        opacity: 0.9,
+                    },
+
+                }}>
+                <Typography sx={{
+                    fontFamily: 'Oxygen',
+                    fontSize: 22,
+                    textAlign: "left",
+                    marginTop: "-0.5%",
+                    p: 2}}
+                >{currentTask.taskResult}</Typography>
+            </Box>
+            
+        
             <Box sx={{display: 'flex', flexDirection: 'row'}}>
                 <Box sx={{
                     width: '60%',
-                    fontSize: '1vw',
-                    textAlign: 'left'
+                    fontSize: '1.3vw',
+                    textAlign: 'left',
+                    marginTop: "1%",
                 }}
                 >
                     Flash cards
                 </Box>
                 <Box sx={{
                     width: '37.5%',
-                    marginLeft: '2%',
-                    fontSize: '1vw',
-                    textAlign: 'left'
+                    marginLeft: '-1.5%',
+                    fontSize: '1.3vw',
+                    textAlign: 'left',
+                    marginTop: "1%",
                 }}
                 >
                     Original submission
@@ -92,19 +120,14 @@ export default function MycontentsQuickViewDesktop(props){
                flexDirection:'row',
                alignContent: 'flex-start',
                justifyContent: 'flex-start',
+               marginTop: 1
             }}>
 
                         <Box
                 sx={{
                     position: 'relative',
                     width: '55%',
-                    height: 100,
-                    border: '1px solid #489FB5',
-                    borderRadius: '4px',
-                    '&:hover': {
-                        border: '1px solid #16697A',
-                        opacity: 0.9,
-                    },
+                    height: 283,
                 }}>
                 <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />
             </Box>
@@ -112,14 +135,14 @@ export default function MycontentsQuickViewDesktop(props){
             <Box
                 sx={{
                     position: 'relative',
-                    width: '40%',
+                    width: '41.5%',
                     height: 280,
-                    border: '1px solid #489FB5',
+                    border: '2px solid #489FB5',
                     borderRadius: '4px',
                     overflow: 'auto',
                     marginLeft: "3vw",
                     '&:hover': {
-                        border: '1px solid #16697A',
+                        border: '2px solid #16697A',
                         opacity: 0.9,
                     },
                 }}>
@@ -127,32 +150,6 @@ export default function MycontentsQuickViewDesktop(props){
             </Box>
 
 
-            <Box sx={{
-                fontSize: '1vw',
-                textAlign: 'left',
-                width: '100%',
-                marginTop: '1%'
-            }}
-            >
-                Summary
-            </Box>
-            <Box
-                sx={{
-                    width: '100%',
-                    height: 240,
-                    border: '1px solid #489FB5',
-                    marginRight: '2%',
-                    borderRadius: '4px',
-                    flexShrink: 1,
-                    overflow: 'auto',
-                    '&:hover': {
-                        border: '1px solid #16697A',
-                        opacity: 0.9,
-                    },
-
-                }}>
-                <Typography variant='subtitle1'>{currentTask.taskResult}</Typography>
-            </Box>
             </Box>
             </div>
         </div>
