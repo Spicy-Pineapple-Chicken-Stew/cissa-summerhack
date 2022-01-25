@@ -77,6 +77,10 @@ body {
   flex-wrap: wrap;
 }
 
+.text{
+  font-family: "Oxygen";
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

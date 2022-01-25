@@ -1377,7 +1377,8 @@ var Styles = {
         fontWeight: 600
     },
     card: {
-        height: 400,
+        // Important bit of code
+        height: 160,
         padding: 16,
         position: "relative"
     },
