@@ -44,7 +44,7 @@ export default function Flashcard_edit(){
                 if(currentTask.questions[i].question === taskQ){
                     currentTask.questions.splice(i, 1);
                     axios.post(url + "/api/update_questions?userid=" + user, currentTask).then((response) => {
-                        setOpenModel(false)
+                        setForceRefresh(!forceRefresh);
                     }).catch((error) => {
                         alert(error.response)
                         console.log(error.response)
@@ -145,7 +145,6 @@ export default function Flashcard_edit(){
                         
                         <Button onClick={() => {
                             deleteQuestion(quest.question);
-                            setForceRefresh(!forceRefresh);
                         }} sx={{position: 'relative', marginLeft: '0.5%', color: '#489FB5'}}>
                                 <DeleteForeverIcon />
                         </Button>
