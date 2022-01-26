@@ -115,6 +115,16 @@ export default function TaskListPage(props){
         return () => {clearInterval(timer)}
     }, [])
 
+    function renderIcon(taskObj){
+        if(taskObj.taskType === 'puretext'){
+            return (<FileCopyIcon sx={icon_style} />)
+        }else if(taskObj.taskType === 'website'){
+            return (<WebIcon sx={icon_style}/>)
+        }else{
+            return (<VideocamIcon sx={icon_style}/>)
+        }
+    }
+
     function renderTextField(){
         if(!hasSelected){
             return(
@@ -126,7 +136,7 @@ export default function TaskListPage(props){
                                     setCurrentPage("My Contents")
                                     setCurrentTask(taskObj)
                                 }}>
-                                    <WebIcon sx={icon_style}></WebIcon>
+                                    {renderIcon(taskObj)}
                                     {taskObj.taskTitle} - {taskObj.taskStatus}</Box>
                             )
                         }else{
@@ -149,19 +159,19 @@ export default function TaskListPage(props){
                                     setCurrentPage("My Contents")
                                     setCurrentTask(taskObj)
                                 }}>
-                                    <WebIcon sx={icon_style}></WebIcon>
+                                    {renderIcon(taskObj)}
                                     {taskObj.taskTitle} - {taskObj.taskStatus}</Box>
                             )
                         }else if(taskObj.isError){
                             return(
                                 <Box sx={error_box}>
-                                    <FileCopyIcon sx={icon_style}></FileCopyIcon>
+                                    {renderIcon(taskObj)}
                                     {taskObj.taskTitle} - ERROR - {taskObj.errorMessage}</Box>
                             )
                         }else{
                             return(
                                 <Box sx={in_progress}>
-                                    <VideocamIcon sx={icon_style}></VideocamIcon>
+                                    {renderIcon(taskObj)}
                                     {taskObj.taskTitle} - {taskObj.taskStatus}</Box>
                             );
                         }
