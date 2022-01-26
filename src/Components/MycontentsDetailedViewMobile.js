@@ -87,7 +87,17 @@ export default function MC_detailedview_mobile(props){
                     overflow: 'auto',
                     textAlign: 'left'
                 }}>
-                    {contents_mobile}
+                    {currentTask.taskType === "puretext" && <Typography variant='subtitle1'>{currentTask.taskPreview}</Typography>}
+                    {currentTask.taskType === "youtube" && <iframe src={currentTask.taskPreview}
+                                                                   title="YouTube video player" frameBorder="0"
+                                                                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                                   allowFullScreen width={"100%"} height={"99%"}></iframe>}
+                    {currentTask.taskType === 'website' && <Typography variant='subtitle1'>No preview available</Typography>}
+                    {currentTask.taskType === 'file' && <img src={"data:image/jpg;base64, " + currentTask.taskPreview} height={'100%'} style={{
+                        display: "block",
+                        marginLeft: "auto",
+                        marginRight: "auto"
+                    }}/>}
                 </Box>}
                 {(contents_mobile === 'Flash cards') &&
                 <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />}
