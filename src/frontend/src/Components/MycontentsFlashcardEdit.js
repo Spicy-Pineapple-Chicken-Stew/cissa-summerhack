@@ -146,7 +146,7 @@ export default function Flashcard_edit(){
                         <Button onClick={() => {
                             deleteQuestion(quest.question);
                             setForceRefresh(!forceRefresh);
-                        }} sx={{position: 'relative', marginLeft: '0.5%', color: '#489FB5'}}>
+                        }} sx={{position: 'relative', marginLeft: '0.5%', color: '#5178B2'}}>
                                 <DeleteForeverIcon />
                         </Button>
                     </Box>
