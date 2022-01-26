@@ -29,7 +29,7 @@ export default function Flashcard_edit(){
 
     const deleteQuestion = () => {
         for(var i  = 0; i < currentTask.questions.length; i++){
-            if(currentTask.questions[i].question == taskQuestion){
+            if(currentTask.questions[i].question === taskQuestion){
                 currentTask.questions.splice(i, 1);
                 setOpenModel(false);
             }
@@ -38,10 +38,10 @@ export default function Flashcard_edit(){
 
     const addNewQuestion = () => {
         currentTask.questions.push({
-            question: questionTextRef.current.value,
-            answer: answerTextRef.current.value
+            question: newQuestionTextRef.current.value,
+            answer: newAnswerTextRef.current.value
         });
-        handleAddNewClose(false);
+        setAddNewModal(false);
     }
 
 
