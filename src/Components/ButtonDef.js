@@ -11,16 +11,16 @@ const ColorButton = styled(Button)(({ theme }) => ({
         '"Segoe UI Symbol"',
       ].join(','),
     color: '#ffffff',
-    backgroundColor: '#489fb5',
+    backgroundColor: '#5178B2',
     padding: '6px 12px',
     border: '1px solid',
     fontSize: 16,
     '&:hover': {
-        backgroundColor: '#59a9bd',
+        backgroundColor: '#82ACEB',
         color: '#676767'
     },
     '&:active': {
-        backgroundColor:'#4896b5',
+        backgroundColor:'#5178B2',
     },
 }));
 

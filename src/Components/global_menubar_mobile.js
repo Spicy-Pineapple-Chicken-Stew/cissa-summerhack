@@ -52,7 +52,7 @@ const Global_MenuBar_mobile = () => {
     return (
             <AppBar
             position="static"
-            style={{background: '#82C0CC'}}
+            style={{background: '#5178B2'}}
             >
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
