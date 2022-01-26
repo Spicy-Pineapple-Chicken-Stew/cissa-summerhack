@@ -62,7 +62,7 @@ export default function TaskListPage(props){
         width: '90vw',
         height: '35vw',
         marginLeft: '5vw',
-        border: '2px solid rgba(72, 159, 181, 1)',
+        border: '2px solid rgba(81, 120, 178, 1)',
         borderRadius: '16px',
         fontSize: 24,
         color: '#16697A',

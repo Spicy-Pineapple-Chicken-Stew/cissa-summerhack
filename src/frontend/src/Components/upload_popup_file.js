@@ -54,6 +54,7 @@ export default function FilePopup(props){
         axios.post("http://194.193.55.245:9000/api/file_summary", formData).then((response) => {
             props.setTaskList([{
                 taskType: "file",
+                taskPreview: "",
                 taskID: response.data.task_id,
                 isDone: false,
                 taskTitle: file.name,
@@ -88,8 +89,8 @@ export default function FilePopup(props){
                     }}
             >
                 <Box sx={{
-                    bgcolor: 'rgba(130, 192, 204, 1)',
-                    border: '2px solid rgba(72, 159, 181, 1)'}}
+                    bgcolor: 'rgba(81, 120, 178, 1)',
+                    border: '2px solid rgba(81, 120, 178, 1)'}}
                 >
                     <Typography
                         id="modal-title"

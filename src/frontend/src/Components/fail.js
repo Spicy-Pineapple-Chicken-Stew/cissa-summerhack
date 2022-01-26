@@ -9,7 +9,7 @@ const style = {
     left: '35%',
     width: '25vw',
     height: '8vw',
-    bgcolor: '#289FB5',
+    bgcolor: '#5178B2',
     border: '1px round',
     borderRadius: 2,
     boxShadow: 24,
@@ -29,7 +29,7 @@ export default function Fail_Upload(props) {
 
             <Box sx={
               {textAlign: 'center',
-                color: "#EAEAEA",
+                color: "#5178B2",
                 fontSize: "1.2vw",
                 fontWeight: 900,
                 fontFamily: 'Oxygen',
