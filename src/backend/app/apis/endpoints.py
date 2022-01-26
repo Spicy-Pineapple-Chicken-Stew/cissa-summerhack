@@ -111,7 +111,7 @@ def save_task():
         if taskObj["taskID"] == task_obj["taskID"]:
             return jsonify({"status": "failure", "message": "task already exists"})
 
-    users.update_one({'user_id': user_id}, {'$push': {'tasks': task_obj}})
+    users.update_one({'user_id': user_id}, {'$push': {'tasks': {'$each': [task_obj], '$position': 0}}})
 
     return jsonify({"status": "success"})
 
@@ -127,3 +127,21 @@ def get_tasks():
         raise Exception("UserNotFound", "user not found")
 
     return jsonify({"tasks": user['tasks']})
+
+
+@api.route("/update_questions", methods=["POST"])
+def update_questions():
+    user_id = request.args.get("userid")
+    if user_id is None:
+        raise Exception("InvalidArgument", "userid is required")
+
+    task_obj = request.json
+    user = users.find_one({'user_id': user_id})
+    if user is None:
+        raise Exception("UserNotFound", "user not found")
+
+    for index, taskObj in enumerate(user["tasks"]):
+        if taskObj["taskID"] == task_obj["taskID"]:
+            users.update_one({'user_id': user_id}, {'$set': {'tasks.' + str(index) + '.questions': task_obj["questions"]}})
+
+    return jsonify({"status": "success"})
