@@ -13,6 +13,7 @@ import MyContents from "./Pages/MyContents";
 import TaskListPage from "./Pages/TaskList";
 import {CurrentTaskContext} from "./Contexts/CurrentTaskContext";
 import axios from "axios";
+//import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function App() {
   let [currentPage, setCurrentPage] = useState('Home');
