@@ -51,10 +51,10 @@ const Global_MenuBar = () => {
 
     return (
             <AppBar
-            position="static"
+            position="relative"
             style={{background: '#5178B2',
-        width: "110%",
-        height: "110%",
+        width: "101.1%",
+        height: "100%",
         marginLeft: -10,
         marginTop: -10}}
             >
