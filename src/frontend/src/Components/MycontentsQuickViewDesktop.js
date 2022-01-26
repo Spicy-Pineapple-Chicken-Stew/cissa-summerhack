@@ -147,7 +147,7 @@ export default function MycontentsQuickViewDesktop(props){
             <Box
                 sx={{
                     position: 'relative',
-                    width: '41.5%',
+                    width: '41%',
                     height: 280,
                     border: '2px solid #489FB5',
                     borderRadius: '4px',

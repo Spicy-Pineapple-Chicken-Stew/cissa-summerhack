@@ -52,7 +52,11 @@ const Global_MenuBar = () => {
     return (
             <AppBar
             position="static"
-            style={{background: '#82C0CC'}}
+            style={{background: '#5178B2',
+        width: "110%",
+        height: "110%",
+        marginLeft: -10,
+    marginTop: -10}}
             >
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
