@@ -8,6 +8,7 @@ import DeleteForeverIcon from '@mui/icons-material/Delete';
 import { TextField } from '@mui/material';
 import axios from "axios";
 import {UserContext} from "../Contexts/UserContext";
+import ColorButton from './ButtonDef';
 
 export default function Flashcard_edit(){
     let [currentTask, setCurrentTask] = React.useContext(CurrentTaskContext);
@@ -94,12 +95,12 @@ export default function Flashcard_edit(){
             '"Segoe UI Emoji"',
             '"Segoe UI Symbol"',
         ].join(','),
-        color: '#16697A',
+        color: '#38547e',
         backgroundColor: '#ffffff',
         fontSize: '0.8vw',
         height: 150,
         width: '90%',
-        border: '2px solid rgba(72, 159, 181, 1)',
+        border: '2px solid #5178B2',
         borderRadius: '16px',
         marginTop: '0.25vw',
         marginBottom: '0.25vw',
@@ -114,8 +115,8 @@ export default function Flashcard_edit(){
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: '60%',
-        bgcolor: '#82C0CC',
-        border: '2px solid #16697A',
+        bgcolor: '#f5f1ef',
+        border: '2px solid #5178B2',
         boxShadow: 24,
         height: 600,
       };
@@ -123,7 +124,7 @@ export default function Flashcard_edit(){
     return (
         <div>
             <Box sx={{
-                border: '2px solid rgba(72, 159, 181, 1)',
+                border: '2px solid #5178B2',
                 borderRadius: '8px',
                 height: 600,
                 flexDirection: 'row',
@@ -149,7 +150,7 @@ export default function Flashcard_edit(){
                         <Button onClick={() => {
                             deleteQuestion(quest.question);
                             setForceRefresh(!forceRefresh);
-                        }} sx={{position: 'relative', marginLeft: '0.1%', color: '#489FB5'}}>
+                        }} sx={{position: 'relative', marginLeft: '0.1%', color: '#5178B2'}}>
                                 <DeleteForeverIcon />
                         </Button>
                     </Box>
@@ -191,16 +192,25 @@ export default function Flashcard_edit(){
                                 />
                         </Box>
                         <Box sx={{marginTop: '1vw'}}>
-                            <Button onClick={saveNewQuestion}>Save</Button>
-                            <Button onClick={() => {
-                                deleteQuestion(null)
-                            }}>Delete</Button>
+                            <ColorButton onClick={saveNewQuestion}>Save</ColorButton>
+                            <ColorButton 
+                                onClick={() => {
+                                    deleteQuestion(null)
+                                }}
+                                sx={{position: 'relaive', marginLeft: '0.5vw'}}
+                            >
+                                Delete</ColorButton>
                         </Box>
                     </Box>
                 </Modal>
             </Box>
 
-            <Button onClick={handleAddNewOpen} sx={{position: 'relative', marginLeft: '6vw'}}>Add new</Button>
+            <ColorButton 
+                onClick={handleAddNewOpen} 
+                sx={{position: 'relative', marginLeft: '40vw'}}
+            >
+                Add new
+            </ColorButton>
             <Modal 
             open={addNewModal}
             onClose={handleAddNewClose}
@@ -236,7 +246,9 @@ export default function Flashcard_edit(){
                             />
                     </Box>
                     <Box sx={{marginTop: '1vw'}}>
-                        <Button onClick={addNewQuestion}>Save</Button>
+                        <ColorButton onClick={addNewQuestion}>
+                            Save
+                        </ColorButton>
                     </Box>
                 </Box>
             </Modal>

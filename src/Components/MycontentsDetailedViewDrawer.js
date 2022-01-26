@@ -44,7 +44,7 @@ export default function MC_Drawer(){
                 }
             </List>
             <Divider />
-                <Typography variant="subtitle 1" sx={{position: 'relative', marginLeft: "10%"}}>
+                <Typography variant="subtitle 1" sx={{position: 'relative', marginLeft: "0.9vw"}}>
                     Flash cards
                 </Typography>
             <List>
