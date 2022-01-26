@@ -12,6 +12,7 @@ import {useContext} from "react";
 import {CurrentTaskContext} from "../Contexts/CurrentTaskContext";
 import parseQuestions from "../Functions/ParseQuestions";
 import Flashcard_edit from './MycontentsFlashcardEdit';
+import MenuIcon from '@mui/icons-material/Menu';
 
 export default function MC_Drawer(){
     let [contents, setContents] = React.useState('Summary');
@@ -25,6 +26,7 @@ export default function MC_Drawer(){
 
         setOpendrawer({opendrawer, [anchor]: open});
     };
+
     
     const list = (anchor) => (
         <Box
@@ -35,22 +37,20 @@ export default function MC_Drawer(){
             <List>
                 {
                     ['Summary', 'Original submission'].map((text, index) => (
-                        <ListItem button key={text} onClick={() => setContents(text)}>
+                        <ListItem button key={text} onClick={() => setContents(text)} sx={{width: '250px'}}>
                             <ListItemText primary={text} />
                         </ListItem>
                     ))
                 }
             </List>
-            <Divider component="li"/>
-            <li>
-                <Typography variant="caption">
+            <Divider />
+                <Typography variant="subtitle 1" sx={{position: 'relative', marginLeft: "10%"}}>
                     Flash cards
                 </Typography>
-            </li>
             <List>
                 {['View', 'Edit'].map((text, index) => (
                     <ListItem button key={text} onClick={() => setContents(text)}>
-                        <ListItemText primary={text} /> 
+                        <ListItemText primary={text} sx={{position: 'relative', marginLeft: '1.5vw'}} /> 
                     </ListItem>
                 ))}
             </List>
@@ -59,36 +59,32 @@ export default function MC_Drawer(){
 
     return (
         <Box className='content_box'>
-            <div>
+            
+            <Box sx={{
+                width: 5/6,
+                height: 600,
+                fontSize: '2vw',
+                textAlign: 'left',
+            }}>
+                <Typography sx={{position: 'relative', marginTop: '1vw', marginLeft: '6vw', fontSize: '2vw'}}>{contents}</Typography>
+                <Box>
                 {
                     ['Side menu'].map((anchor) => (
                         <React.Fragment key={anchor}>
-                            <Button onClick={toggleDrawer(anchor, true)} sx={{transform: 'rotate(270deg)'}}>
-                                <Typography>
-                                    {anchor}
-                                </Typography>
+                            <Button onClick={toggleDrawer(anchor, true)} sx={{position: 'absolute', marginTop: '1vw'}}>
+                                <MenuIcon fontSize='large' sx={{color: '#5178B2'}}/>
                             </Button>
                             <Drawer
-                                anchor={anchor}
+                                anchor='left'
                                 open={opendrawer[anchor]}
-                                onClose={toggleDrawer(anchor, false)}
+                                onClose={toggleDrawer(anchor, false)} 
                             >
                                 {list(anchor)}
                             </Drawer>
                         </React.Fragment>
                     ))
                 }
-            </div>
-            <Box sx={{
-                width: 5/6,
-                height: 600,
-                position: 'relative',
-                marginTop: '1%',
-                marginLeft: '4%',
-                fontSize: '2vw',
-                textAlign: 'left'
-            }}>
-                {contents}
+                </Box>
                 {(contents == 'Summary') &&
                 <Box sx={{
                     border: '2px solid rgba(81, 120, 178, 1)',
@@ -97,7 +93,9 @@ export default function MC_Drawer(){
                     height: 550,
                     textAlign: 'left',
                     overflow: 'auto',
-                    fontSize: '1vw'
+                    fontSize: '1vw',
+                    position: 'relative',
+                    marginLeft: '6vw'
                 }}>
                     {currentTask.taskResult}
                 </Box>
@@ -110,7 +108,9 @@ export default function MC_Drawer(){
                     height: 550,
                     textAlign: 'left',
                     overflow: 'auto',
-                    fontSize: '1vw'
+                    fontSize: '1vw',
+                    position: 'relative',
+                    marginLeft: '6vw'
                 }}>
                     {currentTask.taskType === "puretext" && <Typography variant='subtitle1'>{currentTask.taskPreview}</Typography>}
                     {currentTask.taskType === "youtube" && <iframe src={currentTask.taskPreview}
@@ -126,7 +126,9 @@ export default function MC_Drawer(){
                 </Box>
                 }
                 {(contents == 'View') &&
+                <Box sx={{position: 'relative', marginLeft: '6vw'}}>
                 <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />
+                </Box>
                 }
                 {(contents == 'Edit') &&
                 <Flashcard_edit />}

@@ -95,6 +95,7 @@ export default function Flashcard_edit(){
             '"Segoe UI Symbol"',
         ].join(','),
         color: '#16697A',
+        backgroundColor: '#ffffff',
         fontSize: '0.8vw',
         height: 150,
         width: '90%',
@@ -103,7 +104,7 @@ export default function Flashcard_edit(){
         marginTop: '0.25vw',
         marginBottom: '0.25vw',
         position: 'relative',
-        marginLeft: '5%',
+        marginLeft: '2%',
         textTransform: 'capitalize',
     }));
     
@@ -127,6 +128,8 @@ export default function Flashcard_edit(){
                 height: 600,
                 flexDirection: 'row',
                 overflow: 'auto',
+                position: 'relative',
+                marginLeft: '6vw'
             }}>
                 {currentTask.questions.map((quest) => (
                     <Box>
@@ -135,17 +138,18 @@ export default function Flashcard_edit(){
                                                         setTaskQuestion(quest.question);
                                                         setTaskAnswer(quest.answer);
                                                         }}>
-                            <Typography sx={{width: '60%'}}>
+                            <Typography sx={{width: '50%', overflow: 'auto'}}>
                                 Question: {quest.question}
                             </Typography>
-                            <Typography sx={{width: '40%'}}>
+                            <Typography sx={{width: '30%', position: 'relative', marginLeft: '1.5vw', overflow: 'auto'}}>
                                 Answer: {quest.answer}
                             </Typography>
                         </Flashcard_button>
                         
                         <Button onClick={() => {
                             deleteQuestion(quest.question);
-                        }} sx={{position: 'relative', marginLeft: '0.5%', color: '#489FB5'}}>
+                            setForceRefresh(!forceRefresh);
+                        }} sx={{position: 'relative', marginLeft: '0.1%', color: '#489FB5'}}>
                                 <DeleteForeverIcon />
                         </Button>
                     </Box>
@@ -196,7 +200,7 @@ export default function Flashcard_edit(){
                 </Modal>
             </Box>
 
-            <Button onClick={handleAddNewOpen}>Add new</Button>
+            <Button onClick={handleAddNewOpen} sx={{position: 'relative', marginLeft: '6vw'}}>Add new</Button>
             <Modal 
             open={addNewModal}
             onClose={handleAddNewClose}
