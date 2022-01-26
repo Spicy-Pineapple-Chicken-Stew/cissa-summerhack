@@ -1,21 +1,33 @@
 import * as React from 'react';
 import ColorButton from '../Components/ButtonDef'
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
-import {useContext} from "react";
+import {useContext, useState} from "react";
+import {Grow, Slide, Zoom} from "@mui/material";
 
 function Home(props){
     let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
+    let [animationState, setAnimationState] = useState(true);
 
     return(
         <div className = 'wrapper'>
             <div className ='home_title'>
-                <h1>Bridge</h1>
+                <Slide direction={"left"} in={animationState} style={{ transformOrigin: '0 0 0' }}
+                      {...(animationState ? { timeout: 1000 } : {})}>
+                    <h1>Bridge</h1>
+                </Slide>
             </div>
             <div className ='home_desc'>
-                <p>Add description   </p>
+                <Slide direction={"left"} in={animationState} style={{ transformOrigin: '0 0 0' }}
+                       {...(animationState ? { timeout: 1000 } : {})}>
+                    <p>Add description   </p>
+                </Slide>
+
             </div>
             <div>
-                <ColorButton onClick={() => {setCurrentPage('Upload')}}>Begin</ColorButton>
+                <Slide direction={"left"} in={animationState} style={{ transformOrigin: '0 0 0' }}
+                       {...(animationState ? { timeout: 1000 } : {})}>
+                    <ColorButton onClick={() => {setCurrentPage('Upload')}}>Begin</ColorButton>
+                </Slide>
             </div>
         </div>
     )
