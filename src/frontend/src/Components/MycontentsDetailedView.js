@@ -13,7 +13,7 @@ export default function MC_detailedview(props){
 
     return (
         <div>
-            <Typography align='left' fontSize={'2vw'} ml={'13.2vw'} fontFamily={'Oxygen'} color={'rgba(22, 105, 122, 1)'} mt={2}>
+            <Typography align='left' fontSize={'2vw'} ml={'6vw'} fontFamily={'Oxygen'} color={'rgba(22, 105, 122, 1)'} mt={2}>
                 <Box>{currentTask.taskTitle}</Box>
             </Typography>
             <Typography align='left' fontSize={'1vw'} ml={'70vw'}>
