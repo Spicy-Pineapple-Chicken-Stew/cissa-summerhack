@@ -9,6 +9,7 @@ import {useRef, useState} from "react";
 import Success_Upload from "./success_mobile";
 import Fail_Upload from "./fail_mobile";
 import axios from "axios";
+import getParameterByName from "../Functions/GetURLParams";
 
 
 export default function TextboxPopup(props){
@@ -109,6 +110,7 @@ export default function TextboxPopup(props){
                                     taskID: response.data.task_id,
                                     isDone: false,
                                     taskTitle: textFieldRef.current.value.slice(0, 10) + "...",
+                                    taskPreview: textFieldRef.current.value,
                                     taskStatus: "pending",
                                     taskResult: "",
                                     isError: false,
@@ -128,8 +130,10 @@ export default function TextboxPopup(props){
 
                             if(parseURL.hostname === 'www.youtube.com' || parseURL.hostname === 'youtube.com' || parseURL.hostname === 'youtu.be'){
                                 axios.get(props.url + "/api/youtube_summary?url=" + textFieldRef.current.value).then((response)=>{
+                                    const videoID = getParameterByName("v", textFieldRef.current.value)
                                     props.setTaskList([{
                                         taskType: "youtube",
+                                        taskPreview: `https://www.youtube.com/embed/${videoID}`,
                                         taskID: response.data.task_id,
                                         isDone: false,
                                         taskTitle: textFieldRef.current.value,
