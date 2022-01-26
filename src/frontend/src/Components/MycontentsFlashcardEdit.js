@@ -6,9 +6,12 @@ import { styled } from '@mui/material';
 import { Button } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/Delete';
 import { TextField } from '@mui/material';
+import axios from "axios";
+import {UserContext} from "../Contexts/UserContext";
 
 export default function Flashcard_edit(){
     let [currentTask, setCurrentTask] = React.useContext(CurrentTaskContext);
+    let [user, setUser] = React.useContext(UserContext)
     const [openModel, setOpenModel] = React.useState(false);
     const handleOpen = () => setOpenModel(true);
     const handleClose = () => setOpenModel(false);
@@ -17,21 +20,46 @@ export default function Flashcard_edit(){
     const handleAddNewClose = () => setAddNewModal(false);
     const [taskQuestion, setTaskQuestion] = React.useState(null);
     const [taskAnswer, setTaskAnswer] = React.useState(null);
+    const [forceRefresh, setForceRefresh] = React.useState(false);
+    const url = "http://194.193.55.245:9000";
+
     const saveNewQuestion = () => {
         currentTask.questions.forEach(element => {
             if (element.question == taskQuestion){
                 element.question = questionTextRef.current.value;
                 element.answer = answerTextRef.current.value;
-                setOpenModel(false);
+                axios.post(url + "/api/update_questions?userid=" + user, currentTask).then((response) => {
+                    setOpenModel(false);
+                }).catch((error) => {
+                    alert(error.response)
+                    console.log(error.response)
+                })
             }
         });
     }
 
-    const deleteQuestion = () => {
+    const deleteQuestion = (taskQ) => {
         for(var i  = 0; i < currentTask.questions.length; i++){
-            if(currentTask.questions[i].question === taskQuestion){
-                currentTask.questions.splice(i, 1);
-                setOpenModel(false);
+            if(taskQ != null){
+                if(currentTask.questions[i].question === taskQ){
+                    currentTask.questions.splice(i, 1);
+                    axios.post(url + "/api/update_questions?userid=" + user, currentTask).then((response) => {
+                        setOpenModel(false)
+                    }).catch((error) => {
+                        alert(error.response)
+                        console.log(error.response)
+                    })
+                }
+            }else{
+                if(currentTask.questions[i].question === taskQuestion){
+                    currentTask.questions.splice(i, 1);
+                    axios.post(url + "/api/update_questions?userid=" + user, currentTask).then((response) => {
+                        setOpenModel(false)
+                    }).catch((error) => {
+                        alert(error.response)
+                        console.log(error.response)
+                    })
+                }
             }
         }
     }
@@ -41,7 +69,12 @@ export default function Flashcard_edit(){
             question: newQuestionTextRef.current.value,
             answer: newAnswerTextRef.current.value
         });
-        setAddNewModal(false);
+        axios.post(url + "/api/update_questions?userid=" + user, currentTask).then((response) => {
+            setAddNewModal(false);
+        }).catch((error) => {
+            alert(error.response)
+            console.log(error.response)
+        })
     }
 
 
@@ -111,10 +144,8 @@ export default function Flashcard_edit(){
                         </Flashcard_button>
                         
                         <Button onClick={() => {
-                            alert("sdfjlksdfj")
-                            setTaskQuestion(quest.question);
-                            setTaskAnswer(quest.answer);
-                            deleteQuestion();
+                            deleteQuestion(quest.question);
+                            setForceRefresh(!forceRefresh);
                         }} sx={{position: 'relative', marginLeft: '0.5%', color: '#489FB5'}}>
                                 <DeleteForeverIcon />
                         </Button>
@@ -158,7 +189,9 @@ export default function Flashcard_edit(){
                         </Box>
                         <Box sx={{marginTop: '1vw'}}>
                             <Button onClick={saveNewQuestion}>Save</Button>
-                            <Button onClick={deleteQuestion}>Delete</Button>
+                            <Button onClick={() => {
+                                deleteQuestion(null)
+                            }}>Delete</Button>
                         </Box>
                     </Box>
                 </Modal>
