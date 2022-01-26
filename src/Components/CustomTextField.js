@@ -3,20 +3,20 @@ import {TextField} from "@mui/material";
 
 export const CustomTextField = styled(TextField)({
     '& label.Mui-focused': {
-        color: '#489fb5',
+        color: '#5178b2',
     },
     '& .MuiInput-underline:after': {
-        borderBottomColor: '#489fb5',
+        borderBottomColor: '#5178b2',
     },
     '& .MuiOutlinedInput-root': {
         '& fieldset': {
-            borderColor: '#489fb5',
+            borderColor: '#5178b2',
         },
         '&:hover fieldset': {
-            borderColor: '#489fb5',
+            borderColor: '#5178b2',
         },
         '&.Mui-focused fieldset': {
-            borderColor: '#489fb5',
+            borderColor: '#5178b2',
         },
     },
 });

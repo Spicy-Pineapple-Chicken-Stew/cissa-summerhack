@@ -33,7 +33,7 @@ export default function MC_detailedview_mobile(props){
 
     return (
         <div>
-            <Typography align='left' fontSize={'4vw'} ml={2} fontFamily={'Oxygen'} color={'rgba(22, 105, 122, 1)'}>
+            <Typography align='left' fontSize={'4vw'} ml={2} fontFamily={'Oxygen'} color={'rgba(81, 120, 178, 1)'}>
                 <Box>{currentTask.taskTitle}</Box>
             </Typography>
             <Typography align='left' fontSize={'3vw'} ml={2}>
@@ -67,7 +67,7 @@ export default function MC_detailedview_mobile(props){
             <Box fullWidth>
                 {(contents_mobile === 'Summary') &&
                 <Box sx={{
-                    border: '2px solid rgba(72, 159, 181, 1)',
+                    border: '2px solid rgba(81, 120, 178, 1)',
                     borderRadius: '8px',
                     marginTop: 1,
                     height: 500,
@@ -79,7 +79,7 @@ export default function MC_detailedview_mobile(props){
                 </Box>}
                 {(contents_mobile === 'Original submission') &&
                 <Box sx={{
-                    border: '2px solid rgba(72, 159, 181, 1)',
+                    border: '2px solid rgba(81, 120, 178, 1)',
                     borderRadius: '8px',
                     marginTop: 1,
                     height: 500,
@@ -87,7 +87,17 @@ export default function MC_detailedview_mobile(props){
                     overflow: 'auto',
                     textAlign: 'left'
                 }}>
-                    {contents_mobile}
+                    {currentTask.taskType === "puretext" && <Typography variant='subtitle1'>{currentTask.taskPreview}</Typography>}
+                    {currentTask.taskType === "youtube" && <iframe src={currentTask.taskPreview}
+                                                                   title="YouTube video player" frameBorder="0"
+                                                                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                                   allowFullScreen width={"100%"} height={"99%"}></iframe>}
+                    {currentTask.taskType === 'website' && <Typography variant='subtitle1'>No preview available</Typography>}
+                    {currentTask.taskType === 'file' && <img src={"data:image/jpg;base64, " + currentTask.taskPreview} height={'100%'} style={{
+                        display: "block",
+                        marginLeft: "auto",
+                        marginRight: "auto"
+                    }}/>}
                 </Box>}
                 {(contents_mobile === 'Flash cards') &&
                 <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />}

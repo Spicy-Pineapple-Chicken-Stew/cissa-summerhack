@@ -82,7 +82,7 @@ export default function UploadDesktop(props){
         margin: "-5vw",
         marginTop: '-1vw',
         p: 1,
-        border: '2px solid rgba(72, 159, 181, 1)',
+        border: '2px solid rgba(81, 120, 178, 1)',
         borderRadius: '14px',
         fontSize: '1.65vw',
         color: '#16697A'

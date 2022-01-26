@@ -34,7 +34,7 @@ export default function MycontentsQuickViewDesktop(props){
                 width: "94%",
                 marginLeft: '3%',
                 marginTop: '3%',
-                border: '2px solid #16697A',
+                border: '2px solid #5178B2',
                 borderRadius: "4px"}}>
                     <Typography
                     sx = {{
@@ -82,13 +82,13 @@ export default function MycontentsQuickViewDesktop(props){
                 sx={{
                     width: '100%',
                     height: 240,
-                    border: '2px solid #489FB5',
+                    border: '2px solid #5178b2',
                     marginRight: '2%',
                     borderRadius: '4px',
                     flexShrink: 1,
                     overflow: 'auto',
                     '&:hover': {
-                        border: '2px solid #16697A',
+                        border: '2px solid #82ACEB',
                         opacity: 0.9,
                     },
 
@@ -147,14 +147,14 @@ export default function MycontentsQuickViewDesktop(props){
             <Box
                 sx={{
                     position: 'relative',
-                    width: '41.5%',
+                    width: '41%',
                     height: 280,
-                    border: '2px solid #489FB5',
+                    border: '2px solid #5178B2',
                     borderRadius: '4px',
                     overflow: 'auto',
                     marginLeft: "3vw",
                     '&:hover': {
-                        border: '2px solid #16697A',
+                        border: '2px solid #82ACEB',
                         opacity: 0.9,
                     },
                 }}>
