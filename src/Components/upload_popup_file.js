@@ -88,8 +88,8 @@ export default function FilePopup(props){
                     }}
             >
                 <Box sx={{
-                    bgcolor: 'rgba(130, 192, 204, 1)',
-                    border: '2px solid rgba(72, 159, 181, 1)'}}
+                    bgcolor: 'rgba(81, 120, 178, 1)',
+                    border: '2px solid rgba(81, 120, 178, 1)'}}
                 >
                     <Typography
                         id="modal-title"

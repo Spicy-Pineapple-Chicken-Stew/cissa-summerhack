@@ -42,20 +42,20 @@ export default function TextboxPopup(props){
 
     const CustomTextField = styled(TextField)({
         '& label.Mui-focused': {
-            color: '#489fb5',
+            color: '#345079',
         },
         '& .MuiInput-underline:after': {
-            borderBottomColor: '#489fb5',
+            borderBottomColor: '#345079',
         },
         '& .MuiOutlinedInput-root': {
             '& fieldset': {
-                borderColor: '#489fb5',
+                borderColor: '#345079',
             },
             '&:hover fieldset': {
-                borderColor: '#489fb5',
+                borderColor: '#345079',
             },
             '&.Mui-focused fieldset': {
-                borderColor: '#489fb5',
+                borderColor: '#345079',
             },
         },
     });
@@ -76,14 +76,14 @@ export default function TextboxPopup(props){
                     }}
             >
                 <Box sx={{
-                    bgcolor: 'rgba(130, 192, 204, 1)',
-                    border: '2px solid rgba(72, 159, 181, 1)'}}
+                    bgcolor: 'rgba(81, 120, 178, 1)',
+                    border: '2px solid rgba(52, 80, 121, 1)'}}
                 >
                     <Typography
                         id="modal-title"
                         variant="h4"
                         align='center'
-                        color='rgba(237, 231, 227, 1)'
+                        color='rgba(230, 230, 200, 1)'
                     >
                         {props.text}
                     </Typography>
