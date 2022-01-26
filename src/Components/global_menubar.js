@@ -56,7 +56,7 @@ const Global_MenuBar = () => {
         width: "110%",
         height: "110%",
         marginLeft: -10,
-    marginTop: -10}}
+        marginTop: -10}}
             >
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>

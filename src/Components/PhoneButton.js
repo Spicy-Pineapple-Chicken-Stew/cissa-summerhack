@@ -47,7 +47,7 @@ const UploadP_Button = styled(Button)(({ theme }) => ({
       '"Segoe UI Symbol"',
     ].join(','),
   color: '#FFFFFF',
-  backgroundColor: '#489fb5',
+  backgroundColor: '#5178B2',
   padding: '6px 12px',
   border: '#59a9bd',
   fontSize: 16,

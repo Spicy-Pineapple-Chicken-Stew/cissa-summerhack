@@ -76,7 +76,7 @@ export default function MycontentsQuickViewMobile(props){
                     width: '100%',
                     height: 180,
                     marginBottom: '3%',
-                    border: '1px solid #489FB5',
+                    border: '1px solid #5178B2',
                     borderRadius: '4px',
                     flexShrink: 1,
                     overflow: 'auto',
@@ -104,7 +104,7 @@ export default function MycontentsQuickViewMobile(props){
                     width: '100%',
                     height: 250,
                     marginBottom: '3%',
-                    border: '1px solid #489FB5',
+                    border: '1px solid #5178B2',
                     borderRadius: '4px',
                     flexShrink: 1,
                     '&:hover': {

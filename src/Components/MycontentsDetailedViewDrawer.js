@@ -91,7 +91,7 @@ export default function MC_Drawer(){
                 {contents}
                 {(contents == 'Summary') &&
                 <Box sx={{
-                    border: '2px solid rgba(72, 159, 181, 1)',
+                    border: '2px solid rgba(81, 120, 178, 1)',
                     borderRadius: '8px',
                     marginTop: 1,
                     height: 550,
@@ -104,7 +104,7 @@ export default function MC_Drawer(){
                 }
                 {(contents == 'Original submission') &&
                 <Box sx={{
-                    border: '2px solid rgba(72, 159, 181, 1)',
+                    border: '2px solid rgba(81, 120, 178, 1)',
                     borderRadius: '8px',
                     marginTop: 1,
                     height: 550,
