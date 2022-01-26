@@ -9,7 +9,7 @@ const style = {
     left: '20%',
     width: '50vw',
     height: '15vw',
-    bgcolor: '#289FB5',
+    bgcolor: '#5178B2',
     border: '1px round',
     borderRadius: 2,
     boxShadow: 24,
