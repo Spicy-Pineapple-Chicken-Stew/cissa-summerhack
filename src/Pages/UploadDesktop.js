@@ -33,16 +33,16 @@ export default function UploadDesktop(props){
             '"Segoe UI Symbol"',
         ].join(','),
         color: '#ffffff',
-        backgroundColor: '#FFA62B',
+        backgroundColor: '#5178B2',
         padding: '6px 12px',
         border: '1px solid',
         fontSize: 16,
         '&:hover': {
-            backgroundColor: '#f1bb73',
+            backgroundColor: '#82ACEB',
             color: '#676767'
         },
         '&:active': {
-            backgroundColor:'#FFA62B',
+            backgroundColor:'#5178B2',
         },
     }));
 
@@ -116,12 +116,22 @@ export default function UploadDesktop(props){
 
     const button_style = {
         fontSize: "1.8vw",
-        width: '26vw',
+        width: '27vw',
         height: "3.5vw",
         borderRadius: '14px',
-        margin: "-4.9vw",
+        margin: "-5vw",
         marginTop: "-10vh"
     }
+
+    const button_video = {
+        fontSize: "1.8vw",
+        width: '27vw',
+        height: "3.5vw",
+        borderRadius: '14px',
+        margin: "-5vw",
+        marginTop: "-10.8vh"
+    }
+
 
     const Input = styled('input')({
         display: 'none',
@@ -134,7 +144,7 @@ export default function UploadDesktop(props){
     function renderTextField(){
         if(!hasSelected){
             return(
-                <div className={'wrapperButtonRow'}>
+                <div className={'wrapperTextRow'}>
                     {descriptionBoxPT}
                     {descriptionBoxLink}
                     {descriptionBoxYV}
@@ -225,10 +235,11 @@ export default function UploadDesktop(props){
                             setHasSelected(true)
                             setCurrentSelection('customvideo')
                         }}
+                        
                     />
                     <ColorButton
                         sx={
-                            button_style
+                            button_video 
                         }
                         component={"span"}
                     >Your video</ColorButton>

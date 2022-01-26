@@ -52,6 +52,16 @@ body {
   margin-top: 10vh;
 }
 
+.wrapperTextRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 15vw;
+  align-items: center;
+  margin-top: 10vh;
+}
+
+
 .descriptionBox{
   display: flex;
   justify-content: center;
@@ -76,6 +86,7 @@ body {
 .content_box{
   display: flex;
   flex-wrap: wrap;
+  border:1px solid black;
 }
 
 .text{
