@@ -39,7 +39,7 @@ export default function MycontentsQuickViewDesktop(props){
                     sx = {{
                     fontSize:'260%',
                     fontFamily: 'Oxygen',
-                    color: 'rgba(22, 105, 122, 1)'
+                    color: '#265191'
                     }} >
                     <Box
                     sx ={{flexWrap: 'wrap',
@@ -87,6 +87,7 @@ export default function MycontentsQuickViewDesktop(props){
                     borderRadius: '4px',
                     flexShrink: 1,
                     overflow: 'auto',
+                    backgroundColor: '#fffaf7',
                     '&:hover': {
                         border: '2px solid #82ACEB',
                         opacity: 0.9,
@@ -99,7 +100,7 @@ export default function MycontentsQuickViewDesktop(props){
                     textAlign: "left",
                     marginTop: "-0.5%",
                     p: 2.5,
-                    backgroundColor: '#fffaf7'}}
+                    }}
                 >{currentTask.taskResult}</Typography>
             </Box>
 
