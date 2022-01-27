@@ -81,8 +81,18 @@ export default function MC_Drawer(){
                 {
                     ['Side menu'].map((anchor) => (
                         <React.Fragment key={anchor}>
-                            <Button onClick={toggleDrawer(anchor, true)} sx={{position: 'absolute', marginTop: '-28vh', marginLeft:'3.2vw'}} variant='outlined'>
-                                <MenuIcon fontSize='medium' sx={{color: '#5178B2'}}/>
+                            <Button onClick={toggleDrawer(anchor, true)} 
+                                sx={{
+                                    width: '1/16', 
+                                    position: 'absolute', 
+                                    top: '5.3em', 
+                                    left: '-90%', 
+                                    right: 0, 
+                                    margin: 'auto', 
+                                    bgcolor: '#5178B2'
+                                }}
+                                variant='outlined'>
+                                <MenuIcon fontSize='medium' sx={{color: '#FFFFFF'}}/>
                             </Button>
                             <Drawer
                                 anchor='left'
