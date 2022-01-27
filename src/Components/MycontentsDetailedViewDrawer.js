@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { makeStyles } from '@mui/material';
 import { Box, fontFamily } from '@mui/system';
 import { FlashcardComponent } from './TestFlashcardComponent';
 import Drawer from '@mui/material/Drawer';
@@ -15,11 +16,12 @@ import Flashcard_edit from './MycontentsFlashcardEdit';
 import MenuIcon from '@mui/icons-material/Menu';
 import { styled } from '@mui/material/styles';
 
+
+
 export default function MC_Drawer(){
     let [contents, setContents] = React.useState('Summary');
     const [opendrawer, setOpendrawer] = React.useState(false);
     let [currentTask, setCurrentTask] = useContext(CurrentTaskContext);
-
 
     const menuDrop = styled(Button)(({ theme }) => ({
         position: 'absolute',
@@ -65,6 +67,7 @@ export default function MC_Drawer(){
         </Box>
     )
 
+
     return (
         <Box className='content_box'>
             
@@ -84,8 +87,10 @@ export default function MC_Drawer(){
                 fontFamily: 'Oxygen',
                 marginLeft: '5%',
                 marginTop: '-1.15%'
-            }}
-            >{contents}</Box>
+                }}
+                >
+                    {contents}
+                </Box>
                 <Box>
                 {
                     ['Side menu'].map((anchor) => (
@@ -106,7 +111,7 @@ export default function MC_Drawer(){
                             <Drawer
                                 anchor='left'
                                 open={opendrawer[anchor]}
-                                onClose={toggleDrawer(anchor, false)} 
+                                onClose={toggleDrawer(anchor, false)}
                             >
                                 {list(anchor)}
                             </Drawer>
@@ -168,18 +173,12 @@ export default function MC_Drawer(){
                 
                 {(contents == 'View') &&
                 <Box sx={{
-                    
-                    borderRadius: '4px',
-                    marginTop: '2%',
-                    height: '90%',
-                    width: 'calc(100% - 20%)',
-                    minwidth: '20vw',
-                    
-                    overflow: 'auto',
-                    fontSize: '1vw',
+                    height: 500,
+                    width: '70vw',
+                    fontSize: '1vw',                    
                     position: 'relative',
                     marginLeft: '18%',
- 
+                    marginTop: '5%',
                 }}>
                     <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />
                 </Box>
