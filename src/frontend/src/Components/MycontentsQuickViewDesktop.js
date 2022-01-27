@@ -10,19 +10,18 @@ import parseQuestions from "../Functions/ParseQuestions";
 export default function MycontentsQuickViewDesktop(props){
     let [isQuickView, setIsQuickView] = props.isQuickView;
     let [currentTask, setCurrentTask] = useContext(CurrentTaskContext);
+    var border = "";
+    var bgcolor = ""
 
-    /*
-    const cardData = [
-        {
-            front: {
-                text: "Sample question",
-            },
-            back: {
-                text: "Sample solution",
-            }
-        }
-    ];
-     */
+    if(currentTask.taskType === "puretext"){
+        border = '2px solid #5178B2'
+        bgcolor = "#fffaf7"
+    }else{
+        border = ''
+        bgcolor = ""
+    }
+
+
     return (
         <div>
             <div>
@@ -152,7 +151,7 @@ export default function MycontentsQuickViewDesktop(props){
                     width: 'calc(100% - 55% - 3.9%)',
                     minwidth: '20vw',
                     height: 280,
-                    border: '2px solid #5178B2',
+                    border: border,
                     borderRadius: '4px',
                     overflow: 'auto',
                     marginLeft: "3vw",
@@ -160,6 +159,7 @@ export default function MycontentsQuickViewDesktop(props){
                         border: '2px solid #82ACEB',
                         opacity: 0.9,
                     },
+                    backgroundColor: bgcolor
                 }}>
                 {currentTask.taskType === "puretext" && <Typography variant='subtitle1'>{currentTask.taskPreview}</Typography>}
                 {currentTask.taskType === "youtube" && <iframe src={currentTask.taskPreview}
