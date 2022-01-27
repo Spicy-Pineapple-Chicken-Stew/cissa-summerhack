@@ -49,6 +49,7 @@ export default function LoginRegistration(props){
                     <Watch
                         height={"10vh"}
                         width={"10vw"}
+                        color={"#265191"}
                     />
                 </div>
             )
