@@ -20,6 +20,17 @@ export default function MC_detailedview_mobile(props){
         setContents_mobile(Event.target.value);
     };
 
+    var border = "";
+    var bgcolor = ""
+
+    if(currentTask.taskType === "puretext"){
+        border = '2px solid #5178B2'
+        bgcolor = "#fffaf7"
+    }else{
+        border = ''
+        bgcolor = ""
+    }
+
     const cardData = [
         {
             front: {
@@ -108,13 +119,14 @@ export default function MC_detailedview_mobile(props){
                 </Box>}
                 {(contents_mobile === 'Original submission') &&
                 <Box sx={{
-                    border: '2px solid rgba(81, 120, 178, 1)',
+                    border: border,
                     borderRadius: '8px',
                     marginTop: 1,
                     height: 500,
                     fontSize: '4vw',
                     overflow: 'auto',
-                    textAlign: 'left'
+                    textAlign: 'left',
+                    backgroundColor: bgcolor
                 }}>
                     {currentTask.taskType === "puretext" && <Typography variant='subtitle1'>{currentTask.taskPreview}</Typography>}
                     {currentTask.taskType === "youtube" && <iframe src={currentTask.taskPreview}
