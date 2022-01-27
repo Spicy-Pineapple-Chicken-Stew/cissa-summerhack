@@ -105,13 +105,13 @@ function renderMobileDescription(){
                     textAlign: "center"
                 }}>
                     <img src={des1} height={"220vh"}/>
-                    <Typography color={'#FFFFFF'} fontSize={'3vw'}>
+                    <Typography color={'#FFFFFF'} fontSize={'5vw'}>
                         Support wide range of formats
                     </Typography>
                     <div style={{
                         width: "50vw"
                     }}>
-                        <Typography color={'#FFFFFF'} fontSize={'2vw'}>
+                        <Typography color={'#FFFFFF'} fontSize={'3vw'}>
                             Bridge supports uploading a wide variety of formats from text, weblinks, youtube videos to even custom videos. Any study material can be easily uploaded and processed through our backend servers keeping your system light and free from the heavy computation.
                         </Typography>
                     </div>
@@ -124,13 +124,13 @@ function renderMobileDescription(){
                     marginTop: "3vh"
                 }}>
                     <img src={des2} height={'300vh'}/>
-                    <Typography color={'#FFFFFF'} fontSize={'3vw'}>
+                    <Typography color={'#FFFFFF'} fontSize={'5vw'}>
                         AI summarization
                     </Typography>
                     <div style={{
                         width: "50vw"
                     }}>
-                        <Typography color={'#FFFFFF'} fontSize={'2vw'}>
+                        <Typography color={'#FFFFFF'} fontSize={'3vw'}>
                             Any content can easily be summaries in comprehensive text, made available through implementation of numerous AI technologies such as GPT2 Abstractive Summary model, BERT Extractive Summary model and Bidirectional RNN punctuator model.
                         </Typography>
                     </div>
@@ -143,13 +143,13 @@ function renderMobileDescription(){
                     marginTop: "3vh"
                 }}>
                     <img src={des3} width={'60%'}/>
-                    <Typography color={'#FFFFFF'} fontSize={'3vw'}>
+                    <Typography color={'#FFFFFF'} fontSize={'5vw'}>
                         Automated question generation
                     </Typography>
                     <div style={{
                         width: "50vw"
                     }}>
-                        <Typography color={'#FFFFFF'} fontSize={'2vw'}>
+                        <Typography color={'#FFFFFF'} fontSize={'3vw'}>
                             Create quick and easy flashcards with the help of automated question generation, using advanced AI models such as Structured BERT SRL predictor and NLTK Pos Tagger. Any summarized text will have questions generated based on information extracted from the text.
                         </Typography>
                     </div>
