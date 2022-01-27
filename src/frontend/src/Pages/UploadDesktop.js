@@ -10,6 +10,7 @@ import Fail_Upload from "../Components/fail";
 import {CustomTextField} from "../Components/CustomTextField";
 import axios from "axios";
 import getParameterByName from "../Functions/GetURLParams";
+import Typography from "@mui/material/Typography";
 
 export default function UploadDesktop(props){
     let [hasSelected, setHasSelected] = useState(false);
@@ -211,7 +212,7 @@ export default function UploadDesktop(props){
             <h1 style={{
                         marginTop: '10vh',
                         textAlign: "center",
-                        fontSize: 42}}>Choose what to upload:</h1>
+                        fontSize: 42}}><Typography fontFamily={"Oxygen"} fontSize={"5vh"}>Choose what to upload:</Typography> </h1>
             <div className={'wrapperButtonRow'}>
                 <ColorButton
                     sx={button_style}
