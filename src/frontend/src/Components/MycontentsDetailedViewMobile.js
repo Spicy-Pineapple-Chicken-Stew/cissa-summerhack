@@ -33,23 +33,49 @@ export default function MC_detailedview_mobile(props){
 
     return (
         <div>
-            <Typography align='left' fontSize={'4vw'} ml={2} fontFamily={'Oxygen'} color={'rgba(81, 120, 178, 1)'}>
-                <Box>{currentTask.taskTitle}</Box>
-            </Typography>
-            <Typography align='left' fontSize={'3vw'} ml={2}>
-                <Box>
-                    Change view: Default
-                    <Switch
-                        checked={!isQuickView}
-                        onClick={() => {setIsQuickView(!isQuickView)}}
-                    />
-                    Detailed
+            <div>
+                <Box sx =
+                         {{flexWrap: 'wrap',
+                             display:'flex',
+                             flexDirection:'column',
+                             alignContent: 'flex-start',
+                             marginLeft: '3%',
+                             marginTop: '5%'}}>
+                    <Typography
+                        sx = {{
+                            fontSize:'180%',
+                            fontFamily: 'Oxygen',
+                            color: '#265191'
+                        }} >
+                        <Box
+                            sx ={{flexWrap: 'wrap',
+                                display:'flex',
+                                flexDirection:'row'}}>
+
+                            {currentTask.taskTitle}</Box>
+
+                    </Typography>
+
+
+                    <Typography align='right' fontSize={'2.5vw'} fontFamily={'Oxygen'}>
+                        <Box>
+                            Change view: Default
+                            <Switch
+                                checked={!isQuickView}
+                                onClick={() => {setIsQuickView(!isQuickView)}}
+                            />
+                            Detailed
+                        </Box>
+                    </Typography>
                 </Box>
-            </Typography>
+            </div>
+
             <Box fullWidth>
                 <Box sx={{width: 1/2, position: 'relative', marginLeft: "25%"}} >
                     <FormControl fullWidth>
-                        <InputLabel id="content-select-label">content</ InputLabel>
+                        <InputLabel id="content-select-label">
+                            <Typography fontFamily={'Oxygen'}> Content </Typography>
+                        </ InputLabel>
                         <Select
                             labelId="content-select-label"
                             id="content-select"
@@ -57,9 +83,9 @@ export default function MC_detailedview_mobile(props){
                             label="Content"
                             onChange={handleContentChange}
                         >
-                            <MenuItem value={'Summary'}>Summary</MenuItem>
-                            <MenuItem value={'Flash cards'}>Flash cards</MenuItem>
-                            <MenuItem value={'Original submission'}>Original submission</MenuItem>
+                            <MenuItem value={'Summary'}><Typography fontFamily={'Oxygen'}> Summary </Typography></MenuItem>
+                            <MenuItem value={'Flash cards'}><Typography fontFamily={'Oxygen'}> Flash Cards </Typography></MenuItem>
+                            <MenuItem value={'Original submission'}><Typography fontFamily={'Oxygen'}> Original Submission </Typography></MenuItem>
                         </Select>
                     </FormControl>
                 </Box>
@@ -73,7 +99,10 @@ export default function MC_detailedview_mobile(props){
                     height: 500,
                     fontSize: '4vw',
                     overflow: 'auto',
-                    textAlign: 'left'
+                    textAlign: 'left',
+                    backgroundColor: '#fffaf7',
+                    p: 1,
+                    lineHeight: "150%"
                 }}>
                     {currentTask.taskResult}
                 </Box>}
