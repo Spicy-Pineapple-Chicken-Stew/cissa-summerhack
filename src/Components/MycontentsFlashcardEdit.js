@@ -154,7 +154,7 @@ export default function Flashcard_edit(){
                             <Typography sx={{width: '60%'}}>
                                 Question: {quest.question}
                             </Typography>
-                            <Typography sx={{width: '40%'}}>
+                            <Typography sx={{width: '25%'}}>
                                 Answer: {quest.answer}
                             </Typography>
                         </Flashcard_button>
