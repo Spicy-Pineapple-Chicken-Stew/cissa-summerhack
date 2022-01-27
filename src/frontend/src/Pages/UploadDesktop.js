@@ -94,7 +94,7 @@ export default function UploadDesktop(props){
         sx={descriptBox}
         className = {'descriptionBox'}
         >
-            Click the button above and enter or past text to be summarised
+            Click the button above and enter or paste text to be summarised
         </Box>
     )
 
@@ -103,7 +103,7 @@ export default function UploadDesktop(props){
         sx={descriptBox}
         className = {'descriptionBox'}
         >
-            Click the button above and enter or past a url to be summarised
+            Click the button above and enter or paste a url to be summarised
         </Box>
     )
 
@@ -236,11 +236,11 @@ export default function UploadDesktop(props){
                             setHasSelected(true)
                             setCurrentSelection('customvideo')
                         }}
-                        
+
                     />
                     <ColorButton
                         sx={
-                            button_video 
+                            button_video
                         }
                         component={"span"}
                     >Your video</ColorButton>
