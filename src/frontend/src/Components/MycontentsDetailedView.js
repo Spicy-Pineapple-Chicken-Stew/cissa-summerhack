@@ -5,7 +5,20 @@ import { Box } from '@mui/system';
 import {CurrentTaskContext} from "../Contexts/CurrentTaskContext";
 import MC_Drawer from './MycontentsDetailedViewDrawer';
 import {useContext} from "react";
+import { alpha, styled } from '@mui/material';
 
+
+const BlueSwitch = styled(Switch)(({ theme }) => ({
+    '& .MuiSwitch-switchBase.Mui-checked': {
+        color: '#5178B2',
+        '&:hover': {
+            backgroundColor: alpha('#5178B2', theme.palette.action.hoverOpacity),
+        },
+    },
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+        backgroundColor: '#5178B2',
+    },
+}));
 
 export default function MC_detailedview(props){
     let [isQuickView, setIsQuickView] = props.isQuickView;
@@ -40,9 +53,10 @@ export default function MC_detailedview(props){
                 <Typography align='left' fontSize={'1vw'} ml={'70vw'} fontFamily={'Oxygen'}>
                     <Box>
                         Change view: Default
-                        <Switch
+                        <BlueSwitch
                             checked={!isQuickView}
                             onClick={() => {setIsQuickView(!isQuickView)}}
+                            color="info"
                         />
                         Detailed
                     </Box>

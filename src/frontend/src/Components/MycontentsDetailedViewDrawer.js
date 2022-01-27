@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { makeStyles } from '@mui/material';
 import { Box, fontFamily } from '@mui/system';
 import { FlashcardComponent } from './TestFlashcardComponent';
 import Drawer from '@mui/material/Drawer';
@@ -15,16 +16,28 @@ import Flashcard_edit from './MycontentsFlashcardEdit';
 import MenuIcon from '@mui/icons-material/Menu';
 import { styled } from '@mui/material/styles';
 
+
+
 export default function MC_Drawer(){
     let [contents, setContents] = React.useState('Summary');
     const [opendrawer, setOpendrawer] = React.useState(false);
     let [currentTask, setCurrentTask] = useContext(CurrentTaskContext);
 
-
     const menuDrop = styled(Button)(({ theme }) => ({
         position: 'absolute',
         border: '1px solid #5178B2',
     }));
+
+    var border = "";
+    var bgcolor = ""
+
+    if(currentTask.taskType === "puretext"){
+        border = '2px solid #5178B2'
+        bgcolor = "#fffaf7"
+    }else{
+        border = ''
+        bgcolor = ""
+    }
 
 
     const toggleDrawer = (anchor, open) => (Event) => {
@@ -35,7 +48,7 @@ export default function MC_Drawer(){
         setOpendrawer({opendrawer, [anchor]: open});
     };
 
-    
+
     const list = (anchor) => (
         <Box
             role="presentation"
@@ -58,16 +71,17 @@ export default function MC_Drawer(){
             <List>
                 {['View', 'Edit'].map((text, index) => (
                     <ListItem button key={text} onClick={() => setContents(text)}>
-                        <ListItemText primary={text} sx={{position: 'relative', marginLeft: '1.5vw'}} /> 
+                        <ListItemText primary={text} sx={{position: 'relative', marginLeft: '1.5vw'}} />
                     </ListItem>
                 ))}
             </List>
         </Box>
     )
 
+
     return (
         <Box className='content_box'>
-            
+
             <Box sx={{
                 width: '100%',
                 height: '70vh',
@@ -79,25 +93,27 @@ export default function MC_Drawer(){
                 fontSize: '2vw',
                 textAlign: 'left',
                 width: '100%',
-                
+
                 p: 0.5,
                 fontFamily: 'Oxygen',
                 marginLeft: '5%',
                 marginTop: '-1.15%'
-            }}
-            >{contents}</Box>
+                }}
+                >
+                    {contents}
+                </Box>
                 <Box>
                 {
                     ['Side menu'].map((anchor) => (
                         <React.Fragment key={anchor}>
-                            <Button onClick={toggleDrawer(anchor, true)} 
+                            <Button onClick={toggleDrawer(anchor, true)}
                                 sx={{
-                                    width: '1/16', 
-                                    position: 'absolute', 
-                                    top: '5.1em', 
-                                    left: '-90%', 
-                                    right: 0, 
-                                    margin: 'auto', 
+                                    width: '1/16',
+                                    position: 'absolute',
+                                    top: '5.1em',
+                                    left: '-90%',
+                                    right: 0,
+                                    margin: 'auto',
                                     bgcolor: '#5178B2'
                                 }}
                                 variant='outlined'>
@@ -106,7 +122,7 @@ export default function MC_Drawer(){
                             <Drawer
                                 anchor='left'
                                 open={opendrawer[anchor]}
-                                onClose={toggleDrawer(anchor, false)} 
+                                onClose={toggleDrawer(anchor, false)}
                             >
                                 {list(anchor)}
                             </Drawer>
@@ -135,22 +151,24 @@ export default function MC_Drawer(){
                     marginTop: "-0.45%",
                     p: 2.5
                     }}
-                    > 
+                    >
                     {currentTask.taskResult}</Typography>
                 </Box>
                 }
-                
+
                 {(contents == 'Original submission') &&
                 <Box sx={{
-                    
+                    border: border,
                     borderRadius: '4px',
                     marginTop: '0.5%',
-                    height: '85.5%',
-                    width: '63%',
+                    height: '84%',
+                    width: '99.7%',
+                    textAlign: 'left',
                     overflow: 'auto',
                     fontSize: '1vw',
                     position: 'relative',
-                    marginLeft: '4.4vw',
+                    marginLeft: '4.65vw',
+                    backgroundColor: bgcolor
                 }}>
                     {currentTask.taskType === "puretext" && <Typography variant='subtitle1'>{currentTask.taskPreview}</Typography>}
                     {currentTask.taskType === "youtube" && <iframe src={currentTask.taskPreview}
@@ -165,21 +183,15 @@ export default function MC_Drawer(){
                     }}/>}
                 </Box>
                 }
-                
+
                 {(contents == 'View') &&
                 <Box sx={{
-                    
-                    borderRadius: '4px',
-                    marginTop: '2%',
-                    height: '90%',
-                    width: 'calc(100% - 20%)',
-                    minwidth: '20vw',
-                    
-                    overflow: 'auto',
+                    height: 500,
+                    width: '70vw',
                     fontSize: '1vw',
                     position: 'relative',
                     marginLeft: '18%',
- 
+                    marginTop: '5%',
                 }}>
                     <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />
                 </Box>
