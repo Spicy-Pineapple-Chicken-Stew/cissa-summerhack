@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box } from '@mui/system';
+import { Box, fontFamily } from '@mui/system';
 import { FlashcardComponent } from './TestFlashcardComponent';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -69,14 +69,23 @@ export default function MC_Drawer(){
         <Box className='content_box'>
             
             <Box sx={{
-                width: '97.9%',
-                height: '75vh',
+                width: '100%',
+                height: '70vh',
                 fontSize: '2vw',
                 textAlign: 'left',
-                border: '1px solid #000000',
                 marginLeft: '-5%',
             }}>
-                <Typography sx={{position: 'relative', marginTop: '1vw', marginLeft: '4.7vw', fontSize: '2vw'}}>{contents}</Typography>
+                <Box sx={{
+                fontSize: '2vw',
+                textAlign: 'left',
+                width: '100%',
+                
+                p: 0.5,
+                fontFamily: 'Oxygen',
+                marginLeft: '5%',
+                marginTop: '-1.15%'
+            }}
+            >{contents}</Box>
                 <Box>
                 {
                     ['Side menu'].map((anchor) => (
@@ -98,38 +107,43 @@ export default function MC_Drawer(){
                 {(contents == 'Summary') &&
                 <Box sx={{
                     border: '2px solid rgba(81, 120, 178, 1)',
-                    borderRadius: '8px',
-                    marginTop: 1,
-                    height: '83%',
-                    width: '93%',
+                    borderRadius: '4px',
+                    marginTop: '0.5%',
+                    height: '84%',
+                    width: '99.7%',
                     textAlign: 'left',
                     overflow: 'auto',
                     fontSize: '1vw',
                     position: 'relative',
-                    marginLeft: '4.7vw'
+                    marginLeft: '4.65vw',
+                    backgroundColor: '#fffaf7'
                 }}>
                     <Typography sx={{
                     fontFamily: 'Oxygen',
                     fontSize: 20,
                     textAlign: "left",
-                    marginTop: "-0.5%",
+                    marginTop: "-0.45%",
                     p: 2.5,
-                    backgroundColor: '#fffaf7'}}
+                    }}
                     > 
                     {currentTask.taskResult}</Typography>
                 </Box>
                 }
+                
                 {(contents == 'Original submission') &&
                 <Box sx={{
-                    border: '2px solid rgba(81, 120, 178, 1)',
-                    borderRadius: '8px',
-                    marginTop: 1,
-                    height: 550,
-                    textAlign: 'left',
+                    
+                    borderRadius: '4px',
+                    marginTop: '0.5%',
+                    height: '85.5%',
+                    width: '63%',
                     overflow: 'auto',
                     fontSize: '1vw',
                     position: 'relative',
-                    marginLeft: '6vw'
+                    marginLeft: '4.4vw',
+                    
+   
+        
                 }}>
                     {currentTask.taskType === "puretext" && <Typography variant='subtitle1'>{currentTask.taskPreview}</Typography>}
                     {currentTask.taskType === "youtube" && <iframe src={currentTask.taskPreview}
@@ -144,9 +158,23 @@ export default function MC_Drawer(){
                     }}/>}
                 </Box>
                 }
+                
                 {(contents == 'View') &&
-                <Box sx={{position: 'relative', marginLeft: '6vw'}}>
-                <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />
+                <Box sx={{
+                    
+                    borderRadius: '4px',
+                    marginTop: '2%',
+                    height: '90%',
+                    width: 'calc(100% - 20%)',
+                    minwidth: '20vw',
+                    
+                    overflow: 'auto',
+                    fontSize: '1vw',
+                    position: 'relative',
+                    marginLeft: '18%',
+ 
+                }}>
+                    <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />
                 </Box>
                 }
                 {(contents == 'Edit') &&

@@ -73,7 +73,8 @@ export default function MycontentsQuickViewDesktop(props){
                 width: '100%',
                 marginTop: '1%',
                 marginBottom: '0.5%',
-                p: 0.5
+                p: 0.5,
+                border: '1px solid #000000',
             }}
             >
                 Summary
