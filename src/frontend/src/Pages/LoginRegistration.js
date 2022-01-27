@@ -1,19 +1,65 @@
 import * as React from 'react';
 import {CustomTextField} from "../Components/CustomTextField";
 import ColorButton from "../Components/ButtonDef";
-import {useContext, useState} from "react";
+import {useCallback, useContext, useEffect, useRef, useState} from "react";
 import axios from "axios";
 import {UserContext} from "../Contexts/UserContext";
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
 import {Watch} from 'react-loader-spinner'
 
 export default function LoginRegistration(props){
-    let [username, setUsername] = useState(null)
-    let [password, setPassword] = useState(null)
+    let usernameRef = useRef('');
+    let setUsernameRef = useCallback(node => {
+        if(node){
+            usernameRef.current = node
+        }
+    });
+    let passwordRef = useRef('');
+    let setPasswordRef = useCallback(node=>{
+        if(node){
+            passwordRef.current = node
+        }
+    })
+
     let [user, setUser] = useContext(UserContext);
     let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
     let [isLoading, setIsLoading] = useState(false);
 
+    function onLoginClick(){
+        if(usernameRef.current.value == null || passwordRef.current.value == null){
+            alert("Username or password cannot be null")
+        }else{
+            setIsLoading(true)
+            axios.post("http://194.193.55.245:9000/auth/login", `username=${usernameRef.current.value}&password=${passwordRef.current.value}`,
+                {headers:{
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    }}).then((response) => {
+                if(response.data.status === 'success'){
+                    postExistingTasks(response.data.user_id)
+                }else{
+                    setIsLoading(false)
+                    alert(response.data.reason)
+                }
+            }).catch((error) => {
+                setIsLoading(false)
+                alert(error.response)
+            })
+        }
+    }
+
+    useEffect(() => {
+        const listener = event => {
+            if (event.code === "Enter" || event.code === "NumpadEnter") {
+                console.log("Enter key was pressed. Run your function.");
+                event.preventDefault();
+                onLoginClick()
+            }
+        };
+        document.addEventListener("keydown", listener);
+        return () => {
+            document.removeEventListener("keydown", listener);
+        };
+    }, []);
 
     function postExistingTasks(userid){
         if(props.taskList.length === 0){
@@ -77,7 +123,7 @@ export default function LoginRegistration(props){
                             maxRows={1}
                             sx={{width: '40vw'}}
                             focused
-                            onChange={(e) => {setUsername(e.target.value)}}
+                            inputRef={setUsernameRef}
                         />
                     </div>
                     <div style={{
@@ -95,7 +141,7 @@ export default function LoginRegistration(props){
                             maxRows={1}
                             sx={{width: '40vw'}}
                             focused
-                            onChange={(e) => {setPassword(e.target.value)}}
+                            inputRef={setPasswordRef}
                         />
                     </div>
                     <div style={{
@@ -104,33 +150,13 @@ export default function LoginRegistration(props){
                         columnGap: '10vw',
                         marginTop: '20vh'
                     }}>
+                        <ColorButton onClick={onLoginClick} >Login</ColorButton>
                         <ColorButton onClick={() => {
-                            if(username == null || password == null){
+                            if(usernameRef.current.value == null || passwordRef.current.value == null){
                                 alert("Username or password cannot be null")
                             }else{
                                 setIsLoading(true)
-                                axios.post("http://194.193.55.245:9000/auth/login", `username=${username}&password=${password}`,
-                                    {headers:{
-                                            "Content-Type": "application/x-www-form-urlencoded"
-                                        }}).then((response) => {
-                                    if(response.data.status === 'success'){
-                                        postExistingTasks(response.data.user_id)
-                                    }else{
-                                        setIsLoading(false)
-                                        alert(response.data.reason)
-                                    }
-                                }).catch((error) => {
-                                    setIsLoading(false)
-                                    alert(error.response)
-                                })
-                            }
-                        }}>Login</ColorButton>
-                        <ColorButton onClick={() => {
-                            if(username == null || password == null){
-                                alert("Username or password cannot be null")
-                            }else{
-                                setIsLoading(true)
-                                axios.post("http://194.193.55.245:9000/auth/register", `username=${username}&password=${password}`,
+                                axios.post("http://194.193.55.245:9000/auth/register", `username=${usernameRef.current.value}&password=${passwordRef.current.value}`,
                                     {headers:{
                                             "Content-Type": "application/x-www-form-urlencoded"
                                         }}).then((response) => {
