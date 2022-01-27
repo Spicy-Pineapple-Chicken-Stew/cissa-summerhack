@@ -5,6 +5,7 @@ import FilePopup from '../Components/upload_popup_file';
 import LinkIcon from '@mui/icons-material/Link';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import {Typography} from "@mui/material";
 
 
 function UploadPhone(props){
@@ -22,7 +23,7 @@ function UploadPhone(props){
     return(
         <div className ='upload_wrapper'>
             <div className ='upload_title'>
-                <h1>Uploads</h1>
+                <h1><Typography fontFamily={"Oxygen"} fontSizes={"8vh"}>Uploads</Typography></h1>
             </div>
             <div>
                 <PhoneButton
