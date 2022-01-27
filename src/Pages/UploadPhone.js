@@ -2,7 +2,10 @@ import * as React from 'react';
 import PhoneButton from '../Components/PhoneButton';
 import TextboxPopup from '../Components/upload_popup';
 import FilePopup from '../Components/upload_popup_file';
-
+import LinkIcon from '@mui/icons-material/Link';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import {Typography} from "@mui/material";
 
 
 function UploadPhone(props){
@@ -20,10 +23,15 @@ function UploadPhone(props){
     return(
         <div className ='upload_wrapper'>
             <div className ='upload_title'>
-                <h1>Uploads</h1>
+                <h1><Typography fontFamily={"Oxygen"} fontSizes={"8vh"}>Uploads</Typography></h1>
             </div>
             <div>
-                <PhoneButton text='Pure text' OnClick={handleOpenPT} />
+                <PhoneButton
+                    text='Pure textㅤ'
+                    description={"Click to enter or paste text to be summarised"}
+                    OnClick={handleOpenPT}
+                    icon={<LibraryBooksIcon style={{color: '#ede7e3'}}/>}
+                />
                 <TextboxPopup
                     text='Pure text'
                     openpop={openPT}
@@ -35,7 +43,12 @@ function UploadPhone(props){
                 />
             </div>
             <div>
-                <PhoneButton text='Link' OnClick={handleOpenL} />
+                <PhoneButton
+                    text='Linkㅤ'
+                    description={"Click to enter or paste link to be summarised"}
+                    OnClick={handleOpenL}
+                    icon={<LinkIcon style={{color: '#ede7e3'}}/>}
+                />
                 <TextboxPopup
                     text='Link'
                     openpop={openL}
@@ -47,7 +60,12 @@ function UploadPhone(props){
                 />
             </div>
             <div>
-                <PhoneButton text='Your video' OnClick={handleOpenYV}/>
+                <PhoneButton
+                    text='Your videoㅤ'
+                    description={"Click to upload a video to be summarised"}
+                    OnClick={handleOpenYV}
+                    icon={<AttachFileIcon style={{color: '#ede7e3'}}/>}
+                />
                 <FilePopup
                     text='Your Video'
                     openpop={openYV}

@@ -52,7 +52,7 @@ export default function MC_Drawer(){
                 }
             </List>
             <Divider />
-                <Typography variant="subtitle 1" sx={{position: 'relative', marginLeft: "10%"}}>
+                <Typography variant="subtitle 1" sx={{position: 'relative', marginLeft: "0.9vw"}}>
                     Flash cards
                 </Typography>
             <List>
@@ -133,7 +133,7 @@ export default function MC_Drawer(){
                     fontSize: 20,
                     textAlign: "left",
                     marginTop: "-0.45%",
-                    p: 2.5,
+                    p: 2.5
                     }}
                     > 
                     {currentTask.taskResult}</Typography>

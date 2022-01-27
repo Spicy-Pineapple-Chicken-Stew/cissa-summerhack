@@ -25,7 +25,7 @@ export default function MycontentsQuickViewMobile(props){
                     sx = {{
                     fontSize:'180%',
                     fontFamily: 'Oxygen',
-                    color: 'rgba(22, 105, 122, 1)'
+                    color: '#265191'
                 }} >
                     <Box
                     sx ={{flexWrap: 'wrap',
@@ -37,7 +37,7 @@ export default function MycontentsQuickViewMobile(props){
                 </Typography>
 
 
-                <Typography align='left' fontSize={'1vw'} ml={'70vw'} fontFamily={'Oxygen'}>
+                <Typography align='right' fontSize={'2.5vw'} fontFamily={'Oxygen'}>
                     <Box>
                         Change view: Default
                         <Switch
@@ -73,7 +73,7 @@ export default function MycontentsQuickViewMobile(props){
 
             <Box
                 sx={{
-                    width: '100%',
+                    width: '97%',
                     height: 180,
                     marginBottom: '3%',
                     border: '1px solid #5178B2',
@@ -84,9 +84,12 @@ export default function MycontentsQuickViewMobile(props){
                         border: '1px solid #82ACEB',
                         opacity: 0.9,
                     },
-
+                    p: 1,
+                    backgroundColor: '#fffaf7',
                 }}>
-                <Typography variant='subtitle1'>{currentTask.taskResult}</Typography>
+                <Typography variant='subtitle1' sx={{
+                    fontFamily: "Oxygen"
+                }}>{currentTask.taskResult}</Typography>
             </Box>
 
             <Box
