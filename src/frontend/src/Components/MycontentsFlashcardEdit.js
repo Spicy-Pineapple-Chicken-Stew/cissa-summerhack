@@ -96,24 +96,14 @@ export default function Flashcard_edit(){
             '"Segoe UI Emoji"',
             '"Segoe UI Symbol"',
         ].join(','),
-<<<<<<< HEAD
         color: '#000000',
         backgroundColor: '#fffefc',
         fontSize: '0.8vw',
         height: 118,
         width: '97%',
         border: '2px solid #6ca1f0',
-=======
-        color: '#38547e',
-        backgroundColor: '#ffffff',
-        fontSize: '0.8vw',
-        height: 150,
-        width: '90%',
-        border: '2px solid #5178B2',
->>>>>>> master
         borderRadius: '16px',
         marginTop: '0.25vw',
-        
         position: 'relative',
         marginLeft: '5%',
         textTransform: 'capitalize',
@@ -124,16 +114,10 @@ export default function Flashcard_edit(){
         top: '52%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-<<<<<<< HEAD
         width: '70%',
         bgcolor: '#fffaf7',
         border: '2px solid #5178B2',
         borderRadius: '4px',
-=======
-        width: '60%',
-        bgcolor: '#f5f1ef',
-        border: '2px solid #5178B2',
->>>>>>> master
         boxShadow: 24,
         height: 600,
       };
@@ -142,21 +126,14 @@ export default function Flashcard_edit(){
         <div>
             <Box sx={{
                 border: '2px solid #5178B2',
-<<<<<<< HEAD
                 borderRadius: '4px',
                 marginTop: '0.5%',
                 height: '57vh',
-=======
-                borderRadius: '8px',
-                height: 600,
->>>>>>> master
                 flexDirection: 'row',
-                overflow: 'auto',
                 width: '91.5vw',
                 overflow: 'auto',
                 marginLeft: '4.65vw',
                 backgroundColor: '#fffaf7',
-                border: '1px solid #000000',
             }}> 
                 {currentTask.questions.map((quest) => (
                     <Box
@@ -183,11 +160,7 @@ export default function Flashcard_edit(){
                         <Button onClick={() => {
                             deleteQuestion(quest.question);
                             setForceRefresh(!forceRefresh);
-<<<<<<< HEAD
                         }} sx={{position: 'relative', marginLeft: '-7%', color: '#5178B2'}}>
-=======
-                        }} sx={{position: 'relative', marginLeft: '0.1%', color: '#5178B2'}}>
->>>>>>> master
                                 <DeleteForeverIcon />
                         </Button>
                     </Box>
@@ -242,20 +215,12 @@ export default function Flashcard_edit(){
                 </Modal>
             </Box>
 
-            <ColorButton 
-<<<<<<< HEAD
+            <ColorButton
                 onClick={handleAddNewOpen}
                 sx = {{ marginTop: '1%',
                         marginLeft: '50vw',
                         marginBottom: '1%'}}
             >Add new</ColorButton>
-=======
-                onClick={handleAddNewOpen} 
-                sx={{position: 'relative', marginLeft: '40vw'}}
-            >
-                Add new
-            </ColorButton>
->>>>>>> master
             <Modal 
             open={addNewModal}
             onClose={handleAddNewClose}
@@ -306,16 +271,8 @@ export default function Flashcard_edit(){
                             inputRef={newAnswerTextRef}
                             />
                     </Box>
-<<<<<<< HEAD
                     <Box sx={{marginTop: '2vh', marginLeft: '31.5vw'}}>
-                        <ColorButton onClick={addNewQuestion}>Save</ColorButton>
-=======
-                    <Box sx={{marginTop: '1vw'}}>
-                        <ColorButton onClick={addNewQuestion}>
-                            Save
-                        </ColorButton>
->>>>>>> master
-                    </Box>
+                        <ColorButton onClick={addNewQuestion}>Save</ColorButton></Box>
                 </Box>
             </Modal>
         </div>
