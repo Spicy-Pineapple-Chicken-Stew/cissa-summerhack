@@ -31,10 +31,9 @@ export default function MycontentsQuickViewDesktop(props){
                 display:'flex',
                 flexDirection:'column',
                 alignContent: 'flex-start',
-                width: "94%",
+                width: "93%",
                 marginLeft: '3%',
                 marginTop: '3%',
-                border: '2px solid #5178B2',
                 borderRadius: "4px"}}>
                     <Typography
                     sx = {{
@@ -46,14 +45,14 @@ export default function MycontentsQuickViewDesktop(props){
                     sx ={{flexWrap: 'wrap',
                         display:'flex',
                         flexDirection:'row',
-                        p: 1}}>
+                        }}>
 
                         {currentTask.taskTitle}</Box>
 
                 </Typography>
 
-                <Typography variant='subtitle1'>
-                    <Box fullWidth sx={{marginLeft: '70vw'}}>
+                <Typography align='left' fontSize={'1vw'} ml={'70vw'} fontFamily={'Oxygen'}>
+                    <Box>
                         Change view: Default
                         <Switch
                             checked={!isQuickView}
@@ -64,15 +63,16 @@ export default function MycontentsQuickViewDesktop(props){
                 </Typography>
                 </Box>
             </div>
-            <div style ={{margin:'3%', marginTop: '1%'}}>
+            <div style ={{margin:'3%', marginTop: '-2%'}}>
 
 
 
             <Box sx={{
-                fontSize: '1.5vw',
+                fontSize: '2vw',
                 textAlign: 'left',
                 width: '100%',
                 marginTop: '1%',
+                marginBottom: '0.5%',
                 p: 0.5
             }}
             >
@@ -80,7 +80,7 @@ export default function MycontentsQuickViewDesktop(props){
             </Box>
             <Box
                 sx={{
-                    width: '100%',
+                    width: '99.7%',
                     height: 240,
                     border: '2px solid #5178b2',
                     marginRight: '2%',
@@ -95,10 +95,11 @@ export default function MycontentsQuickViewDesktop(props){
                 }}>
                 <Typography sx={{
                     fontFamily: 'Oxygen',
-                    fontSize: 22,
+                    fontSize: 20,
                     textAlign: "left",
                     marginTop: "-0.5%",
-                    p: 2}}
+                    p: 2.5,
+                    backgroundColor: '#fffaf7'}}
                 >{currentTask.taskResult}</Typography>
             </Box>
 
@@ -106,9 +107,9 @@ export default function MycontentsQuickViewDesktop(props){
             <Box sx={{display: 'flex', flexDirection: 'row'}}>
                 <Box sx={{
                     width: '60%',
-                    fontSize: '1.3vw',
+                    fontSize: '1.7vw',
                     textAlign: 'left',
-                    marginTop: "1%",
+                    marginTop: 2,
                 }}
                 >
                     Flash cards
@@ -116,9 +117,9 @@ export default function MycontentsQuickViewDesktop(props){
                 <Box sx={{
                     width: '37.5%',
                     marginLeft: '-1.5%',
-                    fontSize: '1.3vw',
+                    fontSize: '1.7vw',
                     textAlign: 'left',
-                    marginTop: "1%",
+                    marginTop: 2,
                 }}
                 >
                     Original submission
@@ -135,7 +136,7 @@ export default function MycontentsQuickViewDesktop(props){
                marginTop: 1
             }}>
 
-                        <Box
+            <Box
                 sx={{
                     position: 'relative',
                     width: '55%',
@@ -147,7 +148,8 @@ export default function MycontentsQuickViewDesktop(props){
             <Box
                 sx={{
                     position: 'relative',
-                    width: '41%',
+                    width: 'calc(100% - 55% - 3.9%)',
+                    minwidth: '20vw',
                     height: 280,
                     border: '2px solid #5178B2',
                     borderRadius: '4px',
@@ -162,11 +164,10 @@ export default function MycontentsQuickViewDesktop(props){
                 {currentTask.taskType === "youtube" && <iframe src={currentTask.taskPreview}
                         title="YouTube video player" frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen width={"100%"} height={"99%"}></iframe>}
-                {currentTask.taskType === 'website' && <Typography variant='subtitle1'>No preview available</Typography>}
+                        allowFullScreen width={"100%"} height={"99%"}></iframe> }
+                {currentTask.taskType === 'website' && <Typography variant='subtitle1' sx = {{p : 2, fontSize: 18 }}>No preview available</Typography>}
                 {currentTask.taskType === 'file' && <img src={"data:image/jpg;base64, " + currentTask.taskPreview} height={'100%'}/>}
             </Box>
-
 
             </Box>
             </div>

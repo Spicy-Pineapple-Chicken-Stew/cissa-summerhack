@@ -13,11 +13,12 @@ const ColorButton = styled(Button)(({ theme }) => ({
     color: '#ffffff',
     backgroundColor: '#5178B2',
     padding: '6px 12px',
-    border: '1px solid',
+    
     fontSize: 16,
     '&:hover': {
         backgroundColor: '#82ACEB',
-        color: '#676767'
+        color: '#676767',
+        border: '1px solid #FFFFFF',
     },
     '&:active': {
         backgroundColor:'#5178B2',

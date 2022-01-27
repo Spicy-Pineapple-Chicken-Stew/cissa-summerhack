@@ -13,22 +13,47 @@ export default function MC_detailedview(props){
 
     return (
         <div>
-            <Typography align='left' fontSize={'2vw'} ml={'6vw'} fontFamily={'Oxygen'} color={'rgba(22, 105, 122, 1)'} mt={2}>
-                <Box>{currentTask.taskTitle}</Box>
-            </Typography>
-            <Typography align='left' fontSize={'1vw'} ml={'70vw'}>
-                <Box>
-                    Change view: Default
-                    <Switch
-                        checked={!isQuickView}
-                        onClick={() => {setIsQuickView(!isQuickView)}}
-                    />
-                    Detailed
-                </Box>
-            </Typography>
-            <Box sx={{width: 'auto', height: 'auto'}}>
-                <MC_Drawer />
+            <div>
+                <Box sx =
+                {{flexWrap: 'wrap',
+                display:'flex',
+                flexDirection:'column',
+                alignContent: 'flex-start',
+                width: "94%",
+                marginLeft: '3%',
+                marginTop: '3%',
+                borderRadius: "4px"}}>
+                    <Typography
+                    sx = {{
+                    fontSize:'260%',
+                    fontFamily: 'Oxygen',
+                    color: 'rgba(22, 105, 122, 1)'
+                    }} >
+                    <Box
+                    sx ={{flexWrap: 'wrap',
+                        display:'flex',
+                        flexDirection:'row'}}>
+
+                        {currentTask.taskTitle}</Box>
+
+                </Typography>
+                <Typography align='left' fontSize={'1vw'} ml={'70vw'} fontFamily={'Oxygen'}>
+                    <Box>
+                        Change view: Default
+                        <Switch
+                            checked={!isQuickView}
+                            onClick={() => {setIsQuickView(!isQuickView)}}
+                        />
+                        Detailed
+                    </Box>
+                </Typography>
+                <Box sx={{width: 'auto', height: 'auto'}}>
+                    <MC_Drawer/>
             </Box>
+               
+                </Box>
+            </div>
+
         </div>
     )
 }
