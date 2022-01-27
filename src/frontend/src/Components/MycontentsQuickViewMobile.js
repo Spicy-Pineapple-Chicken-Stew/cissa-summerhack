@@ -25,7 +25,7 @@ export default function MycontentsQuickViewMobile(props){
                     sx = {{
                     fontSize:'180%',
                     fontFamily: 'Oxygen',
-                    color: 'rgba(22, 105, 122, 1)'
+                    color: '#265191'
                 }} >
                     <Box
                     sx ={{flexWrap: 'wrap',
