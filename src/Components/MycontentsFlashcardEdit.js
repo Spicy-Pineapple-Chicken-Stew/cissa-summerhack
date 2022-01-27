@@ -132,10 +132,11 @@ export default function Flashcard_edit(){
                 height: '57vh',
                 flexDirection: 'row',
                 overflow: 'auto',
-                width: '99.7%',
+                width: '91.5vw',
                 overflow: 'auto',
                 marginLeft: '4.65vw',
                 backgroundColor: '#fffaf7',
+                border: '1px solid #000000',
             }}> 
                 {currentTask.questions.map((quest) => (
                     <Box
