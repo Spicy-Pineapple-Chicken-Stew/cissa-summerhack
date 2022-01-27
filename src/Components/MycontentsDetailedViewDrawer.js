@@ -116,15 +116,15 @@ export default function MC_Drawer(){
                     overflow: 'auto',
                     fontSize: '1vw',
                     position: 'relative',
-                    marginLeft: '4.7vw'
-                }}>
+                    marginLeft: '4.7vw',
+                    backgroundColor: '#fffaf7',
+                }}
+                >
                     <Typography sx={{
                     fontFamily: 'Oxygen',
                     fontSize: 20,
-                    textAlign: "left",
-                    marginTop: "-0.5%",
-                    p: 2.5,
-                    backgroundColor: '#fffaf7'}}
+                    textAlign: "left"
+                    }}
                     > 
                     {currentTask.taskResult}</Typography>
                 </Box>

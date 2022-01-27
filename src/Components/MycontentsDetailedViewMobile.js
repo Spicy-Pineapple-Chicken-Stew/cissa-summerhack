@@ -33,10 +33,10 @@ export default function MC_detailedview_mobile(props){
 
     return (
         <div>
-            <Typography align='left' fontSize={'4vw'} ml={2} fontFamily={'Oxygen'} color={'rgba(81, 120, 178, 1)'}>
+            <Typography align='left' fontSize={'6vw'} ml={2} fontFamily={'Oxygen'} color={'rgba(81, 120, 178, 1)'}>
                 <Box>{currentTask.taskTitle}</Box>
             </Typography>
-            <Typography align='left' fontSize={'3vw'} ml={2}>
+            <Typography align='right' fontSize={'2.5vw'} ml={2}>
                 <Box>
                     Change view: Default
                     <Switch
@@ -73,7 +73,10 @@ export default function MC_detailedview_mobile(props){
                     height: 500,
                     fontSize: '4vw',
                     overflow: 'auto',
-                    textAlign: 'left'
+                    textAlign: 'left',
+                    backgroundColor: '#fffaf7',
+                    p: 1,
+                    lineHeight: "150%"
                 }}>
                     {currentTask.taskResult}
                 </Box>}
