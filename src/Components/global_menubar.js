@@ -53,9 +53,9 @@ const Global_MenuBar = () => {
             <AppBar
             position="relative"
             style={{background: '#5178B2',
-        width: "101.1%",
+        width: "100.85%",
         height: "100%",
-        marginLeft: -10,
+        marginLeft: -8,
         marginTop: -10}}
             >
                 <Container maxWidth="xl">
@@ -163,8 +163,10 @@ const Global_MenuBar = () => {
                             <MenuItem key={account} onClick={() => {
                                 if(account === 'Log out'){
                                     setUser(null);
+                                    handleCloseUserMenu();
                                 }else if(account === 'Settings'){
-                                    alert("Opened settings")
+                                    alert("Opened settings");
+                                    handleCloseUserMenu();
                                 }
                                 }
                             }>
