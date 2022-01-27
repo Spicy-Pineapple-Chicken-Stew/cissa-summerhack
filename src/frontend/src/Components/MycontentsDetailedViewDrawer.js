@@ -151,9 +151,6 @@ export default function MC_Drawer(){
                     fontSize: '1vw',
                     position: 'relative',
                     marginLeft: '4.4vw',
-                    
-   
-        
                 }}>
                     {currentTask.taskType === "puretext" && <Typography variant='subtitle1'>{currentTask.taskPreview}</Typography>}
                     {currentTask.taskType === "youtube" && <iframe src={currentTask.taskPreview}
