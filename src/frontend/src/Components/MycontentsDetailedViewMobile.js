@@ -129,7 +129,9 @@ export default function MC_detailedview_mobile(props){
                     }}/>}
                 </Box>}
                 {(contents_mobile === 'Flash cards') &&
-                <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />}
+                <Box sx={{position: 'relative', marginTop: '18vw'}}>
+                    <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />
+                </Box>}
             </Box>
         </div>
     )
