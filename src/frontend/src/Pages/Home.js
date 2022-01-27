@@ -19,7 +19,11 @@ function Home(props){
             <div className ='home_desc'>
                 <Slide direction={"left"} in={animationState} style={{ transformOrigin: '0 0 0' }}
                        {...(animationState ? { timeout: 1000 } : {})}>
-                    <p>Add description   </p>
+                    <p>
+                        Bridge is an innovative solution for students to enhance their studying routine by creating summaries of materials such as videos and text. Bridge allows you to focus on reading and understanding only the most important details of your material through the use of advanced Natural Language Processing Artificial Intelligence algorithms.
+                        Summaries, flashcards and quizzes can all be made quickly and easy thanks to Bridge.
+                        Click Begin to Bridge the gaps in your knowledge.
+                    </p>
                 </Slide>
 
             </div>
