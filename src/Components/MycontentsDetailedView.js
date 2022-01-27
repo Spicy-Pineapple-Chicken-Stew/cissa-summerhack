@@ -27,7 +27,7 @@ export default function MC_detailedview(props){
                     sx = {{
                     fontSize:'260%',
                     fontFamily: 'Oxygen',
-                    color: 'rgba(22, 105, 122, 1)'
+                    color: '#265191'
                     }} >
                     <Box
                     sx ={{flexWrap: 'wrap',

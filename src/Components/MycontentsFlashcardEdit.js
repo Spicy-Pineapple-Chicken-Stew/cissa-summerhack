@@ -8,6 +8,8 @@ import DeleteForeverIcon from '@mui/icons-material/Delete';
 import { TextField } from '@mui/material';
 import axios from "axios";
 import {UserContext} from "../Contexts/UserContext";
+import ButtonDef from './ButtonDef';
+import ColorButton from './ButtonDef';
 
 export default function Flashcard_edit(){
     let [currentTask, setCurrentTask] = React.useContext(CurrentTaskContext);
@@ -44,7 +46,7 @@ export default function Flashcard_edit(){
                 if(currentTask.questions[i].question === taskQ){
                     currentTask.questions.splice(i, 1);
                     axios.post(url + "/api/update_questions?userid=" + user, currentTask).then((response) => {
-                        setForceRefresh(!forceRefresh);
+                        setOpenModel(false)
                     }).catch((error) => {
                         alert(error.response)
                         console.log(error.response)
@@ -94,28 +96,29 @@ export default function Flashcard_edit(){
             '"Segoe UI Emoji"',
             '"Segoe UI Symbol"',
         ].join(','),
-        color: '#16697A',
-        backgroundColor: '#ffffff',
+        color: '#000000',
+        backgroundColor: '#fffefc',
         fontSize: '0.8vw',
-        height: 150,
-        width: '90%',
-        border: '2px solid rgba(72, 159, 181, 1)',
+        height: 118,
+        width: '97%',
+        border: '2px solid #6ca1f0',
         borderRadius: '16px',
         marginTop: '0.25vw',
-        marginBottom: '0.25vw',
+        
         position: 'relative',
-        marginLeft: '2%',
+        marginLeft: '5%',
         textTransform: 'capitalize',
     }));
     
     const style = {
         position: 'absolute',
-        top: '50%',
+        top: '52%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: '60%',
-        bgcolor: '#82C0CC',
-        border: '2px solid #16697A',
+        width: '70%',
+        bgcolor: '#fffaf7',
+        border: '2px solid #5178B2',
+        borderRadius: '4px',
         boxShadow: 24,
         height: 600,
       };
@@ -123,25 +126,35 @@ export default function Flashcard_edit(){
     return (
         <div>
             <Box sx={{
-                border: '2px solid rgba(72, 159, 181, 1)',
-                borderRadius: '8px',
-                height: 600,
+                border: '2px solid #5178B2',
+                borderRadius: '4px',
+                marginTop: '0.5%',
+                height: '57vh',
                 flexDirection: 'row',
                 overflow: 'auto',
-                position: 'relative',
-                marginLeft: '6vw'
-            }}>
+                width: '99.7%',
+                overflow: 'auto',
+                marginLeft: '4.65vw',
+                backgroundColor: '#fffaf7',
+            }}> 
                 {currentTask.questions.map((quest) => (
-                    <Box>
-                        <Flashcard_button onClick={() => {
-                                                        handleOpen(); 
-                                                        setTaskQuestion(quest.question);
-                                                        setTaskAnswer(quest.answer);
-                                                        }}>
-                            <Typography sx={{width: '50%', overflow: 'auto'}}>
+                    <Box
+                    sx ={{
+                        marginLeft: '0vw',
+                        marginTop: '1%',
+                        width: '100%',
+                    }}>
+                        <Flashcard_button 
+                            onClick={() => {
+                                handleOpen(); 
+                                setTaskQuestion(quest.question);
+                                setTaskAnswer(quest.answer);
+                            }}
+                            sx ={{marginLeft: '1.5%'}}>
+                            <Typography sx={{width: '60%'}}>
                                 Question: {quest.question}
                             </Typography>
-                            <Typography sx={{width: '30%', position: 'relative', marginLeft: '1.5vw', overflow: 'auto'}}>
+                            <Typography sx={{width: '40%'}}>
                                 Answer: {quest.answer}
                             </Typography>
                         </Flashcard_button>
@@ -149,7 +162,7 @@ export default function Flashcard_edit(){
                         <Button onClick={() => {
                             deleteQuestion(quest.question);
                             setForceRefresh(!forceRefresh);
-                        }} sx={{position: 'relative', marginLeft: '0.1%', color: '#489FB5'}}>
+                        }} sx={{position: 'relative', marginLeft: '-7%', color: '#5178B2'}}>
                                 <DeleteForeverIcon />
                         </Button>
                     </Box>
@@ -200,7 +213,12 @@ export default function Flashcard_edit(){
                 </Modal>
             </Box>
 
-            <Button onClick={handleAddNewOpen} sx={{position: 'relative', marginLeft: '6vw'}}>Add new</Button>
+            <ColorButton 
+                onClick={handleAddNewOpen}
+                sx = {{ marginTop: '1%',
+                        marginLeft: '50vw',
+                        marginBottom: '1%'}}
+            >Add new</ColorButton>
             <Modal 
             open={addNewModal}
             onClose={handleAddNewClose}
@@ -208,35 +226,51 @@ export default function Flashcard_edit(){
             >
                 <Box sx={style}>
                     <Box>
+                        <Typography 
+                            fontfamily ='Oxygen' 
+                            fontSize={20}
+                            sx = {{
+                                marginLeft:'4.5vw',
+                                marginTop: '2vh',
+                                marginBottom: '-2vh'}}
+                        >Edit</Typography>
                         <TextField 
                             id="question" 
                             label="Question" 
                             multiline
-                            rows={20} 
+                            rows={19} 
                             sx={{
                                 width: '41%',
+                                height: '35%',
                                 position: 'relative',
-                                marginTop: '1vw',
+                                marginTop: '3vh',
                                 marginLeft: '6%',
+                                border: '#5178B2',
+                                backgroundColor: '#fffefc',
+                                color: '#5178B2'
                             }}
                             inputRef={newQuestionTextRef}
                             />
                         <TextField 
                             id="answer" 
-                            label="Answer"  
+                            label="Answers"  
                             multiline
-                            rows={20} 
+                            rows={19} 
                             sx={{
                                 width: '41%',
+                                height: '35%',
                                 position: 'relative',
-                                marginTop: '1vw',
+                                marginTop: '3vh',
                                 marginLeft: '6%',
+                                border: '#5178B2',
+                                backgroundColor: '#fffefc',
+                                color: '#5178B2'
                             }}
                             inputRef={newAnswerTextRef}
                             />
                     </Box>
-                    <Box sx={{marginTop: '1vw'}}>
-                        <Button onClick={addNewQuestion}>Save</Button>
+                    <Box sx={{marginTop: '2vh', marginLeft: '31.5vw'}}>
+                        <ColorButton onClick={addNewQuestion}>Save</ColorButton>
                     </Box>
                 </Box>
             </Modal>
