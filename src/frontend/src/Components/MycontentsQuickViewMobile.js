@@ -37,15 +37,15 @@ export default function MycontentsQuickViewMobile(props){
                 </Typography>
 
 
-                <Typography align='left' fontSize={'2vh'} ml={'35vw'} mr = {'3vw'} >
-                <Box>
-                    Change view: Default
-                    <Switch
-                        checked={!isQuickView}
-                        onClick={() => {setIsQuickView(!isQuickView)}}
-                    />
-                    Detailed
-                </Box>
+                <Typography align='left' fontSize={'1vw'} ml={'70vw'} fontFamily={'Oxygen'}>
+                    <Box>
+                        Change view: Default
+                        <Switch
+                            checked={!isQuickView}
+                            onClick={() => {setIsQuickView(!isQuickView)}}
+                        />
+                        Detailed
+                    </Box>
                 </Typography>
                 </Box>
             </div>
@@ -81,7 +81,7 @@ export default function MycontentsQuickViewMobile(props){
                     flexShrink: 1,
                     overflow: 'auto',
                     '&:hover': {
-                        border: '1px solid #16697A',
+                        border: '1px solid #82ACEB',
                         opacity: 0.9,
                     },
 
@@ -104,13 +104,9 @@ export default function MycontentsQuickViewMobile(props){
                     width: '100%',
                     height: 250,
                     marginBottom: '3%',
-                    border: '1px solid #5178B2',
                     borderRadius: '4px',
                     flexShrink: 1,
-                    '&:hover': {
-                        border: '1px solid #16697A',
-                        opacity: 0.9,
-                    },
+                    
 
                 }}>
                 <FlashcardComponent dataSource={parseQuestions(currentTask.questions)} />

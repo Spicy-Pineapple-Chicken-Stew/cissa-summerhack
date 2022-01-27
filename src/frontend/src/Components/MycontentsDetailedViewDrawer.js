@@ -13,11 +13,19 @@ import {CurrentTaskContext} from "../Contexts/CurrentTaskContext";
 import parseQuestions from "../Functions/ParseQuestions";
 import Flashcard_edit from './MycontentsFlashcardEdit';
 import MenuIcon from '@mui/icons-material/Menu';
+import { styled } from '@mui/material/styles';
 
 export default function MC_Drawer(){
     let [contents, setContents] = React.useState('Summary');
     const [opendrawer, setOpendrawer] = React.useState(false);
     let [currentTask, setCurrentTask] = useContext(CurrentTaskContext);
+
+
+    const menuDrop = styled(Button)(({ theme }) => ({
+        position: 'absolute',
+        border: '1px solid #5178B2',
+    }));
+
 
     const toggleDrawer = (anchor, open) => (Event) => {
         if (Event.type === 'keydown' && (Event.key === 'Tab' || Event.key === 'Shift')){
@@ -61,18 +69,30 @@ export default function MC_Drawer(){
         <Box className='content_box'>
             
             <Box sx={{
-                width: 5/6,
-                height: 600,
+                width: '97.9%',
+                height: '75vh',
                 fontSize: '2vw',
                 textAlign: 'left',
+                border: '1px solid #000000',
+                marginLeft: '-5%',
             }}>
-                <Typography sx={{position: 'relative', marginTop: '1vw', marginLeft: '6vw', fontSize: '2vw'}}>{contents}</Typography>
+                <Typography sx={{position: 'relative', marginTop: '1vw', marginLeft: '4.7vw', fontSize: '2vw'}}>{contents}</Typography>
                 <Box>
                 {
                     ['Side menu'].map((anchor) => (
                         <React.Fragment key={anchor}>
-                            <Button onClick={toggleDrawer(anchor, true)} sx={{position: 'absolute', marginTop: '1vw'}}>
-                                <MenuIcon fontSize='large' sx={{color: '#5178B2'}}/>
+                            <Button onClick={toggleDrawer(anchor, true)} 
+                                sx={{
+                                    width: '1/16', 
+                                    position: 'absolute', 
+                                    top: '5.3em', 
+                                    left: '-90%', 
+                                    right: 0, 
+                                    margin: 'auto', 
+                                    bgcolor: '#5178B2'
+                                }}
+                                variant='outlined'>
+                                <MenuIcon fontSize='medium' sx={{color: '#FFFFFF'}}/>
                             </Button>
                             <Drawer
                                 anchor='left'
@@ -90,14 +110,23 @@ export default function MC_Drawer(){
                     border: '2px solid rgba(81, 120, 178, 1)',
                     borderRadius: '8px',
                     marginTop: 1,
-                    height: 550,
+                    height: '83%',
+                    width: '93%',
                     textAlign: 'left',
                     overflow: 'auto',
                     fontSize: '1vw',
                     position: 'relative',
-                    marginLeft: '6vw'
+                    marginLeft: '4.7vw'
                 }}>
-                    {currentTask.taskResult}
+                    <Typography sx={{
+                    fontFamily: 'Oxygen',
+                    fontSize: 20,
+                    textAlign: "left",
+                    marginTop: "-0.5%",
+                    p: 2.5,
+                    backgroundColor: '#fffaf7'}}
+                    > 
+                    {currentTask.taskResult}</Typography>
                 </Box>
                 }
                 {(contents == 'Original submission') &&
