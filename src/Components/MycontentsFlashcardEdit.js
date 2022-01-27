@@ -250,7 +250,7 @@ export default function Flashcard_edit(){
                                 color: '#5178B2'
                             }}
                             inputRef={newQuestionTextRef}
-                            />
+                            />  
                         <TextField 
                             id="answer" 
                             label="Answers"  
