@@ -215,7 +215,7 @@ export default function TaskListPage(props){
             }}>
                 <h1 style={{
                     marginLeft: "5vw"
-                }}><Typography fontFamily={"Oxygen"} fontSize={33} color={"#265191"}>
+                }}><Typography fontFamily={"Oxygen"} fontSize={33} color={"#5178B2"}>
                     My Content
                 </Typography></h1>
                 <div style={{

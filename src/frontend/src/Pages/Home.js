@@ -281,7 +281,7 @@ function Home(props){
                     justifyContent: "center"
                 }}>
                     <img src={"https://cdn.discordapp.com/attachments/930790652189495316/936486224808517752/bgremoved.png"} style={{
-                        width: "50vw",
+                        width: "70vw",
                         height: imgheight
                     }}/>
                 </div>
