@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import {useContext, useEffect, useState} from "react";
 import { Box, fontSize, typography } from '@mui/system';
 import axios from "axios";
-import {Switch, Typography} from "@mui/material";
+import {alpha, Switch, Typography} from "@mui/material";
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
 import {CurrentTaskContext} from "../Contexts/CurrentTaskContext";
 import {UserContext} from "../Contexts/UserContext";
@@ -18,6 +18,18 @@ export default function TaskListPage(props){
     let [currentPage, setCurrentPage] = useContext(CurrentPageContext);
     let [currentTask, setCurrentTask] = useContext(CurrentTaskContext);
     let [user, setUser] = useContext(UserContext);
+
+    const BlueSwitch = styled(Switch)(({ theme }) => ({
+        '& .MuiSwitch-switchBase.Mui-checked': {
+            color: '#5178B2',
+            '&:hover': {
+                backgroundColor: alpha('#5178B2', theme.palette.action.hoverOpacity),
+            },
+        },
+        '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+            backgroundColor: '#5178B2',
+        },
+    }));
 
     const success_box = {
         fontSize: 24,
@@ -192,7 +204,9 @@ export default function TaskListPage(props){
             }}>
                 <h1 style={{
                     marginLeft: "5vw"
-                }}>My Content</h1>
+                }}><Typography fontFamily={"Oxygen"} fontSize={33} color={"#265191"}>
+                    My Content
+                </Typography></h1>
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
@@ -200,10 +214,13 @@ export default function TaskListPage(props){
                 }}>
                     <h3 style={{
                         marginTop: "4vh"
-                    }}>See in progres tasks</h3>
-                    <Switch
+                    }}><Typography fontFamily={"Oxygen"}>
+                        See in progress tasks
+                    </Typography></h3>
+                    <BlueSwitch
                         sx={{
-                        marginTop: "3vh"
+                        marginTop: "3vh",
+                            color: "#5178B2"
                          }}
                         checked={hasSelected}
                         onClick={() => {setHasSelected(!hasSelected)}}
