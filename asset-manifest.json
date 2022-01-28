@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/cissa-summerhack/static/css/main.8e2aae04.css",
-    "main.js": "/cissa-summerhack/static/js/main.cfa570b9.js",
+    "main.js": "/cissa-summerhack/static/js/main.f28b4c6e.js",
     "static/js/787.9750ae9a.chunk.js": "/cissa-summerhack/static/js/787.9750ae9a.chunk.js",
     "static/media/fileformaticon.png": "/cissa-summerhack/static/media/fileformaticon.9c2fb4f6e29dbda8f914.png",
     "static/media/aiquestionicon2.png": "/cissa-summerhack/static/media/aiquestionicon2.c61476b333c1ec589edb.png",
     "static/media/AI_summarization.png": "/cissa-summerhack/static/media/AI_summarization.0db1abd828ef4944bc97.png",
     "index.html": "/cissa-summerhack/index.html",
     "main.8e2aae04.css.map": "/cissa-summerhack/static/css/main.8e2aae04.css.map",
-    "main.cfa570b9.js.map": "/cissa-summerhack/static/js/main.cfa570b9.js.map",
+    "main.f28b4c6e.js.map": "/cissa-summerhack/static/js/main.f28b4c6e.js.map",
     "787.9750ae9a.chunk.js.map": "/cissa-summerhack/static/js/787.9750ae9a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8e2aae04.css",
-    "static/js/main.cfa570b9.js"
+    "static/js/main.f28b4c6e.js"
   ]
 }
