@@ -27,7 +27,7 @@ No installation is needed. Simply navigate to [this link](http://194.193.55.245:
 
 Alternatively, running from source in a local environment is possible by cloning the github repository, although not recommended (as a deployed website is available). More instructions will be offered below
 
-#### Usage
+#### How to use the website
 
 To start using the website, simply click "Begin" on the homepage, which will prompt you to the upload page. The upload page could also be accessed via the navigation bar under "Upload". If you wish to login or register an account with us, simply click the "Login" button in the navigation bar.
 
@@ -74,4 +74,10 @@ Additional requirements:
 - Google Speech to Text API. A credentials.json with access to Speech to Text API is required.
 
 Run 'flask run' or 'python run.py' to start the server locally
+
+## 3. Demonstration
+
+Here is a video promo of our website, including a quick demonstration
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/KBGzuzQ4BiU/0.jpg)](https://www.youtube.com/watch?v=KBGzuzQ4BiU)
 
