@@ -30,7 +30,7 @@ export default function LoginRegistration(props){
             alert("Username or password cannot be null")
         }else{
             setIsLoading(true)
-            axios.post("http://194.193.55.245:9000/auth/login", `username=${usernameRef.current.value}&password=${passwordRef.current.value}`,
+            axios.post("https://194.193.55.245:9000/auth/login", `username=${usernameRef.current.value}&password=${passwordRef.current.value}`,
                 {headers:{
                         "Content-Type": "application/x-www-form-urlencoded"
                     }}).then((response) => {
@@ -156,7 +156,7 @@ export default function LoginRegistration(props){
                                 alert("Username or password cannot be null")
                             }else{
                                 setIsLoading(true)
-                                axios.post("http://194.193.55.245:9000/auth/register", `username=${usernameRef.current.value}&password=${passwordRef.current.value}`,
+                                axios.post("https://194.193.55.245:9000/auth/register", `username=${usernameRef.current.value}&password=${passwordRef.current.value}`,
                                     {headers:{
                                             "Content-Type": "application/x-www-form-urlencoded"
                                         }}).then((response) => {
