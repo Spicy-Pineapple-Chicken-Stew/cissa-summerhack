@@ -186,7 +186,7 @@ export default function MC_Drawer(){
 
                 {(contents == 'View') &&
                 <Box sx={{
-                    height: 500,
+                    height: '50vh',
                     width: '70vw',
                     fontSize: '1vw',
                     position: 'relative',

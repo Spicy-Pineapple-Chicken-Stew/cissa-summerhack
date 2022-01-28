@@ -10,6 +10,8 @@ import axios from "axios";
 import {UserContext} from "../Contexts/UserContext";
 import ButtonDef from './ButtonDef';
 import ColorButton from './ButtonDef';
+import { display } from '@mui/system';
+
 
 export default function Flashcard_edit(){
     let [currentTask, setCurrentTask] = React.useContext(CurrentTaskContext);
@@ -106,7 +108,7 @@ export default function Flashcard_edit(){
         marginTop: '0.25vw',
         position: 'relative',
         marginLeft: '5%',
-        textTransform: 'capitalize',
+        textTransform: 'capitalize'
     }));
     
     const style = {
@@ -128,10 +130,10 @@ export default function Flashcard_edit(){
                 border: '2px solid #5178B2',
                 borderRadius: '4px',
                 marginTop: '0.5%',
-                height: '57vh',
+                height: '56vh',
                 flexDirection: 'row',
-                width: '91.5vw',
-                overflow: 'auto',
+                width: '90.7vw',
+                
                 marginLeft: '4.65vw',
                 backgroundColor: '#fffaf7',
             }}> 
@@ -149,7 +151,7 @@ export default function Flashcard_edit(){
                                 setTaskAnswer(quest.answer);
                             }}
                             sx ={{marginLeft: '1.5%'}}>
-                            <Typography sx={{width: '60%'}}>
+                            <Typography sx={{width: '60%', marginTop:'15%', fontFamily:'Oxygen'}}>
                                 Question: {quest.question}
                             </Typography>
                             <Typography sx={{width: '25%'}}>
