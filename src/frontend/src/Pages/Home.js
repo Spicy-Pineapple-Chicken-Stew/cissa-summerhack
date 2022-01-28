@@ -14,7 +14,7 @@ import {MobileContext} from "../Contexts/MobileContext";
 
 function renderDesktopDescription(){
     return(
-        <Box sx={{height: '65vh', marginTop: '29vh', marginLeft: '-3.4vw', width: '99.01vw', bgcolor: '#6CA1F0'}}>
+        <Box sx={{height: '99vh', marginTop: '25vh', marginLeft: '-3.4vw', width: '99.01vw', bgcolor: '#6CA1F0'}}>
             <div style={{
                 display: "flex",
                 flexDirection: "row",
@@ -25,10 +25,10 @@ function renderDesktopDescription(){
                 <div style={{
                     display: "flex",
                     flexDirection: "column",
-                    marginTop: "10vh",
-                    alignItems: "center"
+                    marginTop: "25vh",
+                    alignItems: "center",
                 }}>
-                    <img src={des1} height={"220vh"} width={"250vw"}/>
+                    <img src={"https://cdn.discordapp.com/attachments/931459413863170069/936376717889642586/Background_test.png"} height={"220vh"} width={"250vw"}/>
                     <Typography color={'#FFFFFF'} fontSize={'1.5vw'} fontFamily={"Oxygen"}>
                         Support wide range of formats
                     </Typography>
@@ -45,7 +45,7 @@ function renderDesktopDescription(){
                 <div style={{
                     display: "flex",
                     flexDirection: "column",
-                    marginTop: "10vh",
+                    marginTop: "25vh",
                     alignItems: "center"
                 }}>
                     <img src={des2} height={"220vh"}/>
@@ -66,7 +66,7 @@ function renderDesktopDescription(){
                 <div style={{
                     display: "flex",
                     flexDirection: "column",
-                    marginTop: "10vh",
+                    marginTop: "25vh",
                     alignItems: "center"
                 }}>
                     <img src={des3} height={"220vh"}/>
@@ -104,7 +104,7 @@ function renderMobileDescription(){
                     flexDirection: "column",
                     textAlign: "center"
                 }}>
-                    <img src={des1} height={"220vh"}/>
+                    <img src={"https://cdn.discordapp.com/attachments/931459413863170069/936376717889642586/Background_test.png"} height={"220vh"}/>
                     <Typography color={'#FFFFFF'} fontSize={'5vw'} fontFamily={"Oxygen"}>
                         Support wide range of formats
                     </Typography>
@@ -168,12 +168,15 @@ function Home(props){
 
     var wrapperDivName;
     var wrapperDesc;
+    var imgheight;
     if(isMobile){
         wrapperDivName = "wrapperMobile"
         wrapperDesc = "home_desc_mobile"
+        imgheight = "30vw"
     }else{
         wrapperDivName = "wrapper"
         wrapperDesc = "home_desc"
+        imgheight = "30vh"
     }
 
 
@@ -216,9 +219,10 @@ function Home(props){
             </div>
             {!isMobile && renderDesktopDescription()}
             {isMobile && renderMobileDescription()}
-            <Box sx={{height: '65vh', marginLeft: '-3.4vw', width: '99.01vw', bgcolor: '#5178B2'}}>
+            <Box sx={{height: '99vh', marginLeft: '-3.4vw', width: '99.01vw', bgcolor: '#5178B2'}}>
                 <div style={{
-                    textAlign: "center"
+                    textAlign: "center",
+                    marginTop: "18vh"
                 }}>
                     <Typography color={'#FFFFFF'} fontSize={'8vh'} fontFamily={"Oxygen"}>
                         About Us
@@ -235,25 +239,28 @@ function Home(props){
                     justifyContent: "center",
                     marginTop: "3vh"
                 }}>
-                    <Typography color={'#FFFFFF'} fontSize={'5vh'} fontFamily={"Oxygen"}>
+                    <Typography color={'#FFFFFF'} fontSize={isMobile ? '5vw' : '4vh'} fontFamily={"Oxygen"}>
                         Bowen Feng
                     </Typography>
-                    <Typography color={'#FFFFFF'} fontSize={'5vh'} fontFamily={"Oxygen"}>
+                    <Typography color={'#FFFFFF'} fontSize={isMobile ? '5vw' : '4vh'} fontFamily={"Oxygen"}>
                         Jerry Cheng
                     </Typography>
-                    <Typography color={'#FFFFFF'} fontSize={'5vh'} fontFamily={"Oxygen"}>
+                    <Typography color={'#FFFFFF'} fontSize={isMobile ? '5vw' : '4vh'} fontFamily={"Oxygen"}>
                         Harrison Langdon
                     </Typography>
-                    <Typography color={'#FFFFFF'} fontSize={'5vh'} fontFamily={"Oxygen"}>
+                    <Typography color={'#FFFFFF'} fontSize={isMobile ? '5vw' : '4vh'} fontFamily={"Oxygen"}>
                         Kasie Wang
                     </Typography>
                 </div>
                 <div style={{
-                    marginTop: "5vh"
+                    display: "flex",
+                    marginTop: "5vh",
+                    alignItems: "center",
+                    justifyContent: "center"
                 }}>
-                    <img src={"https://cdn.discordapp.com/attachments/930790652189495316/936228156040437810/Screen_Shot_2022-01-12_at_1.png"} style={{
-                        width: "99vw",
-                        height: "50vh"
+                    <img src={"https://cdn.discordapp.com/attachments/930790652189495316/936486224808517752/bgremoved.png"} style={{
+                        width: "50vw",
+                        height: imgheight
                     }}/>
                 </div>
             </Box>
