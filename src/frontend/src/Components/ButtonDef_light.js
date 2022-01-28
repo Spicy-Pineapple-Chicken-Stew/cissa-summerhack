@@ -19,9 +19,7 @@ const Light_Button = styled(Button)(({ theme }) => ({
     border: '1px solid',
     fontSize: 16,
     '&:hover': {
-        backgroundColor: '#82ACEB',
-        color: '#676767',
-        border: '1px solid #FFFFFF',
+        backgroundColor: '#ffffff',
     },
     '&:active': {
         backgroundColor:'#5178B2',

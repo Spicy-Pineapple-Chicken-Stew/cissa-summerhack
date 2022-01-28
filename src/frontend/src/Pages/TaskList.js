@@ -81,8 +81,9 @@ export default function TaskListPage(props){
         width: '90vw',
         height: '35vw',
         marginLeft: '5vw',
+        marginTop: '-1.5vw',
         border: '2px solid rgba(81, 120, 178, 1)',
-        borderRadius: '16px',
+        borderRadius: '8px',
         fontSize: 24,
         color: '#16697A',
         overflowY: "scroll",
@@ -215,7 +216,7 @@ export default function TaskListPage(props){
             }}>
                 <h1 style={{
                     marginLeft: "5vw"
-                }}><Typography fontFamily={"Oxygen"} fontSize={33} color={"#265191"}>
+                }}><Typography fontFamily={"Oxygen"} fontSize={40} color={"#265191"}>
                     My Content
                 </Typography></h1>
                 <div style={{
