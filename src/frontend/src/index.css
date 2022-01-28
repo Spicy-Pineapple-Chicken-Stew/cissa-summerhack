@@ -65,9 +65,10 @@ body {
 }
 
 .home_title{
-  text-align: left;
+  
   margin-top: 15vh;
   font-size: 300%;
+  color: #265191;
 }
 
 .home_desc{
