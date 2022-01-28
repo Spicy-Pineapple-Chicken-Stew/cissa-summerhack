@@ -15,12 +15,18 @@ import {MobileContext} from "../Contexts/MobileContext";
 function renderDesktopDescription(){
     return(
         <Box sx={{height: '99vh', marginTop: '25vh', marginLeft: '-3.4vw', width: '99.01vw', bgcolor: '#6CA1F0'}}>
+           <div style={{textAlign: "center", marginTop: "10vh" }}>
+                <Typography color={'#FFFFFF'} fontSize={'8vh'} fontFamily={"Oxygen"}>
+                    Functionality
+                </Typography>
+            </div>
             <div style={{
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "center",
-                columnGap: "10vw"
+                columnGap: "10vw",
+                marginTop: "-18vh"
             }}>
                 <div style={{
                     display: "flex",
@@ -28,9 +34,10 @@ function renderDesktopDescription(){
                     marginTop: "25vh",
                     alignItems: "center",
                 }}>
-                    <img src={"https://cdn.discordapp.com/attachments/931459413863170069/936376717889642586/Background_test.png"} height={"220vh"} width={"250vw"}/>
+                    
+                    <img src={"https://cdn.discordapp.com/attachments/930790652189495316/936573983929798687/Screen_Shot_2022-01-28_at_9.48.19_pm.png"} height={"200vh"} width={"220vw"}/>
                     <Typography color={'#FFFFFF'} fontSize={'1.5vw'} fontFamily={"Oxygen"}>
-                        Support wide range of formats
+                        Supports a wide range of formats
                     </Typography>
                     <div style={{
                         textAlign: "center",
@@ -48,7 +55,7 @@ function renderDesktopDescription(){
                     marginTop: "25vh",
                     alignItems: "center"
                 }}>
-                    <img src={des2} height={"220vh"}/>
+                    <img src={'https://cdn.discordapp.com/attachments/931459413863170069/936578909095477258/Screen_Shot_2022-01-28_at_10.08.56_pm.png'} height={"200vh"} width={"222vw"}/>
                     <Typography color={'#FFFFFF'} fontSize={'1.5vw'} fontFamily={"Oxygen"}>
                         AI summarization
                     </Typography>
@@ -69,7 +76,7 @@ function renderDesktopDescription(){
                     marginTop: "25vh",
                     alignItems: "center"
                 }}>
-                    <img src={des3} height={"220vh"}/>
+                    <img src={'https://cdn.discordapp.com/attachments/931459413863170069/936579286192750612/Screen_Shot_2022-01-28_at_10.11.34_pm.png'} height={"200vh"} width={"225vw"}/>
                     <Typography color={'#FFFFFF'} fontSize={'1.5vw'} fontFamily={"Oxygen"}>
                         Automated question generation
                     </Typography>
@@ -91,12 +98,18 @@ function renderDesktopDescription(){
 
 function renderMobileDescription(){
     return(
-        <Box sx={{marginTop: '27%', marginLeft: '-3.4vw', width: '99.01vw', bgcolor: '#6CA1F0'}}>
+        <Box sx={{marginTop: '27%', marginLeft: '-3.4vw', width: '99.01vw', bgcolor: '#6CA1F0' }}>
+            <div style={{textAlign: "center", marginTop: "5vh", marginBottom: "2vh"}}>
+                <Typography color={'#FFFFFF'} fontSize={'8vh'} fontFamily={"Oxygen"}>
+                    Functionality
+                </Typography>
+            </div>
             <div style={{
                 display: "flex",
                 alignItems: "center",
                 flexDirection: "column",
-                textAlign: "center"
+                textAlign: "center",
+                marginBottom: "15%"
             }}>
                 <div style={{
                     display: "flex",
@@ -104,14 +117,14 @@ function renderMobileDescription(){
                     flexDirection: "column",
                     textAlign: "center"
                 }}>
-                    <img src={"https://cdn.discordapp.com/attachments/931459413863170069/936376717889642586/Background_test.png"} height={"220vh"}/>
+                    <img src={"https://cdn.discordapp.com/attachments/930790652189495316/936573983929798687/Screen_Shot_2022-01-28_at_9.48.19_pm.png"} height={"170vh"} width={"220vw"} />
                     <Typography color={'#FFFFFF'} fontSize={'5vw'} fontFamily={"Oxygen"}>
-                        Support wide range of formats
+                        Supports a wide range of formats
                     </Typography>
                     <div style={{
-                        width: "50vw"
+                        width: "65vw"
                     }}>
-                        <Typography color={'#FFFFFF'} fontSize={'3vw'} fontFamily={"Oxygen"}>
+                        <Typography color={'#FFFFFF'} fontSize={'2.5vw'} fontFamily={"Oxygen"}>
                             Bridge supports uploading from a wide variety of formats from text, weblinks, youtube videos to even custom videos. Any study material can be easily uploaded and processed through our backend servers keeping your system light and free from the heavy computation.
                         </Typography>
                     </div>
@@ -123,14 +136,14 @@ function renderMobileDescription(){
                     textAlign: "center",
                     marginTop: "3vh"
                 }}>
-                    <img src={des2} height={'300vh'}/>
+                    <img src={'https://cdn.discordapp.com/attachments/931459413863170069/936578909095477258/Screen_Shot_2022-01-28_at_10.08.56_pm.png'} height={"170vh"} width={"220vw"}/>
                     <Typography color={'#FFFFFF'} fontSize={'5vw'} fontFamily={"Oxygen"}>
                         AI summarization
                     </Typography>
                     <div style={{
                         width: "50vw"
                     }}>
-                        <Typography color={'#FFFFFF'} fontSize={'3vw'} fontFamily={"Oxygen"}>
+                        <Typography color={'#FFFFFF'} fontSize={'2.5vw'} fontFamily={"Oxygen"}>
                             Any content can easily be summarised into comprehensive text, made available through implementation of numerous AI technologies such as GPT2 Abstractive Summary model, BERT Extractive Summary model and Bidirectional RNN punctuator model.
                         </Typography>
                     </div>
@@ -142,14 +155,14 @@ function renderMobileDescription(){
                     textAlign: "center",
                     marginTop: "3vh"
                 }}>
-                    <img src={des3} width={'60%'}/>
+                    <img src={'https://cdn.discordapp.com/attachments/931459413863170069/936579286192750612/Screen_Shot_2022-01-28_at_10.11.34_pm.png'} height={"170vh"} width={"220vw"}/>
                     <Typography color={'#FFFFFF'} fontSize={'5vw'} fontFamily={"Oxygen"}>
                         Automated question generation
                     </Typography>
                     <div style={{
                         width: "50vw"
                     }}>
-                        <Typography color={'#FFFFFF'} fontSize={'3vw'} fontFamily={"Oxygen"}>
+                        <Typography color={'#FFFFFF'} fontSize={'2.5vw'} fontFamily={"Oxygen"}>
                             Create quick and easy flashcards with the help of automated question generation, using advanced AI models such as Structured BERT SRL predictor and NLTK Pos Tagger. Any summarized text will have questions generated based on information extracted from the text.
                         </Typography>
                     </div>
@@ -169,14 +182,17 @@ function Home(props){
     var wrapperDivName;
     var wrapperDesc;
     var imgheight;
+    var imgwidth
     if(isMobile){
         wrapperDivName = "wrapperMobile"
         wrapperDesc = "home_desc_mobile"
         imgheight = "30vw"
+        imgwidth = "80vw"
     }else{
         wrapperDivName = "wrapper"
         wrapperDesc = "home_desc"
-        imgheight = "30vh"
+        imgheight = "40vh"
+        imgwidth = "60vw"
     }
 
 
@@ -194,7 +210,8 @@ function Home(props){
                        {...(animationState ? { timeout: 1000 } : {})}>
                     <p style={{
                         fontSize: "2vh",
-                        lineHeight: "3vh"
+                        lineHeight: "3vh",
+                        marginLeft: '1vw'
                     }}>
                         Bridge is an innovative solution for students to enhance their studying routine by creating summaries of materials such as videos and text. Bridge allows you to focus on reading and understanding only the most important details of your material through the use of advanced Natural Language Processing Artificial Intelligence algorithms.
                         Summaries, flashcards and quizzes can all be made quickly and easy thanks to Bridge.
@@ -210,7 +227,8 @@ function Home(props){
                        {...(animationState ? { timeout: 1000 } : {})}>
                     <ColorButton onClick={() => {setCurrentPage('Upload')}} sx={{
                         width: "153.6px",
-                        height: "54px"
+                        height: "54px",
+                        marginLeft: '1vw'
                     }}>
                         Begin
                         <ArrowForwardIcon sx={{marginLeft: '1em'}}/>
@@ -222,14 +240,19 @@ function Home(props){
             <Box sx={{height: '99vh', marginLeft: '-3.4vw', width: '99.01vw', bgcolor: '#5178B2'}}>
                 <div style={{
                     textAlign: "center",
-                    marginTop: "18vh"
+                    marginTop: "10vh"
                 }}>
                     <Typography color={'#FFFFFF'} fontSize={'8vh'} fontFamily={"Oxygen"}>
                         About Us
                     </Typography>
-                    <Typography color={'#FFFFFF'} fontSize={'6vh'} fontFamily={"Oxygen"}>
+                    <div style={{
+                        textAlign: "center",
+                        marginTop: "2vh"
+                    }}>
+                    <Typography color={'#FFFFFF'} fontSize={'5vh'} fontFamily={"Oxygen"}>
                         Created by
                     </Typography>
+                    </div>
                 </div>
                 <div style={{
                     display: "flex",
@@ -237,18 +260,20 @@ function Home(props){
                     columnGap: "10vw",
                     alignItems: "center",
                     justifyContent: "center",
-                    marginTop: "3vh"
+                    marginTop: "3vh",
+                    marginRight: "3vw",
+                    marginLeft: "3vw"
                 }}>
-                    <Typography color={'#FFFFFF'} fontSize={isMobile ? '5vw' : '4vh'} fontFamily={"Oxygen"}>
+                    <Typography color={'#FFFFFF'} fontSize={isMobile ? '3vw' : '3vh'} fontFamily={"Oxygen"}>
                         Bowen Feng
                     </Typography>
-                    <Typography color={'#FFFFFF'} fontSize={isMobile ? '5vw' : '4vh'} fontFamily={"Oxygen"}>
+                    <Typography color={'#FFFFFF'} fontSize={isMobile ? '3vw' : '3vh'} fontFamily={"Oxygen"}>
                         Jerry Cheng
                     </Typography>
-                    <Typography color={'#FFFFFF'} fontSize={isMobile ? '5vw' : '4vh'} fontFamily={"Oxygen"}>
+                    <Typography color={'#FFFFFF'} fontSize={isMobile ? '3vw' : '3vh'} fontFamily={"Oxygen"}>
                         Harrison Langdon
                     </Typography>
-                    <Typography color={'#FFFFFF'} fontSize={isMobile ? '5vw' : '4vh'} fontFamily={"Oxygen"}>
+                    <Typography color={'#FFFFFF'} fontSize={isMobile ? '3vw' : '3vh'} fontFamily={"Oxygen"}>
                         Kasie Wang
                     </Typography>
                 </div>
@@ -259,7 +284,7 @@ function Home(props){
                     justifyContent: "center"
                 }}>
                     <img src={"https://cdn.discordapp.com/attachments/930790652189495316/936486224808517752/bgremoved.png"} style={{
-                        width: "50vw",
+                        width: imgwidth,
                         height: imgheight
                     }}/>
                 </div>
