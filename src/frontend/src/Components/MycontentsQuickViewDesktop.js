@@ -38,7 +38,7 @@ export default function MycontentsQuickViewDesktop(props){
                     sx = {{
                     fontSize:'260%',
                     fontFamily: 'Oxygen',
-                    color: '#5178B2'
+                    color: '#265191'
                     }} >
                     <Box
                     sx ={{flexWrap: 'wrap',

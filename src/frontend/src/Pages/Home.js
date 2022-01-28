@@ -182,14 +182,17 @@ function Home(props){
     var wrapperDivName;
     var wrapperDesc;
     var imgheight;
+    var imgwidth
     if(isMobile){
         wrapperDivName = "wrapperMobile"
         wrapperDesc = "home_desc_mobile"
         imgheight = "30vw"
+        imgwidth = "80vw"
     }else{
         wrapperDivName = "wrapper"
         wrapperDesc = "home_desc"
-        imgheight = "30vh"
+        imgheight = "40vh"
+        imgwidth = "60vw"
     }
 
 
@@ -281,7 +284,7 @@ function Home(props){
                     justifyContent: "center"
                 }}>
                     <img src={"https://cdn.discordapp.com/attachments/930790652189495316/936486224808517752/bgremoved.png"} style={{
-                        width: "70vw",
+                        width: imgwidth,
                         height: imgheight
                     }}/>
                 </div>
