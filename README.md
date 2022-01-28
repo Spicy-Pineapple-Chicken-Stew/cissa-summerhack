@@ -108,3 +108,16 @@ In addition, we utilized AI as part of our question generation:
 
 We also leveraged Google's Speech to Text API in order to transcribe video content to textual content. Although the API performs exceptionally well, it unfortunately does not punctuate the text, which is a concern as both of our summarization models relies heavily on punctuation. Instead, we opted to use an additional AI specifically designed to punctuate "raw" texts, built using a Bidirectional LSTM architecture.
 
+<a name="challenge"></a>
+## Challenges
+
+Many of us were not familiar with the ReactJS framework and/or the MaterialUI library, which means there was a steep learning curve at the very beginning. However, through hard work and dedication, we quickly overcame this hurdle and became quickly familiarized with many of the core concepts of ReactJS and is able to comfortably build the front-end component. 
+
+Git was also something we had to learn, as the git workflow is not something seen in other fields. However, once everyone became familiar with the ins-and-outs of git, our collaborative efforts became very efficient, and tasks were being done on schedule.
+
+Perhaps the most challenging part was the initial research phase of the project. Obviously, none of us have completed a similar project and the lack of existing comparable projects means we more or less have to start from 0. In particualr, coming up with algorithms to generate questions based on text was a particular hard roadblock for us, as there is extremely little publicly available information specifically on this subject. However, we managed to overcome this by brainstroming and trial and error of variety of different ideas.
+
+<a name="future"></a>
+## Future Roadmaps
+
+We believe this idea 
