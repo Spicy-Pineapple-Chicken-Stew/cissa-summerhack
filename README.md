@@ -95,7 +95,7 @@ To achieve near-realtime update with each user submission, we used a timer that 
 
 Our back-end component is built using Flask, and we opted to use MongoDB as our database, due to its ease of storing dynamic user data as opposed to a standard SQL database.
 
-Due to the (relatively) large processing times required for certain files, primarily video files, we designed a form of Asynchronous Task Queue, much like Celery, but without the need to use brokers such as Redis or RabbitMQ due to the resource heavy nature of some of our computation. Instead, every submission will be executed on a different thread, assigning an ID to each "task", which ensures each API request is not blocked by the computation of each submission. Taking advantage of shared memory of threads we can access each task from anywhere in order to retrieve its status, update its status or return its contents. 
+Due to the (relatively) large processing times required for certain files, primarily video files, we designed a form of Asynchronous Task Queue much like Celery. Though without the need to use brokers such as Redis or RabbitMQ due to the resource heavy nature of some of our computation. Instead, every submission will be executed on a different thread, assigning an ID to each "task", which ensures each API request is not blocked by the computation of each submission. Taking advantage of shared memory of threads we can access each task from anywhere in order to retrieve its status, update its status or return its contents. 
 
 Our USP (unique selling point) is of course using AI to process textual data, summarizing them and generating questions based on the summary. We have elected to use two different AIs to perform text summary:
 
