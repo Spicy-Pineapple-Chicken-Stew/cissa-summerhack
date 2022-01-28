@@ -144,50 +144,50 @@ export default function Flashcard_edit(){
                         marginTop: '1%',
                         width: '100%',
                     }}>
-                       <Flashcard_button 
+                       <Flashcard_button
                             onClick={() => {
-                                handleOpen(); 
+                                handleOpen();
                                 setTaskQuestion(quest.question);
                                 setTaskAnswer(quest.answer);
                             }}
                             sx ={{marginLeft: '1.5%'}}>
-                            <div style={{display:'flex', flexDirection:'column'}}>
+                            <div style={{display:'flex', flexDirection:'column', marginTop: "3vh"}}>
                             <Typography sx={{fontFamily:'Oxygen', marginTop: '-7vh', marginBottom: '0.2vh'}}>
                                 Question:
                             </Typography>
                             <Box sx={{
                                 marginLeft: '-2%',
-                                width: '50vw', 
-                                height:'9.3vh', 
+                                width: '50vw',
+                                height:'7vh',
                                 display: 'flex',
-                                overflow: 'auto', 
+                                overflow: 'auto',
                                 justifyContent: 'center',
                                 marginBottom: '-6vh'}}>
                                 <Typography sx={{fontFamily:'Oxygen'}}>
                                      {quest.question}
                                 </Typography>
-                            </Box> 
+                            </Box>
                             </div>
 
-                            <div style={{display:'flex', flexDirection:'column'}}>
+                            <div style={{display:'flex', flexDirection:'column', marginTop: "3vh"}}>
                             <Typography sx={{fontFamily:'Oxygen', marginTop: '-7vh', marginBottom: '0.2vh'}}>
                                 Answer:
                             </Typography>
                             <Box sx={{
                                 marginLeft: '-2%',
-                                width: '25vw', 
-                                height:'9.3vh', 
+                                width: '25vw',
+                                height:'9.3vh',
                                 display: 'flex',
-                                overflow: 'auto', 
+                                overflow: 'auto',
                                 justifyContent: 'center',
                                 marginBottom: '-6vh'}}>
                                 <Typography sx={{fontFamily:'Oxygen'}}>
                                      {quest.answer}
                                 </Typography>
-                            </Box> 
+                            </Box>
                             </div>
 
-                            
+
                         </Flashcard_button>
 
 
