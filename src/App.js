@@ -21,7 +21,7 @@ function App() {
   let [user, setUser] = useState(null);
   let [currentTask, setCurrentTask] = useState(null);
   let [taskList, setTaskList] = useState([]);
-  const url = "http://194.193.55.245:9000";
+  const url = "https://194.193.55.245:9000";
 
 
     function handleWindowSizeChange() {
