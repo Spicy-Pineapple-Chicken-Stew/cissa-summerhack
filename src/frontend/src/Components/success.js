@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import Light_Button from './ButtonDef_light'
+import Light_Button from './ButtonDef_light';
 import {CurrentPageContext} from "../Contexts/CurrentPageContext";
 import {useContext} from "react";
 
