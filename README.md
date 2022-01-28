@@ -75,6 +75,7 @@ Additional requirements:
 
 Run 'flask run' or 'python run.py' to start the server locally
 
+<a name="demo"></a>
 ## 3. Demonstration
 
 Here is a video promo of our website, including a quick demonstration
