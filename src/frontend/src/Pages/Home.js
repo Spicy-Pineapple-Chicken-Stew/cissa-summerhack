@@ -17,7 +17,7 @@ function renderDesktopDescription(){
         <Box sx={{height: '99vh', marginTop: '25vh', marginLeft: '-3.4vw', width: '99.01vw', bgcolor: '#6CA1F0'}}>
            <div style={{textAlign: "center", marginTop: "10vh" }}>
                 <Typography color={'#FFFFFF'} fontSize={'8vh'} fontFamily={"Oxygen"}>
-                    Functionality
+                    Features
                 </Typography>
             </div>
             <div style={{
@@ -101,7 +101,7 @@ function renderMobileDescription(){
         <Box sx={{marginTop: '27%', marginLeft: '-3.4vw', width: '99.01vw', bgcolor: '#6CA1F0' }}>
             <div style={{textAlign: "center", marginTop: "5vh", marginBottom: "2vh"}}>
                 <Typography color={'#FFFFFF'} fontSize={'8vh'} fontFamily={"Oxygen"}>
-                    Functionality
+                    Features
                 </Typography>
             </div>
             <div style={{
@@ -213,9 +213,7 @@ function Home(props){
                         lineHeight: "3vh",
                         marginLeft: '1vw'
                     }}>
-                        Bridge is an innovative solution for students to enhance their studying routine by creating summaries of materials such as videos and text. Bridge allows you to focus on reading and understanding only the most important details of your material through the use of advanced Natural Language Processing Artificial Intelligence algorithms.
-                        Summaries, flashcards and quizzes can all be made quickly and easy thanks to Bridge.
-                        Click Begin to Bridge the gaps in your knowledge.
+                        Bridge the gap between the known and the unknown. Enhance your study routine with automatically generated summaries of videos and text. Test your knowledge with AI developed flashcards. 
                     </p>
                 </Slide>
 
