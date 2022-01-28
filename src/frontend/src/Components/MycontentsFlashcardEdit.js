@@ -133,7 +133,7 @@ export default function Flashcard_edit(){
                 height: '56vh',
                 flexDirection: 'row',
                 width: '90.7vw',
-
+                overflow: 'auto',
                 marginLeft: '4.65vw',
                 backgroundColor: '#fffaf7',
             }}>
@@ -144,25 +144,57 @@ export default function Flashcard_edit(){
                         marginTop: '1%',
                         width: '100%',
                     }}>
-                        <Flashcard_button
+                       <Flashcard_button 
                             onClick={() => {
-                                handleOpen();
+                                handleOpen(); 
                                 setTaskQuestion(quest.question);
                                 setTaskAnswer(quest.answer);
                             }}
                             sx ={{marginLeft: '1.5%'}}>
-                            <Typography sx={{width: '60%', marginTop:'15%', fontFamily:'Oxygen'}}>
-                                Question: {quest.question}
+                            <div style={{display:'flex', flexDirection:'column'}}>
+                            <Typography sx={{fontFamily:'Oxygen', marginTop: '-7vh', marginBottom: '0.2vh'}}>
+                                Question:
                             </Typography>
-                            <Typography sx={{width: '25%'}}>
-                                Answer: {quest.answer}
+                            <Box sx={{
+                                marginLeft: '-2%',
+                                width: '50vw', 
+                                height:'9.3vh', 
+                                display: 'flex',
+                                overflow: 'auto', 
+                                justifyContent: 'center',
+                                marginBottom: '-6vh'}}>
+                                <Typography sx={{fontFamily:'Oxygen'}}>
+                                     {quest.question}
+                                </Typography>
+                            </Box> 
+                            </div>
+
+                            <div style={{display:'flex', flexDirection:'column'}}>
+                            <Typography sx={{fontFamily:'Oxygen', marginTop: '-7vh', marginBottom: '0.2vh'}}>
+                                Answer:
                             </Typography>
+                            <Box sx={{
+                                marginLeft: '-2%',
+                                width: '25vw', 
+                                height:'9.3vh', 
+                                display: 'flex',
+                                overflow: 'auto', 
+                                justifyContent: 'center',
+                                marginBottom: '-6vh'}}>
+                                <Typography sx={{fontFamily:'Oxygen'}}>
+                                     {quest.answer}
+                                </Typography>
+                            </Box> 
+                            </div>
+
+                            
                         </Flashcard_button>
+
 
                         <Button onClick={() => {
                             deleteQuestion(quest.question);
                             setForceRefresh(!forceRefresh);
-                        }} sx={{position: 'relative', marginLeft: '-7%', color: '#5178B2'}}>
+                        }} sx={{position: 'relative', marginLeft: '-7vw', color: '#5178B2'}}>
                                 <DeleteForeverIcon />
                         </Button>
                     </Box>
@@ -173,43 +205,61 @@ export default function Flashcard_edit(){
                     aria-labelledby="quest-modal-title"
                 >
                     <Box sx={style}>
+                        <Typography
+                                fontfamily ='Oxygen'
+                                fontSize={20}
+                                sx = {{
+                                    marginLeft:'4.5vw',
+                                    marginTop: '2vh',
+                                    marginBottom: '-2vh'}}
+                            >Edit</Typography>
                         <Box>
-                            <TextField
-                                id="question"
-                                label="Question"
-                                defaultValue={taskQuestion}
-                                multiline
-                                rows={20}
-                                sx={{
-                                    width: '41%',
-                                    position: 'relative',
-                                    marginTop: '1vw',
-                                    marginLeft: '6%',
-                                }}
-                                inputRef={questionTextRef}
-                                />
-                            <TextField
-                                id="answer"
-                                label="Answer"
-                                defaultValue={taskAnswer}
-                                multiline
-                                rows={20}
-                                sx={{
-                                    width: '41%',
-                                    position: 'relative',
-                                    marginTop: '1vw',
-                                    marginLeft: '6%',
-                                }}
-                                inputRef={answerTextRef}
-                                />
+                        <TextField
+                            id="question"
+                            label="Question"
+                            multiline
+                            rows={19}
+                            sx={{
+                                width: '41%',
+                                height: '35%',
+                                position: 'relative',
+                                marginTop: '3vh',
+                                marginLeft: '6%',
+                                border: '#5178B2',
+                                backgroundColor: '#fffefc',
+                                color: '#5178B2'
+                            }}
+                            inputRef={newQuestionTextRef}
+                            />
+                        <TextField
+                            id="answer"
+                            label="Answers"
+                            multiline
+                            rows={19}
+                            sx={{
+                                width: '41%',
+                                height: '35%',
+                                position: 'relative',
+                                marginTop: '3vh',
+                                marginLeft: '6%',
+                                border: '#5178B2',
+                                backgroundColor: '#fffefc',
+                                color: '#5178B2'
+                            }}
+                            inputRef={newAnswerTextRef}
+                            />
                         </Box>
                         <Box sx={{marginTop: '1vw'}}>
-                            <ColorButton onClick={saveNewQuestion}>Save</ColorButton>
+                            <ColorButton onClick={saveNewQuestion}
+                                sx= {{
+                                    marginLeft:'6%',
+
+                                }}>Save</ColorButton>
                             <ColorButton
                                 onClick={() => {
                                     deleteQuestion(null)
                                 }}
-                                sx={{position: 'relaive', marginLeft: '0.5vw'}}
+                                sx={{position: 'relative', marginLeft: '51.5vw', marginTop: '-0.25vh'}}
                             >
                                 Delete</ColorButton>
                         </Box>
