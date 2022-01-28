@@ -6,10 +6,10 @@
 
 1. [ Project Description ](#desc)
 2. [ Installation and Usage ](#usage)
-3. [ Demonstration ] (#demo)
-4. [ Technical Overview ] (#tech)
-5. [ Challenges ] (#challenge)
-6. [ Future Roadmaps ] (#future)
+3. [ Demonstration ](#demo)
+4. [ Technical Overview ](#tech)
+5. [ Challenges ](#challenge)
+6. [ Future Roadmaps ](#future)
 
 <a name="desc"></a>
 ## 1. Description
