@@ -120,4 +120,4 @@ Perhaps the most challenging part was the initial research phase of the project.
 <a name="future"></a>
 ## Future Roadmaps
 
-We believe this idea 
+We believe this idea has commercial viability, due to no other competitors currently on the market. Summarization website does exist, but none of them is tailored towards students, and almost all of them support texts only. Our next goal would be to refine our current technologies in order to produce better summaries and questions and possibly rehaul the website and ensure it is more user friendly.
