@@ -86,7 +86,8 @@ export default function UploadDesktop(props){
         border: '2px solid rgba(81, 120, 178, 1)',
         borderRadius: '14px',
         fontSize: '1.65vw',
-        color: '#16697A'
+        color: '#16697A',
+        backgroundColor: '#fffefc'
     }
 
     const descriptionBoxPT = (
@@ -94,7 +95,10 @@ export default function UploadDesktop(props){
         sx={descriptBox}
         className = {'descriptionBox'}
         >
-            Click the button above and enter or paste text to be summarised
+            <Typography
+                sx= {{color: '#5178B2', fontFamily: 'Oxygen', fontSize: '1.65vw'}}>
+                Click the button above and enter or paste text to be summarised
+            </Typography>
         </Box>
     )
 
@@ -103,15 +107,22 @@ export default function UploadDesktop(props){
         sx={descriptBox}
         className = {'descriptionBox'}
         >
-            Click the button above and enter or paste a url to be summarised
+            <Typography
+                sx= {{color: '#5178B2', fontFamily: 'Oxygen', fontSize: '1.65vw'}}>
+                Click the button above and enter or paste a url to be summarised
+            </Typography>
         </Box>
     )
 
     const descriptionBoxYV = (
         <Box
         sx={descriptBox}
-        className = {'descriptionBox'}
-        >Click the button above and upload a video to be summarised
+        className = {'descriptionBox'}>
+            <Typography
+                sx= {{color: '#5178B2', fontFamily: 'Oxygen', fontSize: '1.65vw'}}>
+                Click the button above and upload a video to be summarised
+            </Typography>
+            
         </Box>
     )
 
