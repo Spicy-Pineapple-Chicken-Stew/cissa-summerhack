@@ -23,9 +23,11 @@ function UploadPhone(props){
     return(
         <div className ='upload_wrapper'>
             <div className ='upload_title'>
-                <h1><Typography fontFamily={"Oxygen"} fontSizes={"8vh"}>Uploads</Typography></h1>
+                <Typography fontFamily={"Oxygen"} fontSize={"6vh"}>Uploads</Typography>
             </div>
-            <div>
+            <div style={{
+                marginTop: "15vh"
+            }}>
                 <PhoneButton
                     text='Pure textㅤ'
                     description={"Click to enter or paste text to be summarised"}
