@@ -18,7 +18,7 @@ import {UserContext} from "../Contexts/UserContext";
 
 const pages = ['Home', 'Upload'];
 const my_contents = ['All contents', 'Summary', 'Flash Cards'];
-const accounts = ['Settings', 'Log out'];
+const accounts = ['Log out'];
 
 const Global_MenuBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -163,9 +163,6 @@ const Global_MenuBar = () => {
                             <MenuItem key={account} onClick={() => {
                                 if(account === 'Log out'){
                                     setUser(null);
-                                    handleCloseUserMenu();
-                                }else if(account === 'Settings'){
-                                    alert("Opened settings");
                                     handleCloseUserMenu();
                                 }
                                 }
