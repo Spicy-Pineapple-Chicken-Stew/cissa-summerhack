@@ -25,7 +25,7 @@ export default function Flashcard_edit(){
     const [taskQuestion, setTaskQuestion] = React.useState(null);
     const [taskAnswer, setTaskAnswer] = React.useState(null);
     const [forceRefresh, setForceRefresh] = React.useState(false);
-    const url = "https://194.193.55.245:9000";
+    const url = "http://194.193.55.245:9000";
 
     const saveNewQuestion = () => {
         currentTask.questions.forEach(element => {
@@ -110,7 +110,7 @@ export default function Flashcard_edit(){
         marginLeft: '5%',
         textTransform: 'capitalize'
     }));
-    
+
     const style = {
         position: 'absolute',
         top: '52%',
@@ -133,10 +133,10 @@ export default function Flashcard_edit(){
                 height: '56vh',
                 flexDirection: 'row',
                 width: '90.7vw',
-                
+
                 marginLeft: '4.65vw',
                 backgroundColor: '#fffaf7',
-            }}> 
+            }}>
                 {currentTask.questions.map((quest) => (
                     <Box
                     sx ={{
@@ -144,9 +144,9 @@ export default function Flashcard_edit(){
                         marginTop: '1%',
                         width: '100%',
                     }}>
-                        <Flashcard_button 
+                        <Flashcard_button
                             onClick={() => {
-                                handleOpen(); 
+                                handleOpen();
                                 setTaskQuestion(quest.question);
                                 setTaskAnswer(quest.answer);
                             }}
@@ -158,7 +158,7 @@ export default function Flashcard_edit(){
                                 Answer: {quest.answer}
                             </Typography>
                         </Flashcard_button>
-                        
+
                         <Button onClick={() => {
                             deleteQuestion(quest.question);
                             setForceRefresh(!forceRefresh);
@@ -170,16 +170,16 @@ export default function Flashcard_edit(){
                 <Modal
                     open={openModel}
                     onClose={handleClose}
-                    aria-labelledby="quest-modal-title"    
+                    aria-labelledby="quest-modal-title"
                 >
                     <Box sx={style}>
                         <Box>
-                            <TextField 
-                                id="question" 
-                                label="Question" 
+                            <TextField
+                                id="question"
+                                label="Question"
                                 defaultValue={taskQuestion}
                                 multiline
-                                rows={20} 
+                                rows={20}
                                 sx={{
                                     width: '41%',
                                     position: 'relative',
@@ -188,12 +188,12 @@ export default function Flashcard_edit(){
                                 }}
                                 inputRef={questionTextRef}
                                 />
-                            <TextField 
-                                id="answer" 
-                                label="Answer" 
-                                defaultValue={taskAnswer} 
+                            <TextField
+                                id="answer"
+                                label="Answer"
+                                defaultValue={taskAnswer}
                                 multiline
-                                rows={20} 
+                                rows={20}
                                 sx={{
                                     width: '41%',
                                     position: 'relative',
@@ -205,7 +205,7 @@ export default function Flashcard_edit(){
                         </Box>
                         <Box sx={{marginTop: '1vw'}}>
                             <ColorButton onClick={saveNewQuestion}>Save</ColorButton>
-                            <ColorButton 
+                            <ColorButton
                                 onClick={() => {
                                     deleteQuestion(null)
                                 }}
@@ -223,26 +223,26 @@ export default function Flashcard_edit(){
                         marginLeft: '50vw',
                         marginBottom: '1%'}}
             >Add new</ColorButton>
-            <Modal 
+            <Modal
             open={addNewModal}
             onClose={handleAddNewClose}
             aria-labelledby="add-new-modal-title"
             >
                 <Box sx={style}>
                     <Box>
-                        <Typography 
-                            fontfamily ='Oxygen' 
+                        <Typography
+                            fontfamily ='Oxygen'
                             fontSize={20}
                             sx = {{
                                 marginLeft:'4.5vw',
                                 marginTop: '2vh',
                                 marginBottom: '-2vh'}}
                         >Edit</Typography>
-                        <TextField 
-                            id="question" 
-                            label="Question" 
+                        <TextField
+                            id="question"
+                            label="Question"
                             multiline
-                            rows={19} 
+                            rows={19}
                             sx={{
                                 width: '41%',
                                 height: '35%',
@@ -254,12 +254,12 @@ export default function Flashcard_edit(){
                                 color: '#5178B2'
                             }}
                             inputRef={newQuestionTextRef}
-                            />  
-                        <TextField 
-                            id="answer" 
-                            label="Answers"  
+                            />
+                        <TextField
+                            id="answer"
+                            label="Answers"
                             multiline
-                            rows={19} 
+                            rows={19}
                             sx={{
                                 width: '41%',
                                 height: '35%',

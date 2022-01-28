@@ -51,7 +51,7 @@ export default function FilePopup(props){
         );
 
         // Details of the uploaded file
-        axios.post("https://194.193.55.245:9000/api/file_summary", formData).then((response) => {
+        axios.post("http://194.193.55.245:9000/api/file_summary", formData).then((response) => {
             props.setTaskList([{
                 taskType: "file",
                 taskPreview: "",
