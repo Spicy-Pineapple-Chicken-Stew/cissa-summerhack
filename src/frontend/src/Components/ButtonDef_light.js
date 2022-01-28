@@ -22,8 +22,8 @@ const Light_Button = styled(Button)(({ theme }) => ({
         backgroundColor: '#ffffff',
     },
     '&:active': {
-        backgroundColor:'#4896b5',
+        backgroundColor:'#5178B2',
     },
 }));
 
-export default Light_Button; 
+export default Light_Button;

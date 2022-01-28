@@ -8,6 +8,7 @@ import {useState} from "react";
 import Success_Upload from "./success_mobile";
 import Fail_Upload from "./fail_mobile";
 import axios from "axios";
+import ColorButton from "./ButtonDef";
 
 
 export default function FilePopup(props){
@@ -89,18 +90,27 @@ export default function FilePopup(props){
                     }}
             >
                 <Box sx={{
-                    bgcolor: 'rgba(81, 120, 178, 1)',
+                    bgcolor: '#FFFAF7',
                     border: '2px solid rgba(81, 120, 178, 1)'}}
                 >
                     <Typography
                         id="modal-title"
                         variant="h4"
                         align='center'
-                        color='rgba(237, 231, 227, 1)'
+                        color='#000000'
+                        sx={{
+                            marginTop: "2vh"
+                        }}
                     >
                         {props.text}
                     </Typography>
-                    <Box>
+                    <Box sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        height: "10vh"
+                    }}>
                         <label htmlFor={"contained-button-file"}>
                             <Input
                                 accept={[".webm", ".mkv", ".flv", ".avi", ".mov", ".wmv", ".mp4"]} id={"contained-button-file"} type={"file"}
@@ -108,9 +118,9 @@ export default function FilePopup(props){
                                     setFile(event.target.files[0])
                                 }}
                             />
-                            <Button variant='contained' component={"span"}>
+                            <ColorButton variant='contained' component={"span"}>
                                 Upload file
-                            </Button>
+                            </ColorButton>
                         </label>
                         {file != null &&
                         <h3>

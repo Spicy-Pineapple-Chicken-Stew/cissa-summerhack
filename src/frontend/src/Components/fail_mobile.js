@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Light_Button from '../Components/ButtonDef_light'
+import {Typography} from "@mui/material";
 
 const style = {
     position: 'relative',
@@ -34,7 +35,7 @@ export default function Fail_Upload(props) {
                 fontWeight: 900,
                 fontFamily: 'Oxygen',
                 m: 1}}>
-            Error, please try again
+                <Typography fontFamily={"Oxygen"} fontSize={"4vw"}>Error, please try again</Typography>
             </Box>
 
           <Box>
@@ -47,7 +48,7 @@ export default function Fail_Upload(props) {
                   fontSize: "3vw"
           }}
                         onClick={props.handleClose}
-          >Try again</Light_Button>
+          ><Typography fontFamily={"Oxygen"}>Try again</Typography></Light_Button>
           </Box>
         </Box>
       </Modal>

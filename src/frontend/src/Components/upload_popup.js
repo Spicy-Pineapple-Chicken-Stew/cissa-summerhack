@@ -72,19 +72,25 @@ export default function TextboxPopup(props){
                 sx={{
                     width: 3/4,
                     position: 'absolute',
-                    top: '30%',
-                    left: '12.5%'
+                    top: '20%',
+                    left: '7.5%'
                     }}
             >
                 <Box sx={{
-                    bgcolor: 'rgba(81, 120, 178, 1)',
-                    border: '2px solid rgba(52, 80, 121, 1)'}}
+                    bgcolor: '#FFFAF7',
+                    border: '2px solid rgba(52, 80, 121, 1)',
+                    height: "55vh",
+                    width: "85vw"
+                }}
                 >
                     <Typography
                         id="modal-title"
                         variant="h4"
                         align='center'
-                        color='rgba(230, 230, 200, 1)'
+                        color='#000000'
+                        sx={{
+                            marginTop: "5vh"
+                        }}
                     >
                         {props.text}
                     </Typography>
@@ -92,15 +98,22 @@ export default function TextboxPopup(props){
                         id="modal-content"
                         label="Enter in this box"
                         multiline
+                        rows={13}
                         maxRows={10}
-                        fullWidth
                         inputRef={textFieldRef}
+                        sx={{
+                            marginTop: "2vh",
+                            marginLeft: "2vw",
+                            width: "95%",
+                            color: "#FFFEFC"
+                        }}
                     />
                     <SubmitButton
                     sx={{
                         width: 1/4,
                         position: 'relative',
-                        left: '37.5%'
+                        left: '37.5%',
+                        marginTop: "3vh"
                         }}
                     onClick={() => {
                         if(props.type === 'puretext'){
