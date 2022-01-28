@@ -82,3 +82,19 @@ Here is a video promo of our website, including a quick demonstration
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/KBGzuzQ4BiU/0.jpg)](https://www.youtube.com/watch?v=KBGzuzQ4BiU)
 
+
+<a name="tech"></a>
+## 4. Technical Overview
+
+Our front-end component is built using ReactJS and MaterialUI, with axios for HTTP requests handling. We also utilized react-flash-cards to display our generated flashcards.
+
+To achieve true SPA (single page application), we opted not to use react router, but instead structure our screens/pages into components, and used Contexts to expose sub-components with the ability to navigate between pages. We also utilized Contexts to store a variety of other information such as users, tasks and more.
+
+To achieve near-realtime update with each user submission, we used a timer that queries the backend for the status of each "task" (submission) and updates accordingly. This results in almost instantaneous updates on each task without manual user intervention, thus improving user experience.
+
+Our back-end component is built using Flask, and we opted to use MongoDB as our database, due to its ease of storing dynamic user data as opposed to a standard SQL database.
+
+Due to the (relatively) large processing times required for certain files, primarily video files, we designed a form of Asynchronous Task Queue, much like Celery, but without the need to use brokers such as Redis or RabbitMQ due to the resource heavy nature of some of our computation. Instead, every submission will be executed on a different thread, assigning an ID to each "task", which ensures each API request is not blocked by the computation of each submission. Taking advantage of shared memory of threads we can access each task from anywhere in order to retrieve its status, update its status or return its contents. 
+
+Our USP (unique selling point) is of course using AI to process textual data, summarizing them and generating questions based on the summary. We have elected to use two different AIs to perform text summary:
+- BERT: BERT, or Bidirectional Encoder Representations from Transformers, is a model developed by Google that achieved surprising results in the field of NLP (natural language processing). 
