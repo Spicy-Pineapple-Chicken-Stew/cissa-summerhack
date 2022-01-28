@@ -35,13 +35,15 @@ export default function TaskListPage(props){
         fontSize: 24,
         p: 1.2,
         display: "flex",
+        textColor: "#5178B2",
         width   : "80",
         height: "20",
         border: '3px solid rgba(17, 221, 74, 1)',
         borderRadius: "8px",
         margin: 2,
+        backgroundColor: '#fffcfa',
         '&:hover': {
-            backgroundColor: 'rgba(0,56,255,0.36)',
+            backgroundColor: '#ffffff',
             cursor: "pointer"
         },
     };
@@ -63,7 +65,12 @@ export default function TaskListPage(props){
         height: "20",
         border: '3px solid rgb(204,2,2)',
         borderRadius: "8px",
-        margin: 2
+        backgroundColor: '#fffcfa',
+        margin: 2,
+        '&:hover': {
+            backgroundColor: '#ffffff',
+            cursor: "pointer"
+        },
     };
 
     const Input = styled('input')({
@@ -78,7 +85,8 @@ export default function TaskListPage(props){
         borderRadius: '16px',
         fontSize: 24,
         color: '#16697A',
-        overflowY: "scroll"
+        overflowY: "scroll",
+        backgroundColor: '#fffaf7'
     }
 
     const icon_style ={
@@ -148,8 +156,11 @@ export default function TaskListPage(props){
                                     setCurrentPage("My Contents")
                                     setCurrentTask(taskObj)
                                 }}>
+                                    
                                     {renderIcon(taskObj)}
-                                    {taskObj.taskTitle} - {taskObj.taskStatus}</Box>
+
+                                    {taskObj.taskTitle} - {taskObj.taskStatus}
+                                    </Box>
                             )
                         }else{
                             return(
