@@ -23,7 +23,7 @@ export default function Flashcard_edit(){
     const [taskQuestion, setTaskQuestion] = React.useState(null);
     const [taskAnswer, setTaskAnswer] = React.useState(null);
     const [forceRefresh, setForceRefresh] = React.useState(false);
-    const url = "http://194.193.55.245:9000";
+    const url = "https://194.193.55.245:9000";
 
     const saveNewQuestion = () => {
         currentTask.questions.forEach(element => {
